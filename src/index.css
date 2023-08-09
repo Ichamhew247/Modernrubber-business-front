@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Parisienne&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: "Noto Sans Thai";
+  overflow-x: hidden;
+}
+
+/* body,
+html {
+  background: url("/src/assets/wave.svg") no-repeat;
+  background-position: center 110px;
+  background-size: cover;
+  
+} */
