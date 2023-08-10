@@ -2,7 +2,7 @@ import { FiMapPin } from "react-icons/fi";
 import { FaPhone } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
 import { FaLine } from "react-icons/fa";
-import ButtonCustom from "../components/button/ButtonCustom";
+import ButtonCustom from "../components/ButtonCustom";
 export default function Footer() {
   return (
     <>

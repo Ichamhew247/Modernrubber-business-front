@@ -1,3 +1,5 @@
+import LoginContainer from "./auth/components/LoginContainer";
+
 export default function Navbar() {
   return (
     <>
@@ -25,8 +27,9 @@ export default function Navbar() {
               <button className="hover:text-[#6ABD65] hover:underline">
                 ติดต่อเรา
               </button>
+
               <button className="hover:text-[#6ABD65] hover:underline">
-                เข้าสู่ระบบ
+                <LoginContainer />
               </button>
             </div>
           </div>

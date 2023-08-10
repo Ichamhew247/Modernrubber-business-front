@@ -1,11 +1,9 @@
-// import Banner from "../components/banner/Banner";
-import Navbar from "../components/navbar";
+import Navbar from "../features/Navbar";
 
 export default function Header() {
   return (
     <>
       <Navbar />
-      {/* <Banner /> */}
     </>
   );
 }

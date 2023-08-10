@@ -1,5 +1,4 @@
-// import Contents from "../layout/Contents";
-import Banner from "../components/banner/Banner";
+import Banner from "../features/Banner";
 import Footer from "../layout/Footer";
 import Header from "../layout/Header";
 export default function HomePage() {
@@ -149,9 +148,7 @@ export default function HomePage() {
           maxime suscipit, laboriosam impedit molestias pariatur deleniti magnam
           unde voluptas quaerat qui doloribus.
         </div>
-        {/* <div>
-          <Contents />
-        </div> */}
+
         <div>
           <Footer />
         </div>

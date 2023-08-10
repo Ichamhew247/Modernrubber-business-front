@@ -1,8 +1,9 @@
 export default function ButtonCustom({
-  textButton,
+  textButton = "Button",
   width,
   Height,
-  backgroundColor,
+  backgroundColor = "#6ABD65",
+  color = "white",
 }) {
   return (
     <>
@@ -11,6 +12,7 @@ export default function ButtonCustom({
           maxWidth: `${width}px`,
           minHeight: `${Height}px`,
           backgroundColor: backgroundColor,
+          color: color,
         }}
         className="text-center rounded-full  "
       >
