@@ -2,7 +2,6 @@ import { FiMapPin } from "react-icons/fi";
 import { FaPhone } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
 import { FaLine } from "react-icons/fa";
-import ButtonCustom from "../components/ButtonCustom";
 export default function Footer() {
   return (
     <>
@@ -28,10 +27,10 @@ export default function Footer() {
                 กรุงเทพ 10150
               </p>
               <button
-                className=" mt-3 hover:bg-[rgb(0,0,0)] text-center rounded-full w=[140px] h-[30px] bg-[rgb(23,19,14)]"
+                className=" mt-3 text-white hover:bg-[rgb(0,0,0)] text-center rounded-full w=[140px] h-[30px] bg-[rgb(23,19,14)]"
                 role="button"
               >
-                <ButtonCustom textButton="ดูแผนที่" />
+                ดูแผนที่
               </button>
             </div>
           </main>

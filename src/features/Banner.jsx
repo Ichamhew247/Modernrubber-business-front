@@ -5,7 +5,7 @@ import Logo from "../features/banner/components/Logo";
 export default function Banner() {
   return (
     <>
-      <div className="z-10 mt-[86px]">
+      <div className="mt-[86px]">
         <main className=" text-white mt-8">
           <main className=" bg-[url('/src/assets/wave.svg')] bg-no-repeat h-[600px] bg-center  ">
             <Logo />

@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <>
       <div className="fixed top-0 left-0 right-0 pb-4 bg-[#F2FBF3] shadow-2xl">
-        <div className="z-50">
+        <div>
           <div className=" flex justify-between items-center mt-6  ">
             <div className="flex gap-[38px]  ml-[160px] text-[18px] ">
               <Link to="/homepage">
@@ -13,9 +13,11 @@ export default function Navbar() {
                   หน้าหลัก
                 </button>
               </Link>
-              <button className="hover:text-[#6ABD65] hover:underline">
-                สินค้าทั้งหมด
-              </button>
+              <Link to="/allproduct">
+                <button className="hover:text-[#6ABD65] hover:underline">
+                  สินค้าทั้งหมด
+                </button>
+              </Link>
               <button className="hover:text-[#6ABD65] hover:underline">
                 คุณสมบัติยาง
               </button>
