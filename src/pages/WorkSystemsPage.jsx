@@ -15,6 +15,9 @@ export default function WorkSystems() {
       <br />
       <br />
       <br />
+      <div className="flex justify-center text-xl mb-8 font-bold">
+        เลือกการทำงานที่ต้องการ
+      </div>
       <div className="flex justify-center gap-5 ">
         <button className="bg-[#8A4819] hover:bg-[#3A3022] py-2 px-3 rounded-full text-white">
           พิมพ์ใบกำกับภาษี

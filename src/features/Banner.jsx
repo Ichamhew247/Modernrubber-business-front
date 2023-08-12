@@ -1,6 +1,6 @@
-import CircleImage from "../features/banner/components/CircleImage";
-import Content from "../features/banner/components/Content";
-import Logo from "../features/banner/components/Logo";
+import CircleImage from "./banner/components/CircleImage";
+import Content from "./banner/components/Content";
+import Logo from "./banner/components/Logo";
 
 export default function Banner() {
   return (
