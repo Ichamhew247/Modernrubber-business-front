@@ -11,7 +11,7 @@ export default function Modal({
       {open && (
         <>
           <div className="fixed top-0 left-0 right-0 bottom-0 bg-slate-200 opacity-70 z-10"></div>
-          <div className=" fixed inset-0 z-20  " onMouseUp={onClose}>
+          <div className=" fixed inset-0 z-50  " onMouseUp={onClose}>
             <div className=" flex justify-center items-center min-h-full p-4">
               <div
                 style={{ maxWidth: `${width}rem`, color: color }}

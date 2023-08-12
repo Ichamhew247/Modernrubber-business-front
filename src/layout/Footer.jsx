@@ -2,6 +2,7 @@ import { FiMapPin } from "react-icons/fi";
 import { FaPhone } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
 import { FaLine } from "react-icons/fa";
+import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <>
@@ -26,12 +27,14 @@ export default function Footer() {
                 แขวงคลองบางพราน เขตบางบอน <br />
                 กรุงเทพ 10150
               </p>
-              <button
-                className=" mt-3 text-white hover:bg-[rgb(0,0,0)] text-center rounded-full w=[140px] h-[30px] bg-[rgb(23,19,14)]"
-                role="button"
-              >
-                ดูแผนที่
-              </button>
+              <Link to="/map">
+                <button
+                  className=" mt-3 text-white hover:bg-[rgb(0,0,0)] text-center rounded-full w-[140px] h-[30px] bg-[rgb(23,19,14)]"
+                  role="button"
+                >
+                  ดูแผนที่
+                </button>
+              </Link>
             </div>
           </main>
 

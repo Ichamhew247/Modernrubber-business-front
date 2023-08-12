@@ -1,4 +1,5 @@
 import { BsArrowDownUp } from "react-icons/bs";
+import { AiOutlineSearch } from "react-icons/ai";
 import SearchContainer from "../components/SearchContainer";
 import { useState } from "react";
 import Modal from "../components/Modal";
@@ -18,7 +19,9 @@ export default function HistoryPage() {
           </button>
         </div>
         <div className="flex justify-center ">
-          <SearchContainer />
+          <SearchContainer placeholder="ค้นหาผ่าน Keyword...">
+            <AiOutlineSearch />
+          </SearchContainer>
         </div>
         <div className="flex gap-2  ">
           <div>Sort</div>

@@ -7,7 +7,7 @@ export default function LoginContainer() {
   return (
     <>
       <button
-        className="hover:text-[#6ABD65] hover:underline"
+        className=" hover:text-[#6ABD65] hover:underline"
         onClick={() => setOpen(true)}
       >
         เข้าสู่ระบบ
