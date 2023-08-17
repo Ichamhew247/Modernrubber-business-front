@@ -2,10 +2,10 @@ import Joi from "joi";
 
 const registerSchema = Joi.object({
   fullName: Joi.string().trim().required().messages({
-    "string.empty": "fullName is required.",
+    "string.empty": "กรุณากรอกชื่อ-นามสกุล",
   }),
   userName: Joi.string().trim().required().messages({
-    "string.empty": "userName is required.",
+    "string.empty": "กรุณากรอกชื่อผู้ใช้",
   }),
 
   password: Joi.string()
@@ -13,12 +13,12 @@ const registerSchema = Joi.object({
     .trim()
     .required()
     .messages({
-      "string.empty": "Password is required.",
-      "string.pattern.base": "Password must be at least 6 characters",
+      "string.empty": "กรุณาใส่รหัสผ่านที่ต้องการ",
+      "string.pattern.base": "รหัสผ่านต้องมีอย่างน้อย 6 ตัว",
     }),
   confirmPassword: Joi.string().valid(Joi.ref("password")).messages({
-    "string.empty": "Confirm password is required.",
-    "any.only": "Password and Confirm password did not match",
+    "string.empty": "กรุณาใส่รหัสผ่านอีกครั้ง",
+    "any.only": "รหัสผ่านไม่ตรงกัน",
   }),
 });
 

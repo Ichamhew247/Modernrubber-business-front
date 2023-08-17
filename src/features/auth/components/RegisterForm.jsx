@@ -44,10 +44,38 @@ export default function RegisterForm() {
           />
           {error.fullName && <InputErrormessage message={error.fullName} />}
         </div>
-        <RegisterInput placeholder="ชื่อผู้ใช้" />
-        <RegisterInput placeholder="อีเมล" />
-        <RegisterInput placeholder="รหัสผ่าน" />
-        <RegisterInput placeholder="ยืนยันรหัสผ่าน" />
+        <div>
+          <RegisterInput
+            placeholder="ชื่อผู้ใช้"
+            name="userName"
+            value={input.userName}
+            onChange={handleChangeInput}
+            isInvalid={error.userName}
+          />
+          {error.userName && <InputErrormessage message={error.userName} />}
+        </div>
+        <div>
+          <RegisterInput
+            placeholder="รหัสผ่าน"
+            name="password"
+            value={input.password}
+            onChange={handleChangeInput}
+            isInvalid={error.password}
+          />
+          {error.password && <InputErrormessage message={error.password} />}
+        </div>
+        <div>
+          <RegisterInput
+            placeholder="ยืนยันรหัสผ่าน"
+            name="confirmPassword"
+            value={input.confirmPassword}
+            onChange={handleChangeInput}
+            isInvalid={error.confirmPassword}
+          />
+          {error.confirmPassword && (
+            <InputErrormessage message={error.confirmPassword} />
+          )}
+        </div>
         <button className="text-center rounded-full bg-[#6ABD65] text-white ">
           Sign up
         </button>
