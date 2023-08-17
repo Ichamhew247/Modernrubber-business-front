@@ -1,3 +1,5 @@
+import { createPortal } from "react-dom";
+
 export default function Modal({
   title,
   children,
@@ -6,7 +8,7 @@ export default function Modal({
   onClose,
   color,
 }) {
-  return (
+  return createPortal(
     <>
       {open && (
         <>
@@ -37,6 +39,7 @@ export default function Modal({
           </div>
         </>
       )}
-    </>
+    </>,
+    document.getElementById("modal")
   );
 }

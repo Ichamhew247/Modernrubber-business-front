@@ -5,6 +5,7 @@ import { GrMail } from "react-icons/gr";
 import { FaLine } from "react-icons/fa";
 import Header from "../layout/Header";
 import SearchContainer from "../components/SearchContainer";
+
 export default function MapPage() {
   return (
     <>
@@ -16,7 +17,7 @@ export default function MapPage() {
           <div className="flex flex-col  items-center  mt-52">
             <div className="text-2xl font-medium">ติดต่อโรงงาน</div>
             <div className="text-xl font-light">
-              เวลาทำการ จันทร์ - เสาร์ 8.00 - 17.00{" "}
+              เวลาทำการ จันทร์ - เสาร์ 8.00 - 17.00
             </div>
           </div>
         </div>

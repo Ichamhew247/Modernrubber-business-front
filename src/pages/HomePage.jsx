@@ -4,6 +4,7 @@ import Footer from "../layout/Footer";
 import Header from "../layout/Header";
 import { countries } from "../features/carousel/Data";
 import { Link } from "react-router-dom";
+
 export default function HomePage() {
   return (
     <>
