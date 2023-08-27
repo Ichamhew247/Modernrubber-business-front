@@ -1,34 +1,42 @@
-// import validateRegister from "../../../validators/validate-register";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import LoginContainer from "./LoginContainer";
 import RegisterInput from "./RegisterInput";
-import validateRegister from "../../../validators/validate-register";
+import validateRegister from "../validators/validate-register";
 import InputErrormessage from "./InputErrormessage";
+import { toast } from "react-toastify";
+import { registerAsync } from "../slice/auth-slice";
 const initialInput = {
   fullName: "",
   userName: "",
   password: "",
   confirmPassword: "",
 };
-export default function RegisterForm() {
+export default function RegisterForm({ onSuccess }) {
   const [input, setInput] = useState(initialInput);
-  const [error, setError] = useState({
-    firstName: "",
-    lastName: "",
-    emailOrMobile: "",
-    password: "",
-    confirmPassword: "",
-  });
+  const [error, setError] = useState({});
+
+  const dispatch = useDispatch();
+
   const handleChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
+    setError({ ...error, [e.target.name]: " " });
   };
 
-  const handleSubmitForm = (e) => {
-    e.preventDefault();
-    const result = validateRegister(input);
-    console.dir(result);
-    if (result) {
-      return setError(result);
+  const handleSubmitForm = async (e) => {
+    try {
+      e.preventDefault();
+      const result = validateRegister(input);
+      // console.dir(result);
+      if (result) {
+        return setError(result);
+      }
+      setError({});
+      await dispatch(registerAsync(input)).unwrap();
+      toast.success("Register successfull");
+      onSuccess();
+    } catch (err) {
+      toast.info(err.response.data.message);
     }
   };
   return (

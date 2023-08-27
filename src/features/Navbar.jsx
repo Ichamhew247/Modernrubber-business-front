@@ -33,9 +33,14 @@ export default function Navbar() {
             </button>
           </Link>
           <LoginContainer />
-          <Link to="/work">
-            <img src="/src/assets/me.jpg" className=" rounded-full w-11 h-11" />
-          </Link>
+          <div className="profilePicture">
+            <Link to="/work">
+              <img
+                src="/src/assets/me.jpg"
+                className=" rounded-full w-11 h-11"
+              />
+            </Link>
+          </div>
         </div>
       </div>
     </>

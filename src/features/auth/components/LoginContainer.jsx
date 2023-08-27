@@ -19,7 +19,7 @@ export default function LoginContainer() {
         onClose={() => setOpen(false)}
         color="#3A3022"
       >
-        <LoginForm />
+        <LoginForm onSuccess={() => setOpen(false)} />
       </Modal>
     </>
   );

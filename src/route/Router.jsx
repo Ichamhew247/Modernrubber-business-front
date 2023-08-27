@@ -4,6 +4,7 @@ import WorkSystemsPage from "../pages/WorkSystemsPage";
 import AllProduct from "../pages/ProductPage";
 // import MapContainer from "../features/map/components/MapContainer";
 import MapPage from "../pages/MapPage";
+import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 // import MapPage from "../pages/MapPage";
 
 const router = createBrowserRouter([
@@ -13,7 +14,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/work",
-    element: <WorkSystemsPage />,
+    element: (
+      <ProtectedRoute>
+        <WorkSystemsPage />,
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/allproduct",

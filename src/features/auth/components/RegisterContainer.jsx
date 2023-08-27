@@ -19,7 +19,7 @@ export default function RegisterContainer() {
         onClose={() => setOpen(false)}
         color="#3A3022"
       >
-        <RegisterForm />
+        <RegisterForm onSuccess={() => setOpen(false)} />
       </Modal>
     </>
   );
