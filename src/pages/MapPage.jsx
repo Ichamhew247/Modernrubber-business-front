@@ -4,29 +4,30 @@ import { FaPhone } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
 import { FaLine } from "react-icons/fa";
 import Header from "../layout/Header";
-import InputErrormessage from "../features/auth/components/InputErrormessage";
-import { useState } from "react";
-import validateContact from "../features/auth/validators/validate-contact";
-import ContactInput from "../features/auth/components/ContactInput";
-const initialInput = {
-  contact: "",
-};
+import Contact from "./Contact";
+// import InputErrormessage from "../features/auth/components/InputErrormessage";
+// import { useState } from "react";
+// import validateContact from "../features/auth/validators/validate-contact";
+// import ContactInput from "../features/auth/components/ContactInput";
+// const initialInput = {
+//   contact: "",
+// };
 export default function MapPage() {
-  const [input, setInput] = useState(initialInput);
-  const [error, setError] = useState({
-    contact: "",
-  });
-  const handleChangeInput = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
-  };
-  const handleSubmitForm = (e) => {
-    e.preventDefault();
-    const result = validateContact(input);
-    console.dir(result);
-    if (result) {
-      return setError(result);
-    }
-  };
+  // const [input, setInput] = useState(initialInput);
+  // const [error, setError] = useState({
+  //   contact: "",
+  // });
+  // const handleChangeInput = (e) => {
+  //   setInput({ ...input, [e.target.name]: e.target.value });
+  // };
+  // const handleSubmitForm = (e) => {
+  //   e.preventDefault();
+  //   const result = validateContact(input);
+  //   console.dir(result);
+  //   if (result) {
+  //     return setError(result);
+  //   }
+  // };
   return (
     <>
       <main className="flex flex-col justify-between gap-32">
@@ -73,33 +74,7 @@ export default function MapPage() {
             </div>
           </div>
         </div>
-        {/* //// */}
-        <div>
-          <div className="flex flex-col items-center bg-[#F5EEEA] py-10 m">
-            <div className="font-bold text-lg">
-              หากต้องการข้อมูลเพิ่มเติม สามารถกรอกอีเมลหรือเบอร์โทร
-              เพื่อให้เราติดต่อกลับท่านได้
-            </div>
-            <form
-              className="flex items-center gap-4"
-              onSubmit={handleSubmitForm}
-            >
-              <div>
-                <ContactInput
-                  placeholder="กรอกอีเมลหรือเบอร์โทรศัพท์"
-                  name="contact"
-                  value={input.contact}
-                  onChange={handleChangeInput}
-                  isInvalid={error.contact}
-                />
-                {error.contact && <InputErrormessage message={error.contact} />}
-              </div>
-              <button className="text-xl bg-[#7E7E7E] hover:bg-[#595858] p-4 text-white w-28 h-12 flex items-center justify-center">
-                ส่ง
-              </button>
-            </form>
-          </div>
-        </div>
+        <Contact />
       </main>
     </>
   );

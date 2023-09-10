@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 const contactSchema = Joi.object({
-  contact: Joi.string().trim().required().messages({
+  email: Joi.string().trim().required().messages({
     "string.empty": "กรุณากรอกข้อมูล",
   }),
 });
@@ -13,8 +13,6 @@ const validateContact = (input) => {
       acc[el.path[0]] = el.message;
       return acc;
     }, {});
-  } else {
-    return " ";
   }
 };
 
