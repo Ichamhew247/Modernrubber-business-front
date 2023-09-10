@@ -1,9 +1,9 @@
 import { useState } from "react";
-import InputErrormessage from "../features/auth/components/InputErrormessage";
-import ContactInput from "../features/auth/components/ContactInput";
-import validateContact from "../features/auth/validators/validate-contact";
+import InputErrormessage from "../../features/auth/components/InputErrormessage";
+import ContactInput from "../../features/contact/ContactInput";
+import validateContact from "../../features/auth/validators/validate-contact";
 import { useDispatch } from "react-redux";
-import { contactAsync } from "../features/contact/slice/contact-slice";
+import { contactAsync } from "../../features/contact/slice/contact-slice";
 import { toast } from "react-toastify";
 const initialInput = {
   email: "",

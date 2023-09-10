@@ -1,4 +1,4 @@
-import createClasses from "../../../utils/create-classes";
+import createClasses from "../../utils/create-classes";
 
 export default function ContactInput({
   placeholder,

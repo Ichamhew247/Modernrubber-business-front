@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import LoginContainer from "./auth/components/LoginContainer";
+import DropDown from "../layout/DropDown";
 
 export default function Navbar() {
   return (
@@ -33,13 +34,15 @@ export default function Navbar() {
             </button>
           </Link>
           <LoginContainer />
+
           <div className="profilePicture">
-            <Link to="/work">
+            <DropDown />
+            {/* <Link to="/work">
               <img
                 src="/src/assets/me.jpg"
                 className=" rounded-full w-11 h-11"
               />
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

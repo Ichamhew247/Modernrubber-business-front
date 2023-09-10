@@ -3,8 +3,9 @@ import HomePage from "../pages/HomePage";
 import WorkSystemsPage from "../pages/WorkSystemsPage";
 import AllProduct from "../pages/ProductPage";
 // import MapContainer from "../features/map/components/MapContainer";
-import MapPage from "../pages/MapPage";
-import ProtectedRoute from "../features/auth/components/ProtectedRoute";
+import MapPage from "../pages/ContactUsPage/MapPage";
+import ProfilePage from "../pages/ProfilePage";
+// import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 // import MapPage from "../pages/MapPage";
 
 const router = createBrowserRouter([
@@ -15,10 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/work",
     element: (
-      <ProtectedRoute>
-        <WorkSystemsPage />,
-      </ProtectedRoute>
+      // <ProtectedRoute>
+      <WorkSystemsPage />
     ),
+    // </ProtectedRoute>
   },
   {
     path: "/allproduct",
@@ -28,10 +29,10 @@ const router = createBrowserRouter([
     path: "/map",
     element: <MapPage />,
   },
-  // {
-  //   path: "/map",
-  //   element: <MapContainer />,
-  // },
+  {
+    path: "/profile",
+    element: <ProfilePage />,
+  },
 ]);
 
 export default function Router() {

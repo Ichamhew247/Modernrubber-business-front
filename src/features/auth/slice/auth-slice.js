@@ -26,6 +26,15 @@ export const login = createAsyncThunk("auth/login", async (input) => {
   setAccessToken(res.data.accessToken);
 });
 
+export const fetchMe = createAsyncThunk("auth/fetchMe", async (_, thunkApi) => {
+  try {
+    const res = await authService.fetchMe();
+    return res.data.user;
+  } catch (err) {
+    return thunkApi.rejectWithValue(err.response.data.message);
+  }
+});
+
 // createAsyncThunk make
 // auth/registerAsync/pending
 // auth/registerAsync/rejected
@@ -33,6 +42,11 @@ export const login = createAsyncThunk("auth/login", async (input) => {
 const authSlice = createSlice({
   name: "auth",
   initialState: initialState,
+  reducers: {
+    updateProfileImage: (state, action) => {
+      state.user.profileImage = action.payload;
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(registerAsync.pending, (state) => {
@@ -55,7 +69,21 @@ const authSlice = createSlice({
       })
       .addCase(login.rejected, (state) => {
         state.loading = false;
+      })
+      .addCase(fetchMe.pending, (state) => {
+        state.initialLoading = true;
+      })
+      .addCase(fetchMe.fulfilled, (state, action) => {
+        state.loading = false;
+        state.isAuthenticated = true;
+        state.user = action.payload;
+        state.initialLoading = false;
+      })
+      .addCase(fetchMe.rejected, (state, action) => {
+        state.error = action.payload;
+        state.initialLoading = false;
       }),
 });
 
 export default authSlice.reducer;
+export const { updateProfileImage } = authSlice.actions;

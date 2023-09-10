@@ -1,9 +1,9 @@
-import MapContainer from "../features/map/components/MapContainer";
+import MapContainer from "../../features/map/components/MapContainer";
 import { FiMapPin } from "react-icons/fi";
 import { FaPhone } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
 import { FaLine } from "react-icons/fa";
-import Header from "../layout/Header";
+import Header from "../../layout/Header";
 import Contact from "./Contact";
 // import InputErrormessage from "../features/auth/components/InputErrormessage";
 // import { useState } from "react";
