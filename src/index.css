@@ -11,6 +11,46 @@ html {
   margin: 0;
   font-family: "Noto Sans Thai";
   overflow-x: hidden;
+  background-color: #f1f1f1;
+}
+th,
+td {
+  border: solid 1px rgb(184, 184, 184);
+  font-size: small;
+  padding: 8px;
+}
+input {
+  border: solid 1px rgb(235, 232, 232);
+  margin: 4px;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+input:focus {
+  outline-color: transparent;
+}
+#myHead {
+  margin: 4px;
+  width: 800px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+#tax,
+#price,
+#cash {
+  width: 180px;
+  /* border: solid red; */
+}
+#day {
+  width: 148px;
+  border: none;
+}
+
+@media print {
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
 }
 
 /* body,

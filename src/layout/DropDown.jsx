@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import Avatar from "../components/Avatar";
 import { BiLogOut } from "react-icons/Bi";
+import { HiClipboardDocumentList } from "react-icons/Hi2";
 
 // import { useDispatch, useSelector } from "react-redux";
 // import { logout } from "../features/auth/slice/auth-slice";
@@ -35,33 +36,37 @@ export default function DropDown() {
         </div>
       </div>
       {open && (
-        <div className="absolute bg-white w-96 right-0 translate-y-1 border rounded-xl p-2">
+        <div className="flex flex-col gap-1 absolute w-80 translate-y-4 right-20  border rounded-xl p-2 bg-white text-[#3f7d3b] font-bold    ">
           <Link to="/profile">
-            <div className="flex items-center gap-4 hover:bg-gray-100 p-2 rounded-lg ">
+            <div className="flex items-center gap-4 hover:bg-[#6ABD65] hover:text-white p-2 rounded-lg ">
               <div>
-                <div className="font-semibold">
-                  Welcome, Nattanicha Niyomchan
+                <div className="font-semibold text-xl">
+                  Nattanicha Niyomchan
                 </div>
               </div>
             </div>
           </Link>
+          <Link to="/work">
+            <div className="flex items-center p-2">
+              <div>
+                <HiClipboardDocumentList />
+              </div>
+              <button className="text-base w-72 font-medium flex items-center gap-4 hover:bg-[#6ABD65] hover:text-white p-2 rounded-lg ">
+                My Work Space
+              </button>
+            </div>
+          </Link>
+
           <hr className="border border-gray-200 m-2" />
-          <div>การทำงานสำหรับพนักงาน</div>
-          <Link to="/work">
-            <div>- งานทั้งหมด</div>
-          </Link>
-          <Link to="/work">
-            <div>- ดูสินค้าในคลังทั้งหมด</div>
-          </Link>
           <div
-            className="flex gap-4 items-center p-2 hover:bg-gray-100 rounded-lg"
+            className="flex gap-1 items-center p-2 hover:bg-[#6ABD65] hover:text-white rounded-lg"
             role="button"
           >
-            <div className="rounded-full bg-gray-300 w-8 h-8 flex justify-center items-center">
+            <div className="rounded-full w-8   items-center">
               <BiLogOut />
             </div>
             <span
-              className="text-sm font-semibold"
+              className="text-sm font-normal "
               // onClick={() => dispatch(logout())}
             >
               Log out

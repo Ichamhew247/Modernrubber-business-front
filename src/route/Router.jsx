@@ -3,23 +3,24 @@ import HomePage from "../pages/HomePage";
 import WorkSystemsPage from "../pages/WorkSystemsPage";
 import AllProduct from "../pages/ProductPage";
 // import MapContainer from "../features/map/components/MapContainer";
-import MapPage from "../pages/ContactUsPage/MapPage";
+import MapPage from "../pages/MapPage/MapPage";
 import ProfilePage from "../pages/ProfilePage";
-// import ProtectedRoute from "../features/auth/components/ProtectedRoute";
+import Invoice from "../pages/InvoicePage/Invoice";
+import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 // import MapPage from "../pages/MapPage";
 
 const router = createBrowserRouter([
   {
-    path: "/homepage",
+    path: "/",
     element: <HomePage />,
   },
   {
     path: "/work",
     element: (
-      // <ProtectedRoute>
-      <WorkSystemsPage />
+      <ProtectedRoute>
+        <WorkSystemsPage />
+      </ProtectedRoute>
     ),
-    // </ProtectedRoute>
   },
   {
     path: "/allproduct",
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <ProfilePage />,
+  },
+  {
+    path: "/invoice",
+    element: <Invoice />,
   },
 ]);
 

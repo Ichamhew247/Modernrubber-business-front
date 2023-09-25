@@ -2,6 +2,7 @@ import Header from "../layout/Header";
 import AddProduct from "../features/CRUD/components/AddProduct";
 import HistoryPage from "../features/SearchEdit";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function WorkSystems() {
   const [open, setOpen] = useState(false);
@@ -19,9 +20,11 @@ export default function WorkSystems() {
         เลือกการทำงานที่ต้องการ
       </div>
       <div className="flex justify-center gap-5 ">
-        <button className="bg-[#8A4819] hover:bg-[#3A3022] py-2 px-3 rounded-full text-white">
-          พิมพ์ใบกำกับภาษี
-        </button>
+        <Link to="/invoice">
+          <button className="bg-[#8A4819] hover:bg-[#3A3022] py-2 px-3 rounded-full text-white">
+            พิมพ์ใบวางบิล
+          </button>
+        </Link>
         <button className="bg-[#8A4819] hover:bg-[#3A3022] py-2 px-3 rounded-full text-white">
           <AddProduct />
         </button>

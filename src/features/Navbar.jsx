@@ -7,7 +7,7 @@ export default function Navbar() {
     <>
       <div className=" flex justify-between items-center mt-6  ">
         <div className="flex gap-[38px]  ml-[160px] text-[18px] ">
-          <Link to="/homepage">
+          <Link to="/">
             <button className="hover:text-[#6ABD65] hover:underline">
               หน้าหลัก
             </button>

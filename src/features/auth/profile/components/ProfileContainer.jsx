@@ -1,4 +1,4 @@
-import { BiSolidPencil } from "react-icons/bi";
+import { BiSolidPencil } from "react-icons/Bi";
 import Avatar from "../../../../components/Avatar";
 import Modal from "../../../../components/Modal";
 import { useState } from "react";
