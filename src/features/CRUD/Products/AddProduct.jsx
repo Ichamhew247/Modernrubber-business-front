@@ -1,6 +1,6 @@
-import Modal from "../../../../components/Modal";
+import Modal from "../../../components/Modal";
 import { useState } from "react";
-import AddProductForm from "./AddProductForm";
+import AddProductForm from "../Products/components/AddProductForm";
 
 export default function AddProduct() {
   const [open, setOpen] = useState(false);
@@ -10,7 +10,12 @@ export default function AddProduct() {
   };
   return (
     <div>
-      <button onClick={() => setOpen(true)}>เพิ่มสินค้า</button>
+      <button
+        onClick={() => setOpen(true)}
+        className="transition-all duration-300"
+      >
+        เพิ่มสินค้า
+      </button>
       <Modal
         title="เพิ่มสินค้าในระบบ"
         width="27"

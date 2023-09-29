@@ -1,5 +1,5 @@
-import Contact from "./components/Contact";
-import Map from "./components/Map";
+import Map from "../features/map/components/Map";
+import Contact from "../features/map/components/Contact";
 
 // };
 export default function MapPage() {

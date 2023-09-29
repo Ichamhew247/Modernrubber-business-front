@@ -7,7 +7,7 @@ export default function RegisterContainer() {
   return (
     <>
       <button
-        className="hover:text-[#6ABD65] hover:underline"
+        className="hover:text-[#6ABD65] hover:underline transition-all duration-300"
         onClick={() => setOpen(true)}
       >
         ลงทะเบียน

@@ -18,7 +18,7 @@ export default function HomePage() {
       <div className=" flex flex-col items-center my-24 pt-8">
         <Carousel mag={countries} />
         <Link to="/allproduct">
-          <button className=" mt-3 text-white hover:bg-[#3f7d3b] text-center rounded-full w-[180px] h-[40px] bg-[#6ABD65]">
+          <button className=" mt-3 text-white hover:bg-[#3f7d3b] text-center rounded-full w-[180px] h-[40px] bg-[#6ABD65] transition-all duration-300">
             ดูสินค้าทั้งหมด
           </button>
         </Link>

@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "../pages/HomePage";
-import WorkSystemsPage from "../pages/WorkSpacePage/WorkSystemsPage";
+import WorkSystemsPage from "../pages/WorkSystemsPage";
 import AllProduct from "../pages/ProductPage";
 // import MapContainer from "../features/map/components/MapContainer";
-import MapPage from "../pages/MapPage/MapPage";
+import MapPage from "../pages/MapPage";
 import ProfilePage from "../pages/ProfilePage";
-import Invoice from "../pages/InvoicePage/Invoice";
+import Invoice from "../pages/InvoicePage";
 // import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 // import MapPage from "../pages/MapPage";
 

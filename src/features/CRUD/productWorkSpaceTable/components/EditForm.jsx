@@ -1,4 +1,4 @@
-import ProductInput from "../../../../features/CRUD/components/AddProduct/ProductInput";
+import ProductInput from "../../../../features/CRUD/Products/components/ProductInput";
 
 export default function EditForm({
   currentProducts,
@@ -83,8 +83,10 @@ export default function EditForm({
             className="p-2"
           />
         </div>
-        <button type="submit">saveEdited</button>
-        <button>ยกเลิกการแก้ไข</button>
+        <button type="submit" className="transition-all duration-300">
+          saveEdited
+        </button>
+        <button className="transition-all duration-300">ยกเลิกการแก้ไข</button>
       </form>
     </>
   );

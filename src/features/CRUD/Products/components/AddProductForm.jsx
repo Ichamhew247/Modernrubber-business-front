@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import ProductInput from "./ProductInput";
-import { addProductAsync } from "../../slice/product-slice";
+import { addProductAsync } from "../slice/product-slice";
 export default function AddProductForm({ onClose }) {
   const dispatch = useDispatch();
 
@@ -63,7 +63,7 @@ export default function AddProductForm({ onClose }) {
 
         <button
           type="submit"
-          className="text-center rounded-full bg-[#6ABD65] text-white "
+          className="text-center rounded-full bg-[#6ABD65] text-white transition-all duration-300"
         >
           Confirm ADD Product
         </button>

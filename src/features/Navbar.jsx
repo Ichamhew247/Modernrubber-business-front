@@ -5,19 +5,19 @@ import DropDown from "../layout/DropDown";
 export default function Navbar() {
   return (
     <>
-      <div className=" flex justify-between items-center mt-6  ">
+      <div className=" flex justify-between items-center mt-2   ">
         <div className="flex gap-[38px]  ml-[160px] text-[18px] ">
           <Link to="/">
-            <button className="hover:text-[#6ABD65] hover:underline">
+            <button className="hover:text-[#6ABD65] hover:bg-gray-100 px-4 py-4  rounded-sm transition-all duration-300">
               หน้าหลัก
             </button>
           </Link>
           <Link to="/allproduct">
-            <button className="hover:text-[#6ABD65] hover:underline">
+            <button className="hover:text-[#6ABD65] hover:bg-gray-100 px-4 py-4  rounded-sm transition-all duration-300">
               สินค้าทั้งหมด
             </button>
           </Link>
-          <button className="hover:text-[#6ABD65] hover:underline">
+          <button className="hover:text-[#6ABD65] hover:bg-gray-100 px-4 py-4  rounded-sm transition-all duration-300">
             คุณสมบัติยาง
           </button>
         </div>
@@ -29,7 +29,7 @@ export default function Navbar() {
         </div>
         <div className="flex items-center gap-[38px]  mr-[160px] text-[18px]  ">
           <Link to="/map">
-            <button className="hover:text-[#6ABD65] hover:underline">
+            <button className="hover:text-[#6ABD65] hover:bg-gray-100 px-4 py-4  rounded-sm transition-all duration-300">
               ติดต่อเรา
             </button>
           </Link>

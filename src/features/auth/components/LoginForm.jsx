@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import LoginInput from "./LoginInput";
-import RegisterContainer from "../../CRUD/components/RegisterContainer";
+import RegisterContainer from "../../../features/auth/components/RegisterContainer";
 import validateLogin from "../validators/validate-login";
 import InputErrormessage from "./InputErrormessage";
 import { login } from "../slice/auth-slice";
@@ -60,7 +60,7 @@ export default function LoginForm({ onSuccess }) {
             />
             {error.password && <InputErrormessage message={error.password} />}
           </div>
-          <button className="text-center rounded-full bg-[#6ABD65] text-white ">
+          <button className="text-center rounded-full bg-[#6ABD65] text-white transition-all duration-300">
             Sign in
           </button>
         </form>

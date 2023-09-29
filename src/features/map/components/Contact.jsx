@@ -50,7 +50,7 @@ export default function Contact() {
               />
               {error.email && <InputErrormessage message={error.email} />}
             </div>
-            <button className="text-xl bg-[#7E7E7E] hover:bg-[#595858] p-4 text-white w-28 h-12 flex items-center justify-center">
+            <button className="text-xl bg-[#7E7E7E] hover:bg-[#595858] p-4 text-white w-28 h-12 flex items-center justify-center transition-all duration-300">
               ส่ง
             </button>
           </form>

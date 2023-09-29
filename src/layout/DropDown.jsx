@@ -54,7 +54,7 @@ export default function DropDown() {
               <div className="    items-center">
                 <HiClipboardDocumentList />
               </div>
-              <button className="text-base w-72 font-medium flex items-center gap-4 hover:bg-[#6ABD65] hover:text-white p-2 rounded-lg ">
+              <button className="text-base w-72 font-medium flex items-center gap-4 hover:bg-[#6ABD65] hover:text-white p-2 rounded-lg transition-all duration-300">
                 My Work Space
               </button>
             </div>

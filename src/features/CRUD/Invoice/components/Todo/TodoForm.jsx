@@ -111,7 +111,7 @@ export default function TodoForm() {
           <div className="flex  gap-4">
             <button
               type="submit"
-              className=" hover:bg-[#3a3022] p-1  rounded-lg  text-3xl  "
+              className=" hover:bg-[#3a3022] p-1  rounded-lg  text-3xl transition-all duration-300 "
             >
               <BiSave className="addIcon" />
             </button>
@@ -119,7 +119,7 @@ export default function TodoForm() {
               onClick={() => {
                 setIsEditing(false), setCurrentItem("");
               }}
-              className=" hover:bg-[#3a3022] p-1  rounded-lg  text-3xl  "
+              className=" hover:bg-[#3a3022] p-1  rounded-lg  text-3xl transition-all duration-300 "
             >
               <MdCancelPresentation className="addIcon" />
             </button>
@@ -147,7 +147,7 @@ export default function TodoForm() {
             placeholder="Add a price"
             onChange={handleInputChangePrice}
           />
-          <button className=" hover:bg-[#3a3022]  rounded-3xl  text-4xl  ">
+          <button className=" hover:bg-[#3a3022]  rounded-3xl  text-4xl transition-all duration-300 ">
             <IoIosAddCircle className="addIcon" />
           </button>
         </form>
@@ -171,7 +171,7 @@ export default function TodoForm() {
                   {isEditing ? (
                     <main className="flex justify-center ">
                       <button
-                        className="flex p-2  rounded-xl w-10 h-10 text-2xl  hover:bg-[#3A3022]"
+                        className="flex p-2  rounded-xl w-10 h-10 text-2xl  hover:bg-[#3A3022] transition-all duration-300"
                         onClick={() => handleDeleteClick(todo.id)}
                       >
                         <AiFillDelete className="deleteIcon " />
@@ -181,7 +181,7 @@ export default function TodoForm() {
                     <main className="flex justify-center">
                       <button
                         onClick={() => handleEditClick(todo)}
-                        className=" flex p-2  rounded-xl w-10 h-10 text-2xl hover:bg-[#3A3022]"
+                        className=" flex p-2  rounded-xl w-10 h-10 text-2xl hover:bg-[#3A3022] transition-all duration-300"
                       >
                         <AiFillEdit className="editIcon" />
                       </button>

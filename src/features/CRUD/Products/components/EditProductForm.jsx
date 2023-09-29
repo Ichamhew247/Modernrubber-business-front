@@ -1,5 +1,5 @@
 import { ImBin2 } from "react-icons/im";
-import RegisterInput from "./RegisterInput";
+import RegisterInput from "../../../auth/components/RegisterInput";
 
 export default function EditProductForm() {
   return (
@@ -12,7 +12,7 @@ export default function EditProductForm() {
         <RegisterInput placeholder="ชนิดของสินค้า" />
         <RegisterInput placeholder="อัพโหลดรูปภาพ" />
         <img src="/src/assets/react.svg"></img>
-        <button className="text-center rounded-full bg-[#6ABD65] text-white ">
+        <button className="text-center rounded-full bg-[#6ABD65] text-white transition-all duration-300">
           Confirm
         </button>
       </form>

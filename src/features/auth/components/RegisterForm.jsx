@@ -84,7 +84,7 @@ export default function RegisterForm({ onSuccess }) {
             <InputErrormessage message={error.confirmPassword} />
           )}
         </div>
-        <button className="text-center rounded-full bg-[#6ABD65] text-white ">
+        <button className="text-center rounded-full bg-[#6ABD65] text-white transition-all duration-300">
           Sign up
         </button>
       </form>

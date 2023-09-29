@@ -8,7 +8,7 @@ export default function Print() {
         <li>
           <button
             onClick={handlePrint}
-            className="no-print mt-5 bg-blue-500 text-white py-2 px-8 rounded shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300"
+            className="no-print bg-[#3a3022] mt-5   text-white py-2 px-8 rounded shadow border-2 border-[#3a3022] hover:bg-transparent hover:text-[#3a3022] transition-all duration-300"
           >
             Print
           </button>

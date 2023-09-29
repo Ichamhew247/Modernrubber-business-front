@@ -14,7 +14,7 @@ export default function ProfileContainer() {
     <>
       <Avatar className="h-[10.5rem] w-[10.5rem] ring ring-white" />
       <button
-        className="px-3 py-1.5 rounded-md bg-gray-200 hover:bg-gray-300"
+        className="px-3 py-1.5 rounded-md bg-gray-200 hover:bg-gray-300 transition-all duration-300"
         onClick={() => setOpen(true)}
       >
         <div className="flex items-center gap-2">

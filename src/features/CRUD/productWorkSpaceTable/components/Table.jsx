@@ -5,7 +5,7 @@ import {
   // editProductAsync,
   editProductAsyncFulfilled,
   getProductsAsync,
-} from "../../../../features/CRUD/slice/product-slice";
+} from "../../../../features/CRUD/Products/slice/product-slice";
 import ProductTableInput from "./ProductInputTable";
 import EditForm from "./EditForm";
 import Modal from "../../../../components/Modal";
@@ -121,14 +121,14 @@ export default function Table() {
                       onClick={() => {
                         handleEditClick(product), setOpen(true);
                       }}
-                      className=" flex p-2  rounded-xl w-10 h-10 text-2xl hover:bg-[#3A3022]"
+                      className=" flex p-2  rounded-xl w-10 h-10 text-2xl hover:bg-[#3A3022] transition-all duration-300"
                     >
                       <AiFillEdit className="editIcon" />
                     </button>
 
                     <button
                       onClick={() => handleDeleteClick(product.id)}
-                      className="flex p-2  rounded-xl w-10 h-10 text-2xl  hover:bg-[#3A3022]"
+                      className="flex p-2  rounded-xl w-10 h-10 text-2xl  hover:bg-[#3A3022] transition-all duration-300"
                     >
                       <AiFillDelete className="deleteIcon " />
                     </button>

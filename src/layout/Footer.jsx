@@ -29,7 +29,7 @@ export default function Footer() {
               </p>
               <Link to="/map">
                 <button
-                  className=" mt-3 text-white hover:bg-[rgb(0,0,0)] text-center rounded-full w-[140px] h-[30px] bg-[rgb(23,19,14)]"
+                  className=" mt-3 text-white hover:bg-[rgb(0,0,0)] text-center rounded-full w-[140px] h-[30px] bg-[rgb(23,19,14)] transition-all duration-300"
                   role="button"
                 >
                   ดูแผนที่
