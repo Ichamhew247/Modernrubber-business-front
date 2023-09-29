@@ -7,7 +7,6 @@ import Header from "../../../layout/Header";
 export default function Map() {
   return (
     <>
-      {" "}
       <div>
         <div className="z-50 fixed top-0 left-0 right-0 bg-opacity-70 pb-4 bg-[#ffffff] shadow-2xl">
           <Header />

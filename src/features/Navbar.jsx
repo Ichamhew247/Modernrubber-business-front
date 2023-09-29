@@ -37,12 +37,6 @@ export default function Navbar() {
 
           <div className="profilePicture">
             <DropDown />
-            {/* <Link to="/work">
-              <img
-                src="/src/assets/me.jpg"
-                className=" rounded-full w-11 h-11"
-              />
-            </Link> */}
           </div>
         </div>
       </div>

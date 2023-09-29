@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 export default function Modal({
   title,
   children,
-  width = 30,
+  width = 27,
   open,
   onClose,
   color,
@@ -22,7 +22,7 @@ export default function Modal({
               >
                 <div className="flex justify-between p-4 text-xl">
                   <div className="invisible ">&#10005;</div>
-                  <div className=" font-bold">{title}</div>
+                  <div className="text-4xl pt-14 font-bold">{title}</div>
 
                   <div
                     className="text-gray-400 hover:text-gray-600 font-semibold"

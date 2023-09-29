@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import LoginInput from "./LoginInput";
-import RegisterContainer from "./RegisterContainer";
+import RegisterContainer from "../../CRUD/components/RegisterContainer";
 import validateLogin from "../validators/validate-login";
 import InputErrormessage from "./InputErrormessage";
 import { login } from "../slice/auth-slice";

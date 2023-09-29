@@ -1,8 +1,10 @@
-import Header from "../layout/Header";
-import AddProduct from "../features/CRUD/components/AddProduct";
-import HistoryPage from "../features/SearchEdit";
+import HistoryPage from "../../features/SearchEdit";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
+import Header from "../../layout/Header";
+import Table from "./TableWorkSpace/components/Table";
+import AddProduct from "../../features/CRUD/components/AddProduct/AddProduct";
 
 export default function WorkSystems() {
   const [open, setOpen] = useState(false);
@@ -12,10 +14,7 @@ export default function WorkSystems() {
       <br />
       <br />
       <br />
-      <br />
-      <br />
-      <br />
-      <br />
+
       <div className="flex justify-center text-xl mb-8 font-bold">
         เลือกการทำงานที่ต้องการ
       </div>
@@ -35,8 +34,11 @@ export default function WorkSystems() {
           ค้นหาประวัติ
         </button>
       </div>
-      <hr className="m-10" />
+      <hr className="m-5" />
       {open && <HistoryPage />}
+      <main className=" flex justify-center">
+        <Table />
+      </main>
     </>
   );
 }

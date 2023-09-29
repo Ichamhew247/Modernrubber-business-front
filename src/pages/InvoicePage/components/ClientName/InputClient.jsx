@@ -16,6 +16,7 @@ export default function InputClient({
         autoComplete="off"
         value={client}
         onChange={(e) => setClient(e.target.value)}
+        className="w-[490px]"
       />
     </>
   );

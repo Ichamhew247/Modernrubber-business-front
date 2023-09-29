@@ -2,11 +2,14 @@ import { useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { AiFillDelete } from "react-icons/ai";
 import { IoIosAddCircle } from "react-icons/io";
-import { BiSave } from "react-icons/bi";
+import { MdCancelPresentation } from "react-icons/md";
+// import { MdCancelPresentation } from "@react-icons/all-files/md/MdCancelPresentation";
+// import { FcCancel } from "react-icons/fc";
+import { BiSave } from "@react-icons/all-files/bi/BiSave";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addTodoAsync,
-  // deleteTodoAsync,
+  deleteTodoAsync,
   editTodoAsync,
 } from "../../slice/todo-slice";
 
@@ -15,14 +18,14 @@ export default function TodoForm() {
   const [priceInput, setPriceInput] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [currentItem, setCurrentItem] = useState({});
-  // const [currentTodo, setCurrentTodo] = useState({}); // Define currentTodo state
+  const [currentTodo, setCurrentTodo] = useState({});
 
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos);
 
-  // const handleDeleteClick = (id) => {
-  //   dispatch(deleteTodoAsync({ id: id }));
-  // };
+  const handleDeleteClick = (id) => {
+    dispatch(deleteTodoAsync({ id: id }));
+  };
 
   const handleInputChangeTax = (e) => {
     setTaxInput(e.target.value);
@@ -32,6 +35,12 @@ export default function TodoForm() {
     setPriceInput(e.target.value);
   };
 
+  const handleEditInputChange = (e) => {
+    setCurrentItem({
+      ...currentItem,
+      [e.target.name]: e.target.value,
+    });
+  };
   const handleSubmitForm = (event) => {
     event.preventDefault();
     dispatch(
@@ -40,31 +49,23 @@ export default function TodoForm() {
         priceValue: priceInput,
       })
     );
-    // Clear input fields after adding
     setTaxInput("");
     setPriceInput("");
     console.log("finish");
   };
-
-  const handleEditInputChange = (e) => {
-    setCurrentItem({
-      ...currentItem,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   const handleEditFormSubmit = (e) => {
     e.preventDefault();
 
-    // Dispatch the editTodoAsync action with updated data
     dispatch(
       editTodoAsync({
-        // id: currentTodo.id,
+        id: currentTodo.id,
         taxValue: currentItem.tax,
         priceValue: currentItem.price,
       })
     );
-
+    setCurrentItem("");
+    // setPriceInput("");
+    console.log("Editfinish");
     setIsEditing(false);
   };
 
@@ -107,18 +108,20 @@ export default function TodoForm() {
               className="p-2 w-44"
             />
           </div>
-          <div className="flex  ">
+          <div className="flex  gap-4">
             <button
               type="submit"
-              className=" font-normal py-2 px-4 rounded text-3xl   hover:bg-gray-300 "
+              className=" hover:bg-[#3a3022] p-1  rounded-lg  text-3xl  "
             >
-              <BiSave style={{ color: "orange" }} />
+              <BiSave className="addIcon" />
             </button>
             <button
-              onClick={() => setIsEditing(false)}
-              className=" py-2 px-4 rounded text-base hover:bg-gray-300  "
+              onClick={() => {
+                setIsEditing(false), setCurrentItem("");
+              }}
+              className=" hover:bg-[#3a3022] p-1  rounded-lg  text-3xl  "
             >
-              ยกเลิก
+              <MdCancelPresentation className="addIcon" />
             </button>
           </div>
         </form>
@@ -144,8 +147,8 @@ export default function TodoForm() {
             placeholder="Add a price"
             onChange={handleInputChangePrice}
           />
-          <button className="   rounded-3xl  text-4xl  ">
-            <IoIosAddCircle style={{ color: "orange" }} />
+          <button className=" hover:bg-[#3a3022]  rounded-3xl  text-4xl  ">
+            <IoIosAddCircle className="addIcon" />
           </button>
         </form>
       )}
@@ -165,26 +168,22 @@ export default function TodoForm() {
                 <td>{todo.taxValue}</td>
                 <td>{todo.priceValue}</td>
                 <td>
-                  {" "}
                   {isEditing ? (
                     <main className="flex justify-center ">
                       <button
-                        className=" py-2 px-8 rounded text-lg  hover:bg-gray-200 "
+                        className="flex p-2  rounded-xl w-10 h-10 text-2xl  hover:bg-[#3A3022]"
                         onClick={() => handleDeleteClick(todo.id)}
                       >
-                        <AiFillDelete style={{ color: "red" }} />
+                        <AiFillDelete className="deleteIcon " />
                       </button>
                     </main>
                   ) : (
                     <main className="flex justify-center">
                       <button
-                        onClick={() => {
-                          setIsEditing(true);
-                          handleEditClick(todo);
-                        }}
-                        className="h py-2 px-8 rounded text-lg  hover:bg-gray-200"
+                        onClick={() => handleEditClick(todo)}
+                        className=" flex p-2  rounded-xl w-10 h-10 text-2xl hover:bg-[#3A3022]"
                       >
-                        <AiFillEdit style={{ color: "orange" }} />
+                        <AiFillEdit className="editIcon" />
                       </button>
                     </main>
                   )}
@@ -193,7 +192,7 @@ export default function TodoForm() {
             ))
           ) : (
             <tr>
-              <td colSpan="3">No todos available.</td>
+              <td colSpan="3">Error +_+</td>
             </tr>
           )}
         </tbody>

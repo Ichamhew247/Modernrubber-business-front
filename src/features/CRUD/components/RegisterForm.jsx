@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import LoginContainer from "./LoginContainer";
+import LoginContainer from "../../auth/components/LoginContainer";
 import RegisterInput from "./RegisterInput";
-import validateRegister from "../validators/validate-register";
-import InputErrormessage from "./InputErrormessage";
+import validateRegister from "../../auth/validators/validate-register";
+import InputErrormessage from "../../auth/components/InputErrormessage";
 import { toast } from "react-toastify";
-import { registerAsync } from "../slice/auth-slice";
+import { registerAsync } from "../../auth/slice/auth-slice";
 const initialInput = {
   fullName: "",
   userName: "",

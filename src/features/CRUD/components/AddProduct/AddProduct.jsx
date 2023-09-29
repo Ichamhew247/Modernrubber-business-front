@@ -1,9 +1,13 @@
-import Modal from "../../../components/Modal";
+import Modal from "../../../../components/Modal";
 import { useState } from "react";
 import AddProductForm from "./AddProductForm";
 
 export default function AddProduct() {
   const [open, setOpen] = useState(false);
+
+  const handleCloseModal = () => {
+    setOpen(false);
+  };
   return (
     <div>
       <button onClick={() => setOpen(true)}>เพิ่มสินค้า</button>
@@ -14,7 +18,7 @@ export default function AddProduct() {
         onClose={() => setOpen(false)}
         color="#3A3022"
       >
-        <AddProductForm />
+        <AddProductForm onClose={handleCloseModal} />
       </Modal>
     </div>
   );

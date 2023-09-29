@@ -8,38 +8,26 @@ import HeadName from "../InvoicePage/components/Header/HeadName";
 import TableName from "../InvoicePage/components/Table/TableName";
 import HeadNameInput from "../InvoicePage/components/Header/HeadInput";
 import TodoForm from "../InvoicePage/components/Todo/TodoForm";
-import DatesName from "../InvoicePage/components/Date/DatesName";
 import DatesInput from "../InvoicePage/components/Date/DatesInput";
-import DatesTableInput from "../InvoicePage/components/Date/DateTableInput";
-
+import "./DatePicker.css";
+import DateTableInput from "./components/Date/DateTableInput";
+import Datename from "./components/Date/Datename";
 export default function Invoice() {
-  const currentDate = new Date();
-
-  const formattedDate = currentDate.toLocaleDateString(undefined, {
-    day: "numeric",
-    month: "numeric",
-    year: "numeric",
-  });
-
   const [showInvoice, setShowInvoice] = useState(false);
   const [client, setClient] = useState("");
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [companyTel, setCompanyTel] = useState("");
-  const [day, setDay] = useState(formattedDate);
-  const [dateTable, setDateTable] = useState(formattedDate);
   const [descript, setDescript] = useState("");
-  // const [taxNumber, setTaxNumber] = useState("");
-  // const [cash, setCash] = useState("");
-
+  const [inputValueMew2, setInputValueMew2] = useState("");
+  const [inputValueMew, setInputValueMew] = useState("");
   return (
     <>
-      <main className="flex flex-col justify-between bg-white m-5 p-9 w-[210mm] h-[297mm] mx-auto  rounded shadow">
-        {/* <main className="flex flex-col justify-between m-5 p-9 xl:max-w-4xl xl:mx-auto bg-yellow-300 rounded shadow"> */}
+      <main className="bg-white  flex flex-col justify-between m-5 p-12  xl:max-w-4xl xl:mx-auto rounded shadow">
         {showInvoice ? (
           <div>
-            <div className="flex flex-col items-center p-8">
+            <div className="items-center  mt-24  ">
               <HeadName
                 name={name}
                 address={address}
@@ -47,38 +35,35 @@ export default function Invoice() {
                 companyTel={companyTel}
               />
             </div>
-            <hr className="w-10/12 m-auto " />
+            <br />
 
-            <div className="flex flex-col items-center justify-end">
+            <hr className="w-10/12 m-auto" />
+
+            <div className="flex justify-center text-xl font-semibold  tracking-wide mt-6 ">
               <Topic />
             </div>
-            <div className="flex justify-end mr-10 gap-2">
-              <div>วันที่</div>
-              <div>
-                <DatesName day={day} />
+            <div className="flex items-center w-[580px] justify-end  gap-2 ">
+              <div>วันที่ :</div>
+              <div className="text-sm ">
+                <Datename inputValueMew2={inputValueMew2} />
               </div>
             </div>
 
-            <section className=" flex justify-between  ml-10 ">
+            <section className=" flex justify-between   ">
               <div>
                 <h2>
                   <ClientName client={client} descript={descript} />
                 </h2>
               </div>
             </section>
-            <div>
-              <TableName
-                // taxNumber={taxNumber}
-                day={day}
-                // cash={cash}
-                dateTable={dateTable}
-              />
+            <div className=" ">
+              <TableName inputValueMew={inputValueMew} />
             </div>
 
             <div>
               <Signature />
             </div>
-            <div className=" flex  items-center justify-center gap-8">
+            <div className=" flex  items-center justify-center gap-8  -mt-9 overflow-hidden">
               <button
                 onClick={() => setShowInvoice(false)}
                 className="no-print mt-5 bg-blue-500 text-white py-2 px-8 rounded shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300"
@@ -95,17 +80,16 @@ export default function Invoice() {
             <div className="flex flex-col justify-center mr-4 ">
               <div className="text-4xl m-auto mb-7">ใบวางบิล</div>
               <main id="myHead">
-                <main className="flex mb-3 gap-6 border border-[rgb(235, 232, 232)] ml-1 pl-4">
+                <main className=" w-[700px] flex mb-3 gap-6 ml-z">
                   <main className="flex items-baseline">
                     <div>วันที่ :</div>
-                    <div>
-                      <DatesInput setDay={setDay} />
-                    </div>
+
+                    <DateTableInput setInputValueMew2={setInputValueMew2} />
                   </main>
                   <main className="flex items-baseline">
                     <div>วันที่ออกใบกำกับภาษี :</div>
                     <div>
-                      <DatesTableInput setDateTable={setDateTable} />
+                      <DatesInput setInputValueMew={setInputValueMew} />
                     </div>
                   </main>
                 </main>

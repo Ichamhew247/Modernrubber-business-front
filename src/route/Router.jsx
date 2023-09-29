@@ -1,12 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "../pages/HomePage";
-import WorkSystemsPage from "../pages/WorkSystemsPage";
+import WorkSystemsPage from "../pages/WorkSpacePage/WorkSystemsPage";
 import AllProduct from "../pages/ProductPage";
 // import MapContainer from "../features/map/components/MapContainer";
 import MapPage from "../pages/MapPage/MapPage";
 import ProfilePage from "../pages/ProfilePage";
 import Invoice from "../pages/InvoicePage/Invoice";
-import ProtectedRoute from "../features/auth/components/ProtectedRoute";
+// import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 // import MapPage from "../pages/MapPage";
 
 const router = createBrowserRouter([
@@ -17,9 +17,9 @@ const router = createBrowserRouter([
   {
     path: "/work",
     element: (
-      <ProtectedRoute>
-        <WorkSystemsPage />
-      </ProtectedRoute>
+      // <ProtectedRoute>
+      <WorkSystemsPage />
+      // </ProtectedRoute>
     ),
   },
   {

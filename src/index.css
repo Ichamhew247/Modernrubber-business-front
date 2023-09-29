@@ -4,6 +4,61 @@
 @tailwind components;
 @tailwind utilities;
 
+.deleteIcon:hover {
+  fill: white;
+}
+.deleteIcon {
+  fill: #3a3022;
+}
+
+.editIcon:hover {
+  fill: white;
+}
+.addIcon {
+  fill: #3a3022;
+}
+.addIcon:hover {
+  fill: white;
+}
+/* IoIosAddCircle {
+  fill: #3a3022;
+} */
+.dd {
+  fill: red;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* เริ่มต้นด้วยการซ่อนกล่องข้อความ */
+.absolute-text {
+  position: absolute;
+  top: 1;
+  left: 1;
+  right: 1;
+  bottom: 1;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+
+/* เมื่อ hover แสดงกล่องข้อความ */
+#wantHover:hover .absolute-text {
+  opacity: 1;
+  z-index: 1; /* กำหนดให้ข้อความอยู่บนสิ่งอื่น */
+}
+
+/* สไตล์ข้อความในกล่องข้อความแสดงเมื่อ hover */
+.absolute-text .content {
+  background-color: white;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  position: relative;
+  z-index: 2; /* กำหนดให้อยู่ด้านบนของพื้นหลัง */
+  width: fit-content;
+}
+
 body,
 html {
   box-sizing: border-box;
@@ -13,11 +68,11 @@ html {
   overflow-x: hidden;
   background-color: #f1f1f1;
 }
+
 th,
 td {
   border: solid 1px rgb(184, 184, 184);
   font-size: small;
-  padding: 8px;
 }
 input {
   border: solid 1px rgb(235, 232, 232);

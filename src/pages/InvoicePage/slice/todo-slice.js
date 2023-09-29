@@ -94,20 +94,20 @@ const todoSlice = createSlice({
       console.log("Deleted...");
       return state.filter((todo) => todo.id !== action.payload.id);
     },
-    [editTodoAsync.fulfilled]: (state, action) => {
-      // Call the editTodoAsyncFulfilled reducer from here
-      // This helps ensure that the payload structure is handled correctly
-      todoSlice.caseReducers.editTodoAsyncFulfilled(state, action);
-    },
-    [editTodoAsync.fulfilled]: (state, action) => {
-      const updatedTodo = action.payload; // Check the payload structure
-      const index = state.findIndex((todo) => todo.id === updatedTodo.id);
+    // [editTodoAsync.fulfilled]: (state, action) => {
+    //   // Call the editTodoAsyncFulfilled reducer from here
+    //   // This helps ensure that the payload structure is handled correctly
+    //   todoSlice.caseReducers.editTodoAsyncFulfilled(state, action);
+    // },
+    // [editTodoAsync.fulfilled]: (state, action) => {
+    //   const updatedTodo = action.payload; // Check the payload structure
+    //   const index = state.findIndex((todo) => todo.id === updatedTodo.id);
 
-      if (index !== -1) {
-        // Update the specific todo item
-        state[index] = updatedTodo;
-      }
-    },
+    //   if (index !== -1) {
+    //     // Update the specific todo item
+    //     state[index] = updatedTodo;
+    //   }
+    // },
   },
 });
 export const { addTodo, editTodo, deleteTodo, editTodoAsyncFulfilled } =

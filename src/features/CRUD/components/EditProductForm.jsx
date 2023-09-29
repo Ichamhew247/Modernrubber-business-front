@@ -1,5 +1,5 @@
 import { ImBin2 } from "react-icons/im";
-import RegisterInput from "../../auth/components/RegisterInput";
+import RegisterInput from "./RegisterInput";
 
 export default function EditProductForm() {
   return (

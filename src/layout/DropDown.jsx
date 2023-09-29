@@ -4,19 +4,19 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
 import Avatar from "../components/Avatar";
-import { BiLogOut } from "react-icons/Bi";
+import { BiLogOut } from "@react-icons/all-files/bi/BiLogOut";
 import { HiClipboardDocumentList } from "react-icons/Hi2";
 
-// import { useDispatch, useSelector } from "react-redux";
-// import { logout } from "../features/auth/slice/auth-slice";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../features/auth/slice/auth-slice";
 
 export default function DropDown() {
   const [open, setOpen] = useState(false);
   const dropDownEl = useRef(); // จะ return ค่าเป็น object {current:10}//{current:()} เปลี่ยนเป็น {current" document.querySelector(".relative")}
 
-  // const user = useSelector((state) => state.auth.user);
+  useSelector((state) => state.auth.user);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -28,6 +28,9 @@ export default function DropDown() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
+  const handleLogin = () => {
+    dispatch(logout());
+  };
   return (
     <>
       <div className="relative" ref={dropDownEl}>
@@ -47,8 +50,8 @@ export default function DropDown() {
             </div>
           </Link>
           <Link to="/work">
-            <div className="flex items-center p-2">
-              <div>
+            <div className="flex gap-1 items-center px-2 hover:bg-[#6ABD65] hover:text-white rounded-lg">
+              <div className="    items-center">
                 <HiClipboardDocumentList />
               </div>
               <button className="text-base w-72 font-medium flex items-center gap-4 hover:bg-[#6ABD65] hover:text-white p-2 rounded-lg ">
@@ -59,16 +62,13 @@ export default function DropDown() {
 
           <hr className="border border-gray-200 m-2" />
           <div
-            className="flex gap-1 items-center p-2 hover:bg-[#6ABD65] hover:text-white rounded-lg"
+            className="flex items-center p-2 hover:bg-[#6ABD65] hover:text-white rounded-lg"
             role="button"
           >
             <div className="rounded-full w-8   items-center">
               <BiLogOut />
             </div>
-            <span
-              className="text-sm font-normal "
-              // onClick={() => dispatch(logout())}
-            >
+            <span className="text-sm font-normal " onClick={handleLogin}>
               Log out
             </span>
           </div>

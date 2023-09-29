@@ -43,6 +43,9 @@ const authSlice = createSlice({
   name: "auth",
   initialState: initialState,
   reducers: {
+    logout: (state) => {
+      state.isAuthenticated = false;
+    },
     updateProfileImage: (state, action) => {
       state.user.profileImage = action.payload;
     },
@@ -86,4 +89,4 @@ const authSlice = createSlice({
 });
 
 export default authSlice.reducer;
-export const { updateProfileImage } = authSlice.actions;
+export const { updateProfileImage, logout } = authSlice.actions;
