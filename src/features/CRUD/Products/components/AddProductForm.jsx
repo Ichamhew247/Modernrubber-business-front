@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import ProductInput from "./ProductInput";
+import ProductInput from "../../../CRUD/Products/components/ProductInput";
 import { addProductAsync } from "../slice/product-slice";
 export default function AddProductForm({ onClose }) {
   const dispatch = useDispatch();

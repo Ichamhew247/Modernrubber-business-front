@@ -1,6 +1,7 @@
-import Modal from "../../../components/Modal";
 import { useState } from "react";
-import AddProductForm from "../Products/components/AddProductForm";
+import { HiCursorClick } from "react-icons/hi";
+import Modal from "../../../../components/Modal";
+import AddProductForm from "./AddProductForm";
 
 export default function AddProduct() {
   const [open, setOpen] = useState(false);
@@ -10,12 +11,15 @@ export default function AddProduct() {
   };
   return (
     <div>
-      <button
+      <div
         onClick={() => setOpen(true)}
-        className="transition-all duration-300"
+        className="hover:bg-zinc-800  hover:text-white items-baseline rounded flex gap-4 p-2  transition-all duration-300 "
       >
-        เพิ่มสินค้า
-      </button>
+        <div>
+          <HiCursorClick />
+        </div>
+        <div>เพิ่มสินค้า</div>
+      </div>
       <Modal
         title="เพิ่มสินค้าในระบบ"
         width="27"

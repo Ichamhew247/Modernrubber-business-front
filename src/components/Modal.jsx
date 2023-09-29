@@ -20,7 +20,7 @@ export default function Modal({
                 className=" bg-white border w-full  rounded-lg max-w-md shadow-[0_0_15px_rgb(0_0_0_/0.2)] flex flex-col  max-h-[calc(100vh-2rem)] "
                 onMouseUp={(e) => e.stopPropagation()}
               >
-                <div className="flex justify-between p-4 text-xl">
+                <div className="flex justify-center  text-xl">
                   <div className="invisible ">&#10005;</div>
                   <div className="text-4xl pt-14 font-bold">{title}</div>
 

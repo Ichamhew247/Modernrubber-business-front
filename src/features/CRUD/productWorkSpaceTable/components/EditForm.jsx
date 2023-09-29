@@ -1,4 +1,4 @@
-import ProductInput from "../../../../features/CRUD/Products/components/ProductInput";
+import ProductInput from "../../../CRUD/Products/components/ProductInput";
 
 export default function EditForm({
   currentProducts,

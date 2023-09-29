@@ -9,7 +9,7 @@ export default function SearchEdit() {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div className="flex justify-center ">
+      <div className="flex justify-center  ">
         <SearchContainer placeholder="ค้นหาผ่าน Keyword...">
           <AiOutlineSearch />
         </SearchContainer>

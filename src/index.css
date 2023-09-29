@@ -20,12 +20,15 @@
 .addIcon:hover {
   fill: white;
 }
-/* IoIosAddCircle {
+.addProductIcon {
+  font-size: 32px;
   fill: #3a3022;
-} */
-.dd {
-  fill: red;
 }
+.addProductIcon:hover {
+  font-size: 42px;
+  fill: #3a3022;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
