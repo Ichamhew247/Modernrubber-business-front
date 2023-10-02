@@ -1,7 +1,7 @@
 import axios from "./axios";
 
-export const uploadProduct = (input) =>
-  axios.patch("/product/uploadProduct", input);
+// export const uploadProduct = (input) =>
+//   axios.patch("/product/uploadProduct", input);
 
 export const fetchProduct = (input) => axios.get("/products/getProduct", input);
 
