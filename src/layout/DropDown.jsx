@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-// import { RightFromBracketIcon } from "../icons";
 import { useState } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";

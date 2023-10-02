@@ -34,12 +34,15 @@ export default function Contact() {
   return (
     <div>
       <div>
-        <div className="flex flex-col items-center bg-[#F5EEEA] py-10 m">
-          <div className="font-bold text-lg">
+        <div className="flex flex-col items-center bg-[#3a3022]    py-10 m">
+          <div className="font-bold text-lg text-white tracking-wider">
             หากต้องการข้อมูลเพิ่มเติม สามารถกรอกอีเมลหรือเบอร์โทร
             เพื่อให้เราติดต่อกลับท่านได้
           </div>
-          <form className="flex items-center gap-4" onSubmit={handleSubmitForm}>
+          <form
+            className="flex items-baseline gap-4 mt-4 "
+            onSubmit={handleSubmitForm}
+          >
             <div>
               <ContactInput
                 placeholder="กรอกอีเมลหรือเบอร์โทรศัพท์"
@@ -50,8 +53,8 @@ export default function Contact() {
               />
               {error.email && <InputErrormessage message={error.email} />}
             </div>
-            <button className="text-xl bg-[#7E7E7E] hover:bg-[#595858] p-4 text-white w-28 h-12 flex items-center justify-center transition-all duration-300">
-              ส่ง
+            <button className="rounded text-base  border-zinc-800 hover:bg-zinc-800 text-white hover:text-white border-2 hover:border-zinc-800 p-4  w-28 h-10 flex items-center justify-center transition-all duration-300">
+              SEND
             </button>
           </form>
         </div>

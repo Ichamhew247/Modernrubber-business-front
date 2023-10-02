@@ -13,7 +13,7 @@ export default function ProductInput({
     defaultClassName,
     isInvalid
       ? "border-red-500 focus:ring-red-300"
-      : "border-gray-300 focus:ring-blue-300 focus:border-blue-500"
+      : "border-gray-300 focus:ring-neutral-300 focus:border-neutral-500"
   );
   return (
     <div>

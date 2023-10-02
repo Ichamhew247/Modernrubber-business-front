@@ -1,7 +1,25 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+// import {
+//   addProduct,
+//   deleteProduct,
+//   editProduct,
+//   fetchProduct,
+// } from "../../../../api/product-api";
+export const searchProductAsync = createAsyncThunk(
+  "products/searchProductAsync",
+  async (searchTerm) => {
+    const response = await fetch(
+      `http://localhost:9999/products/searchProduct?keyword=${searchTerm}`
+    );
+    if (response.ok) {
+      const products = await response.json();
+      return { products };
+    }
+  }
+);
 
 export const getProductsAsync = createAsyncThunk(
-  "products/getProductsAsync",
+  "products/getProducts",
   async () => {
     const response = await fetch("http://localhost:9999/products/getProduct");
     if (response.ok) {
@@ -12,8 +30,9 @@ export const getProductsAsync = createAsyncThunk(
 );
 
 export const addProductAsync = createAsyncThunk(
-  "products/addProductAsync",
-  async (payload) => {
+  "todos/addProductAsync",
+  async (payload, { dispatch }) => {
+    // เพิ่ม dispatch ในพารามิเตอร์
     const response = await fetch(
       "http://localhost:9999/products/createProduct",
       {
@@ -28,13 +47,25 @@ export const addProductAsync = createAsyncThunk(
           type: payload.type,
           price: payload.price,
           image: payload.image,
+          productImage: payload.productImage,
         }),
       }
     );
     if (response.ok) {
       const product = await response.json();
+      dispatch(getProductsAsync());
       return { product };
     }
+  }
+);
+
+export const deleteProductAsync = createAsyncThunk(
+  "products/deleteProduct",
+  async (payload) => {
+    fetch(`http://localhost:9999/products/deleteProduct/${payload.id}`, {
+      method: "DELETE",
+    });
+    return { id: payload.id };
   }
 );
 
@@ -55,6 +86,7 @@ export const editProductAsync = createAsyncThunk(
           type: payload.type,
           price: payload.price,
           image: payload.image,
+          productImage: payload.productImage,
         }),
       }
     );
@@ -68,105 +100,99 @@ export const editProductAsync = createAsyncThunk(
         type: payload.type,
         price: payload.price,
         image: payload.image,
+        productImage: payload.productImage,
       };
     }
   }
 );
 
-export const deleteProductAsync = createAsyncThunk(
-  "todos/deleteProductAsync",
-  async (payload) => {
-    fetch(`http://localhost:9999/products/deleteProduct/${payload.id}`, {
-      method: "DELETE",
-    });
-    return { id: payload.id };
-  }
-);
-
-const initialState = [
-  {
-    id: 1,
-    nameProduct: "ลhv]^dd]bhwwwwwwwwwwwww'",
-    nameProductEtc: "nameEt1111111111111111111เต็ม",
-    description: "descriptionwwwwwwwwwwwwww",
-    type: "ยางwww111111111111111111",
-    price: "12311111111111111111111111",
-    image: "ยาง111111111111111www",
-  },
-  {
-    id: 2,
-    nameProduct: "n22",
-    nameProductEtc: "namsdsdsdeEtc",
-    description: "descsdsdsdription",
-    price: "12222223",
-    type: "ยาง",
-    image: "ยาง",
-  },
-  {
-    id: 3,
-    nameProduct: "namePronossssssssssooooo",
-    nameProductEtc: "namssssssssssssssseEtc",
-    description: "description",
-    price: "123",
-    type: "ยาง",
-    image: "ยาง",
-  },
-];
-
 const productSlice = createSlice({
   name: "products",
-  initialState,
-
+  initialState: {
+    products: [],
+    searchResults: [], // เพิ่ม searchResults เพื่อเก็บผลลัพธ์การค้นหา
+    status: "idle",
+    error: null,
+  },
   reducers: {
-    editProductAsyncFulfilled: (state, action) => {
-      const {
-        id,
-        nameProduct,
-        nameProductEtc,
-        description,
-        type,
-        price,
-        image,
-      } = action.payload;
-      const productEdit = state.find((product) => product.id === id);
-      if (productEdit) {
-        productEdit.nameProduct = nameProduct;
-        productEdit.nameProductEtc = nameProductEtc;
-        productEdit.description = description;
-        productEdit.type = type;
-        productEdit.price = price;
-        productEdit.image = image;
+    updateProductImage: (state, action) => {
+      state.products.productImage = action.payload;
+    },
+
+    editMyProduct: (state, action) => {
+      const { id, taxValue, priceValue } = action.payload;
+      const todoToEdit = state.products.find((todo) => todo.id === id);
+
+      if (todoToEdit) {
+        todoToEdit.taxValue = taxValue;
+        todoToEdit.priceValue = priceValue;
       }
       console.log("edit...");
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(searchProductAsync.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        if (action.payload.products) {
+          state.searchResults = action.payload.products; // เก็บผลลัพธ์การค้นหาใน searchResults
+        } else {
+          state.searchResults = []; // หรืออาจจะไม่ต้องเปลี่ยนค่า searchResults ถ้าไม่มีผลลัพธ์
+        }
+      })
+      .addCase(searchProductAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(searchProductAsync.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
 
-  extraReducers: {
-    [addProductAsync.fulfilled]: (state, action) => {
-      console.log("เพิ่มโปรดัคใหม่");
-      state.unshift(action.payload.product);
-    },
-    [deleteProductAsync.fulfilled]: (state, action) => {
-      console.log("Deleted...");
-      return state.filter((product) => product.id !== action.payload.id);
-    },
-    // [editProductAsync.fulfilled]: (state, action) => {
-    //   const updatedTodo = action.payload; // Check the payload structure
-    //   const index = state.findIndex((product) => product.id === updatedTodo.id);
+      .addCase(getProductsAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getProductsAsync.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.products = action.payload.products;
+      })
+      .addCase(getProductsAsync.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(addProductAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(addProductAsync.fulfilled, (state, action) => {
+        if (action.payload) {
+          state.products.push(action.payload.product);
+          state.status = "succeeded";
+        }
+      })
+      // .addCase(addProductAsync.fulfilled, (state, action) => {
+      //   if (action.payload) {
+      //     state.products = [action.payload.product, ...state.products];
+      //     state.status = "succeeded";
+      //   }
+      // })
 
-    //   if (index !== -1) {
-    //     // Update the specific todo item
-    //     state[index] = updatedTodo;
-    //   }
-    // },
+      .addCase(addProductAsync.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(editProductAsync.fulfilled, (state, action) => {
+        const editProductAsync = action.payload;
+        state.products = state.products.map((product) =>
+          product.id === editProductAsync.id ? editProductAsync : product
+        );
+      })
+      .addCase(deleteProductAsync.fulfilled, (state, action) => {
+        state.products = state.products.filter(
+          (product) => product.id !== action.payload.id
+        );
+      });
   },
 });
 
-export const {
-  // addProductAsync,
-  // editProductAsync,
-  // deleteProductAsync,
-  editProductAsyncFulfilled,
-} = productSlice.actions;
-productSlice.actions;
+export const { editMyProduct, searchProducts, updateProductImage } =
+  productSlice.actions;
 export default productSlice.reducer;

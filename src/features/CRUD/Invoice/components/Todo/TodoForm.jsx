@@ -3,8 +3,6 @@ import { AiFillEdit } from "react-icons/ai";
 import { AiFillDelete } from "react-icons/ai";
 import { IoIosAddCircle } from "react-icons/io";
 import { MdCancelPresentation } from "react-icons/md";
-// import { MdCancelPresentation } from "@react-icons/all-files/md/MdCancelPresentation";
-// import { FcCancel } from "react-icons/fc";
 import { BiSave } from "@react-icons/all-files/bi/BiSave";
 import { useDispatch, useSelector } from "react-redux";
 import {

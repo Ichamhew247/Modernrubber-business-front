@@ -1,12 +1,14 @@
-export default function SearchContainer({ placeholder, children }) {
+export default function SearchContainer({ placeholder, children, onChange }) {
   return (
     <>
       <div className="flex justify-center   ">
         <input
-          className="bg-[#F2F2F2] w-96 border-2 border-[#8A4819] hover:border-[]  px-6 py-4 rounded-sm outline-none focus:ring-1 focus:ring-[#3A3022] focus:border-[#8A4819]"
+          type="text"
+          onChange={onChange}
+          className=" italic bg-[#F1F1F1] focus:ring-neutral-300 focus:border-neutral-500  w-64 h-11 border-none outline-none   px-6 py-4 rounded-sm  focus:ring-1 "
           placeholder={placeholder}
         />
-        <div className="  text-4xl flex items-center px-5   ">{children}</div>
+        <div className="flex flex-col justify-evenly text-4xl">{children}</div>
       </div>
     </>
   );

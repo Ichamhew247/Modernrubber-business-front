@@ -1,85 +1,111 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  getProductsAsync,
   deleteProductAsync,
   // editProductAsync,
-  editProductAsyncFulfilled,
-  getProductsAsync,
+  // editProductAsync,
 } from "../../../CRUD/Products/slice/product-slice";
-import ProductTableInput from "./ProductInputTable";
-import EditForm from "./EditForm";
-import Modal from "../../../../components/Modal";
-import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-import AddProduct from "../../Products/components/Addproduct";
+// import EditForm from "./EditForm";
+// import Modal from "../../../../components/Modal";
+// import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import AddProduct from "../../Products/components/Addproduct/Addproduct";
+// import EditProductForm from "../../Products/components/EditProductForm";
+import ProductTableInput from "./ProductTableInput";
+import { AiFillDelete } from "react-icons/ai";
+import { useState } from "react";
+import EditProduct from "../../Products/components/EditProduct/EditProduct";
 
 export default function Table() {
-  const [open, setOpen] = useState(false);
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
-  // const [nameProduct, setNameProduct] = useState("");
+  // const [open, setOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [currentProduct, setCurrentProduct] = useState({});
-  const [currentProducts, setCurrentProducts] = useState({});
+  // const [currentProducts, setCurrentProducts] = useState({});
+  // const [currentProduct, setCurrentProduct] = useState({});
+  ///////
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.products);
+  const status = useSelector((state) => state.products.status);
+  const error = useSelector((state) => state.products.error);
 
   const handleDeleteClick = (id) => {
+    console.log("Delete ID:", id);
     dispatch(deleteProductAsync({ id: id }));
     console.log("Deee");
-  };
-
-  const handleEditInputChange = (fieldName, fieldValue) => {
-    setCurrentProducts({
-      ...currentProducts,
-      [fieldName]: fieldValue,
-    });
-  };
-
-  const handleEditFormSubmit = (e) => {
-    e.preventDefault();
-
-    dispatch(
-      editProductAsyncFulfilled({
-        id: currentProduct.id,
-        nameProduct: currentProducts.nameProduct,
-        nameProductEtc: currentProducts.nameProductEtc,
-        description: currentProducts.description,
-        type: currentProducts.type,
-        price: currentProducts.price,
-        image: currentProducts.image,
-      })
-    );
-    setCurrentProducts({});
-    console.log("finish");
-    setIsEditing(false);
-  };
-
-  const handleEditClick = (product) => {
-    setIsEditing(true);
-    setCurrentProduct({
-      id: product.id,
-    });
-    // ดึงค่าเดิม
-
-    setCurrentProducts({
-      ...currentProducts,
-      nameProduct: product.nameProduct,
-      nameProductEtc: product.nameProductEtc,
-      description: product.description,
-      type: product.type,
-      price: product.price,
-      image: product.image,
-    });
   };
 
   useEffect(() => {
     dispatch(getProductsAsync());
   }, [dispatch]);
 
+  useEffect(() => {
+    console.log(products);
+  }, [products]);
+
+  // useEffect(() => {
+  //   products.forEach((product) => {
+  //     console.log(product.nameProduct);
+  //   });
+  // }, [products]);
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
+  if (status === "failed") {
+    return <div>Error: {error}</div>;
+  }
+  /////////////////////////
+
+  // const handleEditInputChange = (fieldName, fieldValue) => {
+  //   setCurrentProducts({
+  //     ...currentProducts,
+  //     [fieldName]: fieldValue,
+  //   });
+  // };
+
+  // const handleEditFormSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   dispatch(
+  //     editProductAsync({
+  //       id: currentProduct.id,
+  //       nameProduct: currentProducts.nameProduct,
+  //       nameProductEtc: currentProducts.nameProductEtc,
+  //       description: currentProducts.description,
+  //       type: currentProducts.type,
+  //       price: currentProducts.price,
+  //       image: currentProducts.image,
+  //     })
+  //   );
+
+  //   // ล้างข้อมูลที่แก้ไขและปิดโหมดการแก้ไข
+  //   setCurrentProducts({});
+  //   setIsEditing(false);
+  // };
+
+  // const handleEditClick = (product) => {
+  //   setIsEditing(true);
+  //   setCurrentProduct({
+  //     id: product.id,
+  //   });
+
+  //   // ดึงค่าเดิมของสินค้าที่จะแก้ไข
+  //   setCurrentProducts({
+  //     nameProduct: product.nameProduct,
+  //     nameProductEtc: product.nameProductEtc,
+  //     description: product.description,
+  //     type: product.type,
+  //     price: product.price,
+  //     image: product.image,
+  //   });
+  // };
   return (
     <>
       <main>
         <div className="flex justify-end gap-4 py-2  cursor-pointer transition-all duration-300 rounded ">
           <AddProduct />
         </div>
+
         <table className=" table-fixed w-[980px]  mt-2 border-collapse border text-center">
           <thead className="bg-[#3a3022] font-medium text-white  ">
             <tr>
@@ -94,55 +120,60 @@ export default function Table() {
             </tr>
           </thead>
           <tbody className="border-b dark:border-neutral-500">
-            {products.map((product, index) => (
-              <tr key={index}>
-                <td className="h-4">{index + 1}</td>
-                <ProductTableInput product={product.nameProduct} />
-                <ProductTableInput product={product.nameProductEtc} />
-                <ProductTableInput product={product.description} />
-                <ProductTableInput product={product.type} />
-                <ProductTableInput product={product.price} />
-                <ProductTableInput product={product.image} />
+            {products ? (
+              products.map((product, index) => (
+                <tr key={product.id}>
+                  <td className="h-4">{index + 1}</td>
+                  <ProductTableInput product={product.nameProduct} />
+                  <ProductTableInput product={product.nameProductEtc} />
+                  <ProductTableInput product={product.description} />
+                  <ProductTableInput product={product.type} />
+                  <ProductTableInput product={product.price} />
+                  <ProductTableInput product={product.image} />
+                  <td>
+                    {isEditing ? (
+                      <form
+                        // onSubmit={handleEditFormSubmit}
+                        className="flex gap-6  justify-center "
+                      >
+                        <div className="flex justify-end gap-4 py-2  cursor-pointer transition-all duration-300 rounded ">
+                          <EditProduct />
+                        </div>
 
-                <td>
-                  {isEditing ? (
-                    <div className="flex gap-4">
-                      <Modal
-                        title="พิมพ์ข้อมูลแก้ไขใหม่"
-                        width=""
-                        open={open}
-                        // onClose={() => setOpen(false)}
-                        color="#3A3022"
-                      >
-                        <EditForm
-                          currentProducts={currentProducts}
-                          onFieldChange={handleEditInputChange}
-                          onEditFormSubmit={handleEditFormSubmit}
-                        />
-                      </Modal>
-                    </div>
-                  ) : (
-                    <form className="flex gap-6  justify-center ">
+                        {/* <div
+                            onClick={() => {
+                              handleEditClick(product);
+                              setOpen(true);
+                            }}
+                            className="cursor-pointer flex p-2  rounded-xl w-10 h-10 text-2xl hover:bg-[#3A3022] transition-all duration-300"
+                          >
+                            <AiFillEdit className="editIcon" />
+                          </div> */}
+                        <div
+                          onClick={() => handleDeleteClick(product.id)}
+                          className="cursor-pointer flex p-2  rounded-xl w-10 h-10 text-2xl  hover:bg-[#3A3022] transition-all duration-300"
+                        >
+                          <AiFillDelete className="deleteIcon " />
+                        </div>
+                      </form>
+                    ) : (
                       <div
-                        onClick={() => {
-                          handleEditClick(product), setOpen(true);
-                        }}
-                        className="cursor-pointer flex p-2  rounded-xl w-10 h-10 text-2xl hover:bg-[#3A3022] transition-all duration-300"
+                        onClick={() => setIsEditing(true)}
+                        className="cursor-pointer"
                       >
-                        <AiFillEdit className="editIcon" />
+                        แก้ไข
                       </div>
-
-                      <div
-                        onClick={() => handleDeleteClick(product.id)}
-                        className="cursor-pointer flex p-2  rounded-xl w-10 h-10 text-2xl  hover:bg-[#3A3022] transition-all duration-300"
-                      >
-                        <AiFillDelete className="deleteIcon " />
-                      </div>
-                    </form>
-                  )}
+                    )}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="8" className="text-center">
+                  ไม่พบข้อมูล
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </main>

@@ -9,12 +9,12 @@ export default function ContactInput({
 }) {
   const defaultClassName =
     // "block w-full rounded-md border px-3 py-1.5 outline-none text-sm focus:ring leading-6 tracking-wide   ";
-    "bg-[#F2F2F2] w-96  px-6 py-4 rounded-sm outline-none focus:ring-1 focus:ring-[#6ABD65] focus:border-[#498e45]";
+    "bg-[#F2F2F2] w-96 h-12  px-6 py-4 rounded-sm outline-none focus:ring-1 focus:ring-[#6ABD65] focus:border-[#498e45]";
   const className = createClasses(
     defaultClassName,
     isInvalid
       ? "border-green-500 focus:ring-green-300"
-      : "border-green-300 focus:ring-green-300 focus:border-green-500"
+      : "border-gray-300 focus:ring-neutral-300 focus:border-neutral-500"
   );
   return (
     <div>

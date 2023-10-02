@@ -8,12 +8,12 @@ const initialState = {
 };
 
 export const contactAsync = createAsyncThunk(
-  "auth/contactAsync",
+  "contact/contactAsync",
   async (input, thunkApi) => {
     try {
       await authService.contact(input);
-      const resFetchMe = await authService.fetchMe();
-      return resFetchMe.data.user;
+      // const resFetchMe = await authService.fetchMe();
+      // return resFetchMe.data.user;
     } catch (err) {
       return thunkApi.rejectWithValue(err.response.data.message);
     }
@@ -28,7 +28,6 @@ const contactSlice = createSlice({
       state.email = action.payload;
     },
   },
-  // ...
 });
 
 export const { setEmail } = contactSlice.actions;

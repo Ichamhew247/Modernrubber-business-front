@@ -1,11 +1,8 @@
-import { BiSolidPencil } from "react-icons/bi";
-// import { BiSolidPencil } from "@react-icons/all-files/bi/BiSolidPencil";
+// import { BiSolidPencil } from "react-icons/bi";
 import Avatar from "../../../../components/Avatar";
 import Modal from "../../../../components/Modal";
 import { useState } from "react";
 import EditProfileForm from "./EditProfileForm";
-// import { useSelector } from "react-redux";
-// import EditProfileForm from "./EditProfileForm";
 
 export default function ProfileContainer() {
   const [open, setOpen] = useState(false);
@@ -18,7 +15,7 @@ export default function ProfileContainer() {
         onClick={() => setOpen(true)}
       >
         <div className="flex items-center gap-2">
-          <BiSolidPencil />
+          {/* <BiSolidPencil /> */}
           <span className="font-semibold ">Edit Profile</span>
         </div>
       </button>

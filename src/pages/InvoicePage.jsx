@@ -12,8 +12,7 @@ import DatesInput from "../features/CRUD/Invoice/components/Date/DatesInput";
 import DateTableInput from "../features/CRUD/Invoice/components/Date/DateTableInput";
 import Datename from "../features/CRUD/Invoice/components/Date/DateName";
 import "/src/components/DatePicker.css";
-import { MdCancelPresentation } from "react-icons/md";
-import { Link } from "react-router-dom";
+
 export default function Invoice() {
   const [showInvoice, setShowInvoice] = useState(false);
   const [client, setClient] = useState("");
@@ -80,11 +79,6 @@ export default function Invoice() {
         ) : (
           <>
             <div className="flex flex-col justify-center mr-4 ">
-              <Link to="/work">
-                <div className="ml-[700px]  p-1  w-11 hover:bg-[#3a3022]   rounded-lg  text-4xl  transition-all duration-300">
-                  <MdCancelPresentation className="addIcon" />
-                </div>
-              </Link>
               <div className="text-4xl m-auto mb-7">ใบวางบิล</div>
               <main id="myHead">
                 <main className=" w-[700px] flex mb-3 gap-6 ml-z">
