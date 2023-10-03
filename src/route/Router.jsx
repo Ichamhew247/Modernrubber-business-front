@@ -6,7 +6,8 @@ import AllProduct from "../pages/ProductPage";
 import MapPage from "../pages/MapPage";
 import ProfilePage from "../pages/ProfilePage";
 import Invoice from "../pages/InvoicePage";
-import UploadImage from "../pages/UploadImage";
+import FileUpload from "../pages/FileUpload";
+// import UploadImageForm from "../pages/UploadImageForm";
 // import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 // import MapPage from "../pages/MapPage";
 
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/upload",
-    element: <UploadImage />,
+    element: <FileUpload />,
   },
 ]);
 

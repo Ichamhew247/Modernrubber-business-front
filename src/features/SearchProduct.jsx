@@ -6,7 +6,7 @@ import {
   // searchProductAsync,
 } from "../features/CRUD/Products/slice/product-slice";
 import { AiFillDelete } from "react-icons/ai";
-import { AiOutlineSearch } from "react-icons/ai";
+// import { AiOutlineSearch } from "react-icons/ai";
 import EditProduct from "./CRUD/Products/components/EditProduct/EditProduct";
 import ProductTableInput from "./CRUD/productWorkSpaceTable/components/ProductTableInput";
 import AddProduct from "./CRUD/Products/components/Addproduct/Addproduct";
@@ -37,7 +37,7 @@ export default function SearchProduct() {
       product.description,
       product.type,
       product.price,
-      product.image,
+      // product.image,
     ];
 
     if (searchTerm) {
