@@ -19,17 +19,17 @@ export default function Banner() {
               <CircleImage
                 number="1"
                 title="สินค้าสั่งผลิต"
-                src="/src/assets/blackthing.jpg"
+                src="/src/assets/imageProduct/1.1.png"
               />
               <CircleImage
                 number="2"
                 title="ผลิตโดยช่างผู้เชี่ยวชาญ"
-                src="/src/assets/redthing.jpg"
+                src="/src/assets/imageProduct/3.1.png"
               />
               <CircleImage
                 number="3"
                 title="รับประกันคุณภาพ"
-                src="/src/assets/graything.jpg"
+                src="/src/assets/imageProduct/4.1.png"
               />
             </div>
           </main>

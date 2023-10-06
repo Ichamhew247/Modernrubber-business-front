@@ -46,6 +46,7 @@ export const addProductAsync = createAsyncThunk(
           description: payload.description,
           type: payload.type,
           price: payload.price,
+          // productImage: payload.image,
         }),
       }
     );
@@ -108,18 +109,7 @@ const productSlice = createSlice({
     status: "idle",
     error: null,
   },
-  reducers: {
-    editMyProduct: (state, action) => {
-      const { id, taxValue, priceValue } = action.payload;
-      const todoToEdit = state.products.find((todo) => todo.id === id);
-
-      if (todoToEdit) {
-        todoToEdit.taxValue = taxValue;
-        todoToEdit.priceValue = priceValue;
-      }
-      console.log("edit...");
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(searchProductAsync.fulfilled, (state, action) => {
@@ -183,5 +173,5 @@ const productSlice = createSlice({
   },
 });
 
-export const { editMyProduct, searchProducts } = productSlice.actions;
+export const { searchProducts } = productSlice.actions;
 export default productSlice.reducer;

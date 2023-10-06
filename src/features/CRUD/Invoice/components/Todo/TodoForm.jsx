@@ -62,7 +62,6 @@ export default function TodoForm() {
       })
     );
     setCurrentItem("");
-    // setPriceInput("");
     console.log("Editfinish");
     setIsEditing(false);
   };

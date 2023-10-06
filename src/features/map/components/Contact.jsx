@@ -53,7 +53,7 @@ export default function Contact() {
               />
               {error.email && <InputErrormessage message={error.email} />}
             </div>
-            <button className="rounded text-base  border-zinc-800 hover:bg-zinc-800 text-white hover:text-white border-2 hover:border-zinc-800 p-4  w-28 h-10 flex items-center justify-center transition-all duration-300">
+            <button className="rounded text-base  border-white hover:bg-zinc-800 text-white hover:text-white border-2 hover:border-zinc-800 p-4  w-28 h-10 flex items-center justify-center transition-all duration-300">
               SEND
             </button>
           </form>

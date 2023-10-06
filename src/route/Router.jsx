@@ -6,7 +6,7 @@ import AllProduct from "../pages/ProductPage";
 import MapPage from "../pages/MapPage";
 import ProfilePage from "../pages/ProfilePage";
 import Invoice from "../pages/InvoicePage";
-import FileUpload from "../pages/FileUpload";
+import FileUpload from "../features/CRUD/Products/components/ProductImageTable";
 // import UploadImageForm from "../pages/UploadImageForm";
 // import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 // import MapPage from "../pages/MapPage";

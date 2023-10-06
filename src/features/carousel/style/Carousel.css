@@ -49,8 +49,8 @@
 .carousel_arrow_right:hover {
   background-color: #2b6b28;
 }
-.carousel_arrow_left,
-.carousel_arrow_right {
+#arrowLeft,
+#arrowRight {
   position: absolute;
   font-size: 40px;
   top: 50%;
@@ -67,9 +67,9 @@
   cursor: pointer;
 }
 
-.carousel_arrow_left {
-  left: -100px;
+#arrowLeft {
+  left: 10px;
 }
-.carousel_arrow_right {
-  right: -100px;
+#arrowRight {
+  right: 10px;
 }
