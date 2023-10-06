@@ -8,7 +8,6 @@ export default function ContactInput({
   isInvalid,
 }) {
   const defaultClassName =
-    // "block w-full rounded-md border px-3 py-1.5 outline-none text-sm focus:ring leading-6 tracking-wide   ";
     "bg-[#F2F2F2] w-96 h-12  px-6 py-4 rounded-sm outline-none focus:ring-1 focus:ring-[#6ABD65] focus:border-[#498e45]";
   const className = createClasses(
     defaultClassName,

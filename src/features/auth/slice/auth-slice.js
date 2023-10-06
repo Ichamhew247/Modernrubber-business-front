@@ -12,7 +12,6 @@ export const registerAsync = createAsyncThunk(
   async (input, thunkApi) => {
     try {
       const res = await authService.register(input);
-      //   console.log(res);
       setAccessToken(res.data.accessToken);
       return;
     } catch (err) {
@@ -35,10 +34,6 @@ export const fetchMe = createAsyncThunk("auth/fetchMe", async (_, thunkApi) => {
   }
 });
 
-// createAsyncThunk make
-// auth/registerAsync/pending
-// auth/registerAsync/rejected
-// auth/registerAsync/fulfilled
 const authSlice = createSlice({
   name: "auth",
   initialState: initialState,

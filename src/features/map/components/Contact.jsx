@@ -28,7 +28,7 @@ export default function Contact() {
       setError({});
       await dispatch(contactAsync(input)).unwrap();
     } catch (err) {
-      // toast.error("ไม่ได้รับข้อมูล กรุณากรอกข้อมูลให้ถูกต้อง");
+      toast.error("กรุณากรอกข้อมูลให้ถูกต้อง");
     }
   };
   return (

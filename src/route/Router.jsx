@@ -2,48 +2,49 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import WorkSystemsPage from "../pages/WorkSystemsPage";
 import AllProduct from "../pages/ProductPage";
-// import MapContainer from "../features/map/components/MapContainer";
 import MapPage from "../pages/MapPage";
-import ProfilePage from "../pages/ProfilePage";
 import Invoice from "../pages/InvoicePage";
 import FileUpload from "../features/CRUD/Products/components/ProductImageTable";
-// import UploadImageForm from "../pages/UploadImageForm";
-// import ProtectedRoute from "../features/auth/components/ProtectedRoute";
-// import MapPage from "../pages/MapPage";
-
+import Header from "../layout/Header";
+import { Outlet } from "react-router-dom";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
-  },
-  {
-    path: "/work",
     element: (
-      // <ProtectedRoute>
-      <WorkSystemsPage />
-      // </ProtectedRoute>
+      <>
+        <Header />
+        <Outlet />
+      </>
     ),
-  },
-  {
-    path: "/allproduct",
-    element: <AllProduct />,
-  },
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/work",
+        // <ProtectedRoute>
+        element: <WorkSystemsPage />,
+        // </ProtectedRoute>
+      },
+      {
+        path: "/allproduct",
+        element: <AllProduct />,
+      },
+      {
+        path: "/map",
+        element: <MapPage />,
+      },
 
-  {
-    path: "/map",
-    element: <MapPage />,
-  },
-  {
-    path: "/profile",
-    element: <ProfilePage />,
-  },
-  {
-    path: "/invoice",
-    element: <Invoice />,
-  },
-  {
-    path: "/upload",
-    element: <FileUpload />,
+      {
+        path: "/invoice",
+        element: <Invoice />,
+      },
+      {
+        path: "/upload",
+        element: <FileUpload />,
+      },
+    ],
   },
 ]);
 

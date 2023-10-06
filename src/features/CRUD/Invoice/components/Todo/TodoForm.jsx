@@ -4,33 +4,18 @@ import { AiFillDelete } from "react-icons/ai";
 import { IoIosAddCircle } from "react-icons/io";
 import { MdCancelPresentation } from "react-icons/md";
 import { BiSave } from "@react-icons/all-files/bi/BiSave";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addTodoAsync,
-  deleteTodoAsync,
-  editTodoAsync,
-} from "../../slice/todo-slice";
+import { v4 as uuidv4 } from "uuid";
 
-export default function TodoForm() {
-  const [taxInput, setTaxInput] = useState("");
-  const [priceInput, setPriceInput] = useState("");
+export default function TodoForm({ setTodos, todos }) {
   const [isEditing, setIsEditing] = useState(false);
-  const [currentItem, setCurrentItem] = useState({});
-  const [currentTodo, setCurrentTodo] = useState({});
-
-  const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todos);
+  const [currentItem, setCurrentItem] = useState({
+    id: null,
+    tax: "",
+    price: "",
+  });
 
   const handleDeleteClick = (id) => {
-    dispatch(deleteTodoAsync({ id: id }));
-  };
-
-  const handleInputChangeTax = (e) => {
-    setTaxInput(e.target.value);
-  };
-
-  const handleInputChangePrice = (e) => {
-    setPriceInput(e.target.value);
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
   const handleEditInputChange = (e) => {
@@ -39,40 +24,42 @@ export default function TodoForm() {
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    dispatch(
-      addTodoAsync({
-        taxValue: taxInput,
-        priceValue: priceInput,
-      })
-    );
-    setTaxInput("");
-    setPriceInput("");
-    console.log("finish");
+    // เพิ่มสินค้าใหม่
+    const newTodo = {
+      id: uuidv4(),
+      taxValue: currentItem.tax,
+      priceValue: currentItem.price,
+    };
+    setTodos((prevTodos) => [...prevTodos, newTodo]);
+    setCurrentItem({ id: null, tax: "", price: "" });
   };
+
   const handleEditFormSubmit = (e) => {
     e.preventDefault();
-
-    dispatch(
-      editTodoAsync({
-        id: currentTodo.id,
-        taxValue: currentItem.tax,
-        priceValue: currentItem.price,
+    // แก้ไขสินค้าโดยอ้างอิง id
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => {
+        if (todo.id === currentItem.id) {
+          return {
+            ...todo,
+            taxValue: currentItem.tax,
+            priceValue: currentItem.price,
+          };
+        }
+        return todo;
       })
     );
-    setCurrentItem("");
-    console.log("Editfinish");
+    setCurrentItem({ id: null, tax: "", price: "" });
     setIsEditing(false);
   };
 
   const handleEditClick = (todo) => {
     setIsEditing(true);
-    setCurrentTodo({
-      id: todo.id,
-    });
-
     setCurrentItem({
+      id: todo.id,
       tax: todo.taxValue,
       price: todo.priceValue,
     });
@@ -83,10 +70,10 @@ export default function TodoForm() {
       {isEditing ? (
         <form
           onSubmit={handleEditFormSubmit}
-          className="flex items-center gap-4 p-3 "
+          className="flex items-center gap-4 p-3"
         >
           <div className="ml-6">แก้ไข :</div>
-          <div className="flex  ">
+          <div className="flex">
             <input
               type="text"
               name="tax"
@@ -105,18 +92,19 @@ export default function TodoForm() {
               className="p-2 w-44"
             />
           </div>
-          <div className="flex  gap-4">
+          <div className="flex gap-4">
             <button
               type="submit"
-              className=" hover:bg-[#3a3022] p-1  rounded-lg  text-3xl transition-all duration-300 "
+              className="hover:bg-[#3a3022] p-1 rounded-lg text-3xl transition-all duration-300"
             >
               <BiSave className="addIcon" />
             </button>
             <button
               onClick={() => {
-                setIsEditing(false), setCurrentItem("");
+                setIsEditing(false);
+                setCurrentItem({ id: null, tax: "", price: "" }); // ล้างค่าหลังจากยกเลิกแก้ไข
               }}
-              className=" hover:bg-[#3a3022] p-1  rounded-lg  text-3xl transition-all duration-300 "
+              className="hover:bg-[#3a3022] p-1 rounded-lg text-3xl transition-all duration-300"
             >
               <MdCancelPresentation className="addIcon" />
             </button>
@@ -125,32 +113,32 @@ export default function TodoForm() {
       ) : (
         <form
           onSubmit={handleSubmitForm}
-          className="flex  gap-5 items-center ml-2 "
+          className="flex gap-5 items-center ml-2"
         >
           <div>รายละเอียด:</div>
           <input
             id="tax"
             type="text"
             name="tax"
-            value={taxInput}
+            value={currentItem.tax}
             placeholder="Add a tax"
-            onChange={handleInputChangeTax}
+            onChange={handleEditInputChange}
           />
           <input
             id="price"
             type="text"
             name="price"
-            value={priceInput}
+            value={currentItem.price}
             placeholder="Add a price"
-            onChange={handleInputChangePrice}
+            onChange={handleEditInputChange}
           />
-          <button className=" hover:bg-[#3a3022]  rounded-3xl  text-4xl transition-all duration-300 ">
+          <button className="hover:bg-[#3a3022] rounded-3xl text-4xl transition-all duration-300">
             <IoIosAddCircle className="addIcon" />
           </button>
         </form>
       )}
 
-      <table className="table-fixed w-[600px]  m-auto border-collapse text-center ">
+      <table className="table-fixed w-[600px] m-auto border-collapse text-center">
         <thead>
           <tr>
             <th className="p-3 text-sm">เลขที่ใบกำกับภาษี</th>
@@ -166,19 +154,19 @@ export default function TodoForm() {
                 <td>{todo.priceValue}</td>
                 <td>
                   {isEditing ? (
-                    <main className="flex justify-center ">
+                    <main className="flex justify-center">
                       <button
-                        className="flex p-2  rounded-xl w-10 h-10 text-2xl  hover:bg-[#3A3022] transition-all duration-300"
+                        className="flex p-2 rounded-xl w-10 h-10 text-2xl hover:bg-[#3A3022] transition-all duration-300"
                         onClick={() => handleDeleteClick(todo.id)}
                       >
-                        <AiFillDelete className="deleteIcon " />
+                        <AiFillDelete className="deleteIcon" />
                       </button>
                     </main>
                   ) : (
                     <main className="flex justify-center">
                       <button
                         onClick={() => handleEditClick(todo)}
-                        className=" flex p-2  rounded-xl w-10 h-10 text-2xl hover:bg-[#3A3022] transition-all duration-300"
+                        className="flex p-2 rounded-xl w-10 h-10 text-2xl hover:bg-[#3A3022] transition-all duration-300"
                       >
                         <AiFillEdit className="editIcon" />
                       </button>

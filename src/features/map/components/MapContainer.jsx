@@ -5,7 +5,7 @@ import { useMemo } from "react";
 
 export default function MapContainer() {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyD8HmYeIxs30OWWw2t9waq8A1_GV5D7wXw",
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_KEY,
   });
 
   if (!isLoaded) return <div>Loading...</div>;

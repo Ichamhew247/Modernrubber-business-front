@@ -13,7 +13,7 @@ export default function AddProductImage() {
     <div>
       <div
         onClick={() => setOpen(true)}
-        className="w-36  p-2 hover:bg-zinc-800  hover:text-white transition-all duration-300 items-baseline rounded flex gap-4   "
+        className="  p-2 hover:bg-zinc-800  hover:text-white transition-all duration-300 items-baseline rounded flex gap-4   "
       >
         <div>
           <HiCursorClick />

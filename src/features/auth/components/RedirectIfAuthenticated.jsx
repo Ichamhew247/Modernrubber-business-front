@@ -8,5 +8,3 @@ export default function RetIfAuthenticated({ children }) {
   }
   return children;
 }
-
-//useSelector เอาไว้อ่านค่าใน store

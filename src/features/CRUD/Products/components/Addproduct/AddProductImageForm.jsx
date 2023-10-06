@@ -13,7 +13,7 @@ export default function AddProductImageForm() {
     try {
       const formdata = new FormData();
       formdata.append("image", file);
-      formdata.append("imageName", imageName); // ใช้ค่า imageName ที่กำหนดไว้
+      formdata.append("imageName", imageName);
 
       const response = await axios.post(
         "http://localhost:9999/upload",

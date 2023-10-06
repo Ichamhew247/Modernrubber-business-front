@@ -1,15 +1,8 @@
-// import React from "react";
-
-export default function InputClient({
-  client,
-  setClient,
-  // descript,
-  // setDescript,
-}) {
+export default function InputClient({ client, setClient }) {
   return (
     <>
       <input
-        type="client"
+        type="text"
         name="client"
         id="client"
         placeholder="กรอกชื่อบริษัทลูกค้า"

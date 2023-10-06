@@ -24,7 +24,6 @@ export default function ProductInput({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        // onChange={(e) => setDescriptProduct(e.target.value)}
       />
     </div>
   );

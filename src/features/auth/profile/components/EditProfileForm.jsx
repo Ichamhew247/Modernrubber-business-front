@@ -4,9 +4,6 @@ import * as userService from "../../../../api/user-api";
 import { useDispatch } from "react-redux";
 import { updateProfileImage as updateAction } from "../../slice/auth-slice";
 export default function EditProfileForm() {
-  // const [isloading, setIsLoading] = useState(false);
-
-  // const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
   const updateProfileImage = async (input) => {
@@ -18,13 +15,8 @@ export default function EditProfileForm() {
 
   return (
     <>
-      {/* {isloading && <Loading />} */}
       <div className="flex flex-col gap-4">
-        <PictureForm
-          onSave={updateProfileImage}
-          title="Profile Image"
-          // initialSrc={user.profileImage}
-        >
+        <PictureForm onSave={updateProfileImage} title="Profile Image">
           {(src) => (
             <div className="flex justify-center">
               <Avatar

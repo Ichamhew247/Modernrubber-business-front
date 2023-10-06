@@ -12,7 +12,6 @@ export default function PictureForm({ title, children, initialSrc, onSave }) {
         className="hidden"
         ref={inputEl}
         onChange={(e) => {
-          // console.log(e);
           console.log(e.target.value);
           if (e.target.files[0]) {
             setFile(e.target.files[0]);

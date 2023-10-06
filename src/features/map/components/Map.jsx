@@ -3,15 +3,11 @@ import { FiMapPin } from "react-icons/fi";
 import { FaPhone } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
 import { FaLine } from "react-icons/fa";
-import Header from "../../../layout/Header";
 export default function Map() {
   return (
     <>
       <div>
-        <div className="z-50 fixed top-0 left-0 right-0 bg-opacity-70 pb-4 bg-[#ffffff] shadow-2xl">
-          <Header />
-        </div>
-        <div className="flex flex-col  items-center  mt-52">
+        <div className="flex flex-col  items-center  mt-44">
           <div className="text-2xl font-medium">ติดต่อโรงงาน</div>
           <div className="text-xl font-light">
             เวลาทำการ จันทร์ - เสาร์ 8.00 - 17.00

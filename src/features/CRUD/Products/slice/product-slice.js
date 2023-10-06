@@ -1,10 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-// import {
-//   addProduct,
-//   deleteProduct,
-//   editProduct,
-//   fetchProduct,
-// } from "../../../../api/product-api";
+
 export const searchProductAsync = createAsyncThunk(
   "products/searchProductAsync",
   async (searchTerm) => {
@@ -32,7 +27,6 @@ export const getProductsAsync = createAsyncThunk(
 export const addProductAsync = createAsyncThunk(
   "todos/addProductAsync",
   async (payload, { dispatch }) => {
-    // เพิ่ม dispatch ในพารามิเตอร์
     const response = await fetch(
       "http://localhost:9999/products/createProduct",
       {
@@ -46,7 +40,6 @@ export const addProductAsync = createAsyncThunk(
           description: payload.description,
           type: payload.type,
           price: payload.price,
-          // productImage: payload.image,
         }),
       }
     );
@@ -105,7 +98,7 @@ const productSlice = createSlice({
   name: "products",
   initialState: {
     products: [],
-    searchResults: [], // เพิ่ม searchResults เพื่อเก็บผลลัพธ์การค้นหา
+    searchResults: [],
     status: "idle",
     error: null,
   },
@@ -115,9 +108,9 @@ const productSlice = createSlice({
       .addCase(searchProductAsync.fulfilled, (state, action) => {
         state.status = "succeeded";
         if (action.payload.products) {
-          state.searchResults = action.payload.products; // เก็บผลลัพธ์การค้นหาใน searchResults
+          state.searchResults = action.payload.products;
         } else {
-          state.searchResults = []; // หรืออาจจะไม่ต้องเปลี่ยนค่า searchResults ถ้าไม่มีผลลัพธ์
+          state.searchResults = [];
         }
       })
       .addCase(searchProductAsync.pending, (state) => {
@@ -148,12 +141,6 @@ const productSlice = createSlice({
           state.status = "succeeded";
         }
       })
-      // .addCase(addProductAsync.fulfilled, (state, action) => {
-      //   if (action.payload) {
-      //     state.products = [action.payload.product, ...state.products];
-      //     state.status = "succeeded";
-      //   }
-      // })
 
       .addCase(addProductAsync.rejected, (state, action) => {
         state.status = "failed";

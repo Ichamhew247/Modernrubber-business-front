@@ -6,12 +6,9 @@ import {
   getProductsAsync,
 } from "../slice/product-slice";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-// import EditProduct from "./EditProduct/EditProduct";
 import ProductTableInput from "../../productWorkSpaceTable/components/ProductTableInput";
 import AddProduct from "./Addproduct/Addproduct";
 import SearchContainer from "../../../../components/SearchContainer";
-// import { MdCancelPresentation } from "react-icons/md";
-// import { BiSave } from "@react-icons/all-files/bi/BiSave";
 import Modal from "../../../../components/Modal";
 import ProductInput from "./ProductInput";
 
@@ -20,7 +17,6 @@ export default function ProductTable() {
   const products = useSelector((state) => state.products.products);
   const [searchTerm, setSearchTerm] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-  // const [isEditTable, setIsEditTable] = useState(false);
   const [currentProducts, setCurrentProducts] = useState({});
   const [currentProduct, setCurrentProduct] = useState({});
   const [open, setOpen] = useState(false);

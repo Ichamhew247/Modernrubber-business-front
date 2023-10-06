@@ -14,6 +14,7 @@ import Datename from "../features/CRUD/Invoice/components/Date/DateName";
 import "/src/components/DatePicker.css";
 
 export default function Invoice() {
+  const [todos, setTodos] = useState([]);
   const [showInvoice, setShowInvoice] = useState(false);
   const [client, setClient] = useState("");
   const [name, setName] = useState("");
@@ -58,7 +59,11 @@ export default function Invoice() {
               </div>
             </section>
             <div className=" ">
-              <TableName inputValueMew={inputValueMew} />
+              <TableName
+                inputValueMew={inputValueMew}
+                setTodos={setTodos}
+                todos={todos}
+              />
             </div>
 
             <div>
@@ -94,9 +99,10 @@ export default function Invoice() {
                     </div>
                   </main>
                 </main>
+
                 <InputClient setClient={setClient} />
                 <main>
-                  <TodoForm />
+                  <TodoForm setTodos={setTodos} todos={todos} />
                 </main>
               </main>
               <main className="flex flex-col ml-5">

@@ -22,7 +22,6 @@ export default function LoginForm({ onSuccess }) {
     try {
       e.preventDefault();
       const result = validateLogin(input);
-      // console.dir(result);
       if (result) {
         return setError(result);
       }

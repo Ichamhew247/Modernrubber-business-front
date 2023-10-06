@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function Pagination({ postPerPage, totalPosts, paginate }) {
-  const [currentPage, setCurrentPage] = useState(1); // State สำหรับเก็บหน้าปัจจุบัน
+  const [currentPage, setCurrentPage] = useState(1);
 
   const pageNumbers = [];
 
@@ -10,21 +10,21 @@ export default function Pagination({ postPerPage, totalPosts, paginate }) {
   }
 
   return (
-    <div className="flex justify-center gap-6">
+    <div className="flex justify-center gap-6 mb-12">
       {pageNumbers.map((number) => (
         <div
           key={number}
           className={`${
             number === currentPage
-              ? "bg-slate-700 text-white"
-              : "bg-slate-300 hover:bg-slate-700 hover:text-white"
+              ? "bg-[#3a3022] text-white"
+              : "bg-neutral-500 text-white hover:bg-[#3a3022] hover:text-white"
           } py-2 px-3 rounded cursor-pointer`}
         >
           <button
             className="join-item"
             onClick={() => {
-              setCurrentPage(number); // อัพเดตหน้าปัจจุบันเมื่อคลิกปุ่ม
-              paginate(number); // เรียกฟังก์ชัน paginate
+              setCurrentPage(number);
+              paginate(number);
             }}
             href="#"
           >
@@ -35,24 +35,3 @@ export default function Pagination({ postPerPage, totalPosts, paginate }) {
     </div>
   );
 }
-
-// export default function Pagination({ postPerPage, totalPosts, paginate }) {
-//   const pageNumbers = [];
-
-//   for (let i = 1; i <= Math.ceil(totalPosts / postPerPage); i++) {
-//     pageNumbers.push(i);
-//   }
-//   return (
-//     <nav>
-//       <ul>
-//         {pageNumbers.map((number) => (
-//           <li key={number} className="flex">
-//             <a onClick={() => paginate(number)} href="#">
-//               {number}
-//             </a>
-//           </li>
-//         ))}
-//       </ul>
-//     </nav>
-//   );
-// }

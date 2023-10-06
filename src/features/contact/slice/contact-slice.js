@@ -12,8 +12,6 @@ export const contactAsync = createAsyncThunk(
   async (input, thunkApi) => {
     try {
       await authService.contact(input);
-      // const resFetchMe = await authService.fetchMe();
-      // return resFetchMe.data.user;
     } catch (err) {
       return thunkApi.rejectWithValue(err.response.data.message);
     }

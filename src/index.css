@@ -33,7 +33,6 @@
   display: none;
 }
 
-/* เริ่มต้นด้วยการซ่อนกล่องข้อความ */
 .absolute-text {
   position: absolute;
   top: 1;
@@ -45,20 +44,18 @@
   transition: opacity 0.1s ease-in-out;
 }
 
-/* เมื่อ hover แสดงกล่องข้อความ */
 #wantHover:hover .absolute-text {
   opacity: 1;
-  z-index: 1; /* กำหนดให้ข้อความอยู่บนสิ่งอื่น */
+  z-index: 1;
 }
 
-/* สไตล์ข้อความในกล่องข้อความแสดงเมื่อ hover */
 .absolute-text .content {
   background-color: white;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
-  z-index: 2; /* กำหนดให้อยู่ด้านบนของพื้นหลัง */
+  z-index: 2;
   width: fit-content;
 }
 
@@ -97,7 +94,6 @@ input:focus {
 #price,
 #cash {
   width: 180px;
-  /* border: solid red; */
 }
 #day {
   width: 148px;
@@ -110,11 +106,3 @@ input:focus {
     display: none !important;
   }
 }
-
-/* body,
-html {
-  background: url("/src/assets/wave.svg") no-repeat;
-  background-position: center 110px;
-  background-size: cover;
-  
-} */
