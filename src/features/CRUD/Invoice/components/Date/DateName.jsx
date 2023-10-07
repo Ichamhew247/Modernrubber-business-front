@@ -1,3 +1,3 @@
-export default function Datename({ inputValueMew2 }) {
-  return <div>{inputValueMew2 || "-"}</div>;
+export default function Datename({ dateOutSideTable }) {
+  return <div>{dateOutSideTable || "-"}</div>;
 }

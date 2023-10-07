@@ -29,7 +29,10 @@ export default function Invoice() {
       <main className="bg-white  flex flex-col justify-between m-5 p-12  xl:max-w-4xl xl:mx-auto rounded shadow">
         {showInvoice ? (
           <div>
-            <div className="items-center  mt-24  ">
+            <div
+              className="items-center  mt-6
+              "
+            >
               <HeadName
                 name={name}
                 address={address}
@@ -99,8 +102,8 @@ export default function Invoice() {
                     </div>
                   </main>
                 </main>
+                <InputClient client={client} setClient={setClient} />
 
-                <InputClient setClient={setClient} />
                 <main>
                   <TodoForm setTodos={setTodos} todos={todos} />
                 </main>
@@ -108,10 +111,15 @@ export default function Invoice() {
               <main className="flex flex-col ml-5">
                 <HeadNameInput
                   setName={setName}
+                  name={name}
                   setAddress={setAddress}
+                  address={address}
                   setEmail={setEmail}
+                  email={email}
                   setCompanyTel={setCompanyTel}
+                  companyTel={companyTel}
                   setDescript={setDescript}
+                  descript={descript}
                 />
                 <button
                   onClick={() => setShowInvoice(true)}

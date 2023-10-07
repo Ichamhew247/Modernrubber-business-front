@@ -11,10 +11,10 @@ export default function WorkSystems() {
   return (
     <>
       <main className=" mt-[150px]">
-        <div className=" flex justify-center text-xl mb-8 font-bold ">
+        <div className="no-print flex justify-center text-xl mb-8 font-bold ">
           เลือกการทำงานที่ต้องการ
         </div>
-        <div className="flex justify-center gap-5 ">
+        <div className="no-print flex justify-center gap-5 ">
           <button
             onClick={() => {
               setOpenInvoice(true);

@@ -10,6 +10,23 @@ export default function HeadNameInput({
   descript,
   setDescript,
 }) {
+  const handleInputChange = (e) => {
+    const fieldName = e.target.name;
+    const fieldValue = e.target.value;
+
+    if (fieldName === "name") {
+      setName(fieldValue);
+    } else if (fieldName === "address") {
+      setAddress(fieldValue);
+    } else if (fieldName === "email") {
+      setEmail(fieldValue);
+    } else if (fieldName === "companyTel") {
+      setCompanyTel(fieldValue);
+    } else if (fieldName === "descript") {
+      setDescript(fieldValue);
+    }
+  };
+
   return (
     <>
       <input
@@ -17,45 +34,40 @@ export default function HeadNameInput({
         name="name"
         id="name"
         placeholder="ห้างหุ้นส่วนจำกัด โมเดิร์นรับเบอร์ แอนด์ ซัพพลาย"
-        autoComplete="off"
         value={name}
-        onChange={(e) => setName(e.target.value)}
+        onChange={handleInputChange}
       />
       <input
         type="text"
         name="address"
         id="address"
         placeholder="507 ซอยเอกชัย 46 แขวงคลองบางพราน เขตบางบอน กรุงเทพ 10150"
-        autoComplete="off"
         value={address}
-        onChange={(e) => setAddress(e.target.value)}
+        onChange={handleInputChange}
       />
       <input
         type="email"
         name="email"
         id="email"
         placeholder="modernrubber1@hotmail.com"
-        autoComplete="off"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={handleInputChange}
       />
       <input
         type="text"
         name="companyTel"
         id="companyTel"
         placeholder="02-8982250"
-        autoComplete="off"
         value={companyTel}
-        onChange={(e) => setCompanyTel(e.target.value)}
+        onChange={handleInputChange}
       />
       <input
-        type="client"
+        type="text"
         name="descript"
         id="descript"
         placeholder="ได้รับบิลไว้ตรวจสอบและพร้อมจะชำระเงินให้ตามรายการข้างล่างนี้"
-        autoComplete="off"
         value={descript}
-        onChange={(e) => setDescript(e.target.value)}
+        onChange={handleInputChange}
       />
     </>
   );

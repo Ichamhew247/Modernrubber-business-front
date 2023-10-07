@@ -5,7 +5,7 @@ import DropDown from "../layout/DropDown";
 export default function Navbar() {
   return (
     <>
-      <div className="z-50 fixed top-0 left-0 right-0 bg-opacity-70 pb-4 bg-[#ffffff] shadow-2xl">
+      <div className="no-print z-50 fixed top-0 left-0 right-0 bg-opacity-70 pb-4 bg-[#ffffff] shadow-2xl">
         <div className="text-[#3a3022] flex justify-between items-center mt-2  ">
           <div className="flex gap-[38px]  ml-[160px] text-[18px] ">
             <Link to="/">
