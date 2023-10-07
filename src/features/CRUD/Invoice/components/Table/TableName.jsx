@@ -1,4 +1,4 @@
-export default function TableName({ inputValueMew, todos }) {
+export default function TableName({ dateInside, todos }) {
   const total = todos.reduce(
     (accumulator, todo) => accumulator + +todo.priceValue,
     0
@@ -36,7 +36,7 @@ export default function TableName({ inputValueMew, todos }) {
               <tr key={index}>
                 <td className="h-4">{index + 1}</td>
                 <td className="">{currentTodo.taxValue || ""}</td>
-                <td>{index === 0 ? inputValueMew : ""}</td>
+                <td>{index === 0 ? dateInside : ""}</td>
                 <td>
                   {currentTodo.priceValue
                     ? (+integerPart).toLocaleString("en-US")

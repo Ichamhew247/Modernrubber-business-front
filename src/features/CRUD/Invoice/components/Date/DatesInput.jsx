@@ -1,9 +1,9 @@
 import { isValid, parse } from "date-fns";
 
-function DatesInput({ onDateChange, inputValueMew, setInputValueMew }) {
+function DatesInput({ onDateChange, dateInside, setDateInside }) {
   const handleDateChange = (e) => {
     const dateValue = e.target.value;
-    setInputValueMew(dateValue);
+    setDateInside(dateValue);
 
     if (/^\d{2}\/\d{2}\/\d{4}$/.test(dateValue)) {
       const parsedDate = parse(dateValue, "dd/MM/yyyy", new Date());
@@ -22,7 +22,7 @@ function DatesInput({ onDateChange, inputValueMew, setInputValueMew }) {
       <input
         type="text"
         placeholder="dd/mm/yyyy"
-        value={inputValueMew}
+        value={dateInside}
         onChange={handleDateChange}
       />
     </div>

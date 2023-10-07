@@ -10,7 +10,6 @@ import TableName from "../features/CRUD/Invoice/components/Table/TableName";
 import TodoForm from "../features/CRUD/Invoice/components/Todo/TodoForm";
 import DatesInput from "../features/CRUD/Invoice/components/Date/DatesInput";
 import DateTableInput from "../features/CRUD/Invoice/components/Date/DateTableInput";
-import Datename from "../features/CRUD/Invoice/components/Date/DateName";
 import "/src/components/DatePicker.css";
 
 export default function Invoice() {
@@ -22,8 +21,8 @@ export default function Invoice() {
   const [email, setEmail] = useState("");
   const [companyTel, setCompanyTel] = useState("");
   const [descript, setDescript] = useState("");
-  const [inputValueMew2, setInputValueMew2] = useState("");
-  const [inputValueMew, setInputValueMew] = useState("");
+  const [dateOutside, setDateOutside] = useState("");
+  const [dateInside, setDateInside] = useState("");
   return (
     <>
       <main className="bg-white  flex flex-col justify-between m-5 p-12  xl:max-w-4xl xl:mx-auto rounded shadow">
@@ -49,9 +48,7 @@ export default function Invoice() {
             </div>
             <div className="flex items-center w-[580px] justify-end  gap-2 ">
               <div>วันที่ :</div>
-              <div className="text-sm ">
-                <Datename inputValueMew2={inputValueMew2} />
-              </div>
+              <div className="text-sm ">{dateOutside || "-"}</div>
             </div>
 
             <section className=" flex justify-between   ">
@@ -63,7 +60,7 @@ export default function Invoice() {
             </section>
             <div className=" ">
               <TableName
-                inputValueMew={inputValueMew}
+                dateInside={dateInside}
                 setTodos={setTodos}
                 todos={todos}
               />
@@ -93,12 +90,12 @@ export default function Invoice() {
                   <main className="flex items-baseline">
                     <div>วันที่ :</div>
 
-                    <DateTableInput setInputValueMew2={setInputValueMew2} />
+                    <DateTableInput setDateOutside={setDateOutside} />
                   </main>
                   <main className="flex items-baseline">
                     <div>วันที่ออกใบกำกับภาษี :</div>
                     <div>
-                      <DatesInput setInputValueMew={setInputValueMew} />
+                      <DatesInput setDateInside={setDateInside} />
                     </div>
                   </main>
                 </main>
