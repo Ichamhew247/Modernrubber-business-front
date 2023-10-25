@@ -7,6 +7,7 @@ import Invoice from "../pages/InvoicePage";
 import FileUpload from "../features/CRUD/Products/components/ProductImageTable";
 import Header from "../layout/Header";
 import { Outlet } from "react-router-dom";
+import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,9 +24,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/work",
-        // <ProtectedRoute>
-        element: <WorkSystemsPage />,
-        // </ProtectedRoute>
+
+        element: (
+          <ProtectedRoute>
+            <WorkSystemsPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/allproduct",

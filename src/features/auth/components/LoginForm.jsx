@@ -35,7 +35,7 @@ export default function LoginForm({ onSuccess }) {
   };
   return (
     <>
-      <div className="z-50">
+      <div className="z-50 p-4">
         <form className=" flex flex-col gap-4 mb-5" onSubmit={handleSubmitForm}>
           <div>
             <LoginInput
@@ -59,7 +59,7 @@ export default function LoginForm({ onSuccess }) {
             />
             {error.password && <InputErrormessage message={error.password} />}
           </div>
-          <button className="text-center rounded-full bg-[#6ABD65] text-white transition-all duration-300">
+          <button className="text-center rounded-full bg-[#6ABD65] p-2 text-white transition-all duration-300">
             Sign in
           </button>
         </form>

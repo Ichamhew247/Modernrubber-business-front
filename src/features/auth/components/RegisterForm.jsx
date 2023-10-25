@@ -63,6 +63,7 @@ export default function RegisterForm({ onSuccess }) {
         </div>
         <div>
           <RegisterInput
+            type="password"
             placeholder="รหัสผ่าน"
             name="password"
             value={input.password}
@@ -73,6 +74,7 @@ export default function RegisterForm({ onSuccess }) {
         </div>
         <div>
           <RegisterInput
+            type="password"
             placeholder="ยืนยันรหัสผ่าน"
             name="confirmPassword"
             value={input.confirmPassword}
@@ -83,14 +85,16 @@ export default function RegisterForm({ onSuccess }) {
             <InputErrormessage message={error.confirmPassword} />
           )}
         </div>
-        <button className="text-center rounded-full bg-[#6ABD65] text-white transition-all duration-300">
+        <button className="text-center rounded-full p-2 bg-[#6ABD65] text-white transition-all duration-300">
           Sign up
         </button>
       </form>
-      <div className="flex gap-4 no-underline text-[#7E7E7E] justify-center">
-        <div>มีผู้ใช้แล้ว ? </div>
-        <div>
-          <LoginContainer />
+      <div className="flex py-4  justify-center   no-underline text-[#7E7E7E] ">
+        <div className="flex gap-4 items-center">
+          <div>มีผู้ใช้แล้ว ? </div>
+          <div>
+            <LoginContainer />
+          </div>
         </div>
       </div>
     </>

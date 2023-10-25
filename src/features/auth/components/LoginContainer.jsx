@@ -7,7 +7,7 @@ export default function LoginContainer() {
   return (
     <>
       <button
-        className="hover:text-[#6ABD65] hover:bg-gray-100 px-4 py-4  rounded-sm transition-all duration-300"
+        className="hover:text-[#6ABD65] hover:bg-gray-100   rounded-sm transition-all duration-300"
         onClick={() => setOpen(true)}
       >
         เข้าสู่ระบบ
