@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Parisienne&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -27,6 +26,11 @@
 .addProductIcon:hover {
   font-size: 42px;
   fill: #3a3022;
+}
+.searchIcon {
+  font-size: 28px;
+  fill: #3a3022;
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar {
@@ -64,9 +68,10 @@ html {
   box-sizing: border-box;
   height: 100%;
   margin: 0;
-  font-family: "Noto Sans Thai";
+  font-family: "Manrope";
   overflow-x: hidden;
-  background-color: #f1f1f1;
+  background-color: #3e3e3e;
+  font-size: 18px;
 }
 
 th,

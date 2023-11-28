@@ -4,12 +4,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        // body: ["Parisienne"],
-        body: ["Parisienne"],
+        body: ["Manrope"],
       },
-      backgroundImage: {
-        greenImage: "url('/src/assets/greenwave.svg')",
-      },
+      // backgroundImage: {
+      //   greenImage: "url('/src/assets/imageProduct/greenwave.svg')",
+      // },
     },
   },
   plugins: [require("daisyui")],

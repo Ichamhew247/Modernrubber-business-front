@@ -1,58 +1,61 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const searchProductAsync = createAsyncThunk(
-  "products/searchProductAsync",
+export const searchCompanyListAsync = createAsyncThunk(
+  "companyLists/searchCompanyListAsync",
   async (searchTerm) => {
     const response = await fetch(
       `http://localhost:9999/products/searchProduct?keyword=${searchTerm}`
     );
     if (response.ok) {
-      const products = await response.json();
-      return { products };
+      const companyLists = await response.json();
+      return { companyLists };
     }
   }
 );
 
-export const getProductsAsync = createAsyncThunk(
-  "products/getProducts",
+export const getCompanyListAsync = createAsyncThunk(
+  "companyLists/getCompanyListAsync",
   async () => {
     const response = await fetch("http://localhost:9999/products/getProduct");
     if (response.ok) {
-      const products = await response.json();
-      return { products };
+      const companyLists = await response.json();
+      return { companyLists };
     }
   }
 );
 
-export const addProductAsync = createAsyncThunk(
-  "todos/addProductAsync",
-  async (payload, { dispatch }) => {
-    const response = await fetch(
-      "http://localhost:9999/products/createProduct",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nameProduct: payload.nameProduct,
-          nameProductEtc: payload.nameProductEtc,
-          description: payload.description,
-          type: payload.type,
-          price: payload.price,
-        }),
+export const addCompanyListAsync = createAsyncThunk(
+  "companyLists/addCompanyListAsync",
+  async (companyListData, { dispatch }) => {
+    try {
+      const response = await fetch(
+        "http://localhost:9999/products/createproduct",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(companyListData),
+        }
+      );
+
+      if (response.ok) {
+        const companyList = await response.json();
+        dispatch(getCompanyListAsync());
+        return { companyList };
+      } else {
+        console.error("Failed to add product");
+        throw new Error(response.statusText);
       }
-    );
-    if (response.ok) {
-      const product = await response.json();
-      dispatch(getProductsAsync());
-      return { product };
+    } catch (error) {
+      console.error("Error adding product:", error);
+      throw new Error(error.message);
     }
   }
 );
 
-export const deleteProductAsync = createAsyncThunk(
-  "products/deleteProduct",
+export const deleteCompanyListAsync = createAsyncThunk(
+  "companyLists/deleteCompanyListAsync",
   async (payload) => {
     fetch(`http://localhost:9999/products/deleteProduct/${payload.id}`, {
       method: "DELETE",
@@ -61,8 +64,8 @@ export const deleteProductAsync = createAsyncThunk(
   }
 );
 
-export const editProductAsync = createAsyncThunk(
-  "products/editProductAsync",
+export const editCompanyListAsync = createAsyncThunk(
+  "companyLists/editCompanyListAsync",
   async (payload) => {
     const response = await fetch(
       `http://localhost:9999/products/editProduct/${payload.id}`,
@@ -72,11 +75,12 @@ export const editProductAsync = createAsyncThunk(
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          nameProduct: payload.nameProduct,
-          nameProductEtc: payload.nameProductEtc,
-          description: payload.description,
-          type: payload.type,
-          price: payload.price,
+          // customerCode: payload.customerCode,
+          companyName: payload.companyName,
+          address: payload.address,
+          email: payload.email,
+          contactNumber: payload.contactNumber,
+          note: payload.note,
         }),
       }
     );
@@ -84,77 +88,85 @@ export const editProductAsync = createAsyncThunk(
       await response.json();
       return {
         id: payload.id,
-        nameProduct: payload.nameProduct,
-        nameProductEtc: payload.nameProductEtc,
-        description: payload.description,
-        type: payload.type,
-        price: payload.price,
+        // customerCode: payload.customerCode,
+        companyName: payload.companyName,
+        address: payload.address,
+        email: payload.email,
+        contactNumber: payload.contactNumber,
+        note: payload.note,
       };
     }
   }
 );
 
 const productSlice = createSlice({
-  name: "products",
+  name: "companyLists",
   initialState: {
-    products: [],
+    companyLists: [],
     searchResults: [],
     status: "idle",
     error: null,
   },
+
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(searchProductAsync.fulfilled, (state, action) => {
+      .addCase(searchCompanyListAsync.fulfilled, (state, action) => {
         state.status = "succeeded";
-        if (action.payload.products) {
-          state.searchResults = action.payload.products;
+        if (action.payload.companyLists) {
+          state.searchResults = action.payload.companyLists;
         } else {
           state.searchResults = [];
         }
       })
-      .addCase(searchProductAsync.pending, (state) => {
+      .addCase(searchCompanyListAsync.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(searchProductAsync.rejected, (state, action) => {
+      .addCase(searchCompanyListAsync.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })
 
-      .addCase(getProductsAsync.pending, (state) => {
+      .addCase(getCompanyListAsync.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(getProductsAsync.fulfilled, (state, action) => {
+      .addCase(getCompanyListAsync.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.products = action.payload.products;
+        state.companyLists = action.payload.companyLists; // ให้ข้อมูลเป็น action.payload.products
       })
-      .addCase(getProductsAsync.rejected, (state, action) => {
+
+      .addCase(getCompanyListAsync.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })
-      .addCase(addProductAsync.pending, (state) => {
+      .addCase(addCompanyListAsync.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(addProductAsync.fulfilled, (state, action) => {
+      .addCase(addCompanyListAsync.fulfilled, (state, action) => {
         if (action.payload) {
-          state.products.push(action.payload.product);
+          state.companyLists.push(action.payload.product); // Updated key
+
           state.status = "succeeded";
         }
       })
 
-      .addCase(addProductAsync.rejected, (state, action) => {
+      .addCase(addCompanyListAsync.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })
-      .addCase(editProductAsync.fulfilled, (state, action) => {
-        const editProductAsync = action.payload;
-        state.products = state.products.map((product) =>
-          product.id === editProductAsync.id ? editProductAsync : product
+      .addCase(editCompanyListAsync.fulfilled, (state, action) => {
+        const editedCompanyList = action.payload;
+
+        state.companyLists = state.companyLists.map((companyList) =>
+          companyList.id === editedCompanyList.id
+            ? editedCompanyList
+            : companyList
         );
       })
-      .addCase(deleteProductAsync.fulfilled, (state, action) => {
-        state.products = state.products.filter(
-          (product) => product.id !== action.payload.id
+
+      .addCase(deleteCompanyListAsync.fulfilled, (state, action) => {
+        state.companyLists = state.companyLists.filter(
+          (companyList) => companyList.id !== action.payload.id // Updated key
         );
       });
   },

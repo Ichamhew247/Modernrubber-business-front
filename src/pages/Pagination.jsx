@@ -10,18 +10,19 @@ export default function Pagination({ postPerPage, totalPosts, paginate }) {
   }
 
   return (
-    <div className="flex justify-center gap-6 mb-12">
+    <>
+      {/* <div className="flex justify-center gap-6 mb-12"> */}
       {pageNumbers.map((number) => (
         <div
           key={number}
           className={`${
             number === currentPage
-              ? "bg-[#3a3022] text-white"
-              : "bg-neutral-500 text-white hover:bg-[#3a3022] hover:text-white"
-          } py-2 px-3 rounded cursor-pointer`}
+              ? "bg-black text-white "
+              : "bg-[#3E3E3E] text-white hover:bg-black hover:text-white"
+          } rounded-full cursor-pointer`}
         >
           <button
-            className="join-item"
+            className="join-item w-10 h-10 "
             onClick={() => {
               setCurrentPage(number);
               paginate(number);
@@ -32,6 +33,7 @@ export default function Pagination({ postPerPage, totalPosts, paginate }) {
           </button>
         </div>
       ))}
-    </div>
+      {/* </div> */}
+    </>
   );
 }

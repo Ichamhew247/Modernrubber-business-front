@@ -1,30 +1,40 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import ProductInput from "../ProductInput";
-import { addProductAsync } from "../../slice/product-slice";
+import { addCompanyListAsync } from "../../slice/product-slice";
 export default function AddProductForm({ onClose }) {
   const dispatch = useDispatch();
 
-  const [nameProduct, setNameProduct] = useState("");
-  const [productNameEtc, setProductNameEtc] = useState("");
-  const [priceProduct, setPriceProduct] = useState("");
-  const [descriptProduct, setDescriptProduct] = useState("");
-  const [typeProduct, setTypeProduct] = useState("");
+  // const [customerCode, setCustomerCode] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
+  const [note, setNote] = useState("");
 
   const handleSubmitForm = async (event) => {
     event.preventDefault();
+
     try {
-      const response = await dispatch(
-        addProductAsync({
-          nameProduct: nameProduct,
-          nameProductEtc: productNameEtc,
-          description: descriptProduct,
-          type: typeProduct,
-          price: priceProduct,
-        })
-      );
+      const companyListData = {
+        // customerCode: customerCode,
+        companyName: companyName,
+        address: address,
+        email: email,
+        contactNumber: contactNumber,
+        note: note,
+      };
+
+      const response = dispatch(addCompanyListAsync(companyListData));
       console.log("Product added:", response);
-      onClose();
+      console.log("mew");
+      // setCustomerCode("");
+      setCompanyName("");
+      setAddress("");
+      setEmail("");
+      setContactNumber("");
+      setNote("");
+      await onClose();
     } catch (error) {
       console.error("Error adding product:", error);
     }
@@ -33,30 +43,35 @@ export default function AddProductForm({ onClose }) {
   return (
     <>
       <form onSubmit={handleSubmitForm} className="flex flex-col gap-4 mb-5">
-        <ProductInput
+        {/* <ProductInput
           placeholder="ชื่อสินค้า"
-          value={nameProduct}
-          onChange={(e) => setNameProduct(e.target.value)}
-        />
+          value={customerCode}
+          onChange={(e) => setCustomerCode(e.target.value)}
+        /> */}
         <ProductInput
           placeholder="ชื่อสินค้าอื่น ๆ"
-          value={productNameEtc}
-          onChange={(e) => setProductNameEtc(e.target.value)}
+          value={companyName}
+          onChange={(e) => setCompanyName(e.target.value)}
         />
         <ProductInput
           placeholder="ราคาโดยประมาณ*"
-          value={priceProduct}
-          onChange={(e) => setPriceProduct(e.target.value)}
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
         />
         <ProductInput
           placeholder="รายละเอียดสินค้า"
-          value={descriptProduct}
-          onChange={(e) => setDescriptProduct(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <ProductInput
           placeholder="ชนิดของสินค้า"
-          value={typeProduct}
-          onChange={(e) => setTypeProduct(e.target.value)}
+          value={contactNumber}
+          onChange={(e) => setContactNumber(e.target.value)}
+        />
+        <ProductInput
+          placeholder="ชนิดของสินค้า"
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
         />
 
         <button

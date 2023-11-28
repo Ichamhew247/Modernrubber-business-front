@@ -1,15 +1,16 @@
+import { useTranslation } from "react-i18next";
+
 export default function Content() {
+  const { t } = useTranslation();
   return (
     <>
-      <div className=" text-[32px] ">
-        ผู้ผลิตอะไหล่เครื่องจักรโรงงานอุตสาหกรรม
-      </div>
-      <hr className="w-[78%] m-auto" />
-      <p>
-        ห้างหุ้นส่วนจำกัด โมเดิร์นรับเบอร์แอนด์ซัพพลาย
-        รับผลิตและจำหน่ายอะไหล่เครื่องจักรโรงงานอุตสาหกรรม
+      <hr className="w-[78%] m-auto mt-[-30px]" />
+      <p className="tracking-wider">
+        {t(
+          "Modern Rubber and Supply specializes in machining and supplying industrial machinery components"
+        )}
         <br />
-        โดยช่างผู้เชี่ยวชาญ ประสบการณ์การทำงานมากกว่า 20 ปี
+        {t("By expert technicians with over 20 years of experience.")}
       </p>
     </>
   );

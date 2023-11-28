@@ -2,49 +2,70 @@ import MapContainer from "../../../features/map/components/MapContainer";
 import { FiMapPin } from "react-icons/fi";
 import { FaPhone } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
-import { FaLine } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
+import { GoLinkExternal } from "react-icons/go";
 export default function Map() {
+  const { t } = useTranslation();
   return (
     <>
-      <div>
-        <div className="flex flex-col  items-center  mt-44">
-          <div className="text-2xl font-medium">ติดต่อโรงงาน</div>
-          <div className="text-xl font-light">
-            เวลาทำการ จันทร์ - เสาร์ 8.00 - 17.00
+      <main className="tracking-wider">
+        <div className="text-[#2D2D2D] mt-[100px] pt-12 bg-[#2D2D2D]">d</div>
+        <div className="bg-[#2D2D2D] flex flex-col gap-2 items-center">
+          <p className="text-white mt-[-20px] tracking-wider font-extrabold    text-[48px] ">
+            {t("ContactUsTitle")}
+          </p>
+          <p className="text-white">{t("BusinessHr")}</p>
+        </div>
+        <div className=" bg-[url('/src/assets/blackwave.svg')] bg-no-repeat h-[600px] bg-center mt-[-40px] "></div>
+      </main>
+
+      <main className="tracking-widest flex justify-center  mt-[-600px]">
+        <div className="flex   w-[1200px] h-[500px]  ">
+          <MapContainer />
+
+          <div className="flex flex-col   text-white  bg-black p-9 ">
+            <main className="flex gap-6">
+              <FiMapPin className="text-lg mt-5" />
+              <div className="mt-5 text-[16px]">
+                {t("Address")}
+                <br />
+                {t("Address2")} <br />
+                {t("Address3")}
+              </div>
+            </main>
+            <main className="flex gap-6 ">
+              <FaPhone className="text-lg mt-5" />
+              <p className="mt-5 text-[16px]">02-898-2250, 081-692-2780</p>
+            </main>
+            <main className="flex items-end gap-6">
+              <GrMail className="text-lg mt-6" />
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=modernrubber1@hotmail.com"
+                className="mt-5 text-[16px] "
+              >
+                modernrubber1@hotmail.com
+              </a>
+            </main>
+
+            <main className="mt-10 flex flex-col items-center">
+              <div className="   w-28">
+                <img src="https://qr-official.line.me/gs/M_754kyrxu_BW.png?oat_content=qr" />
+              </div>
+              <div className="flex gap-1    rounded-md">
+                <a
+                  className="mt-3 text-[16px] tracking-wider underline ml-[-12px]"
+                  href="https://lin.ee/c866PiB"
+                >
+                  @modernrubber1
+                </a>
+                <GoLinkExternal className="w-3 mt-3 " />
+              </div>
+            </main>
           </div>
         </div>
-      </div>
-      <div>
-        <div className="flex justify-center">
-          <div className="z-10 flex   bg-[#c69653] w-[1200px] h-[500px]  ">
-            <MapContainer />
-            <div className="flex flex-col gap-6   text-white  bg-[#3A3022] p-9 ">
-              <main className="flex gap-6">
-                <FiMapPin className="text-lg mt-5" />
-                <p className="mt-5">
-                  507 หมู่บ้านโมเดิร์นเฮ้าส์ ซอยเอกชัย 46 แขวงคลองบางพราน <br />{" "}
-                  เขตบางบอน กรุงเทพ 10150
-                </p>
-              </main>
-              <main className="flex gap-6">
-                <FaPhone className="text-lg mt-5" />
-                <p className="mt-5">02-898-2250, 081-692-2780</p>
-              </main>
-              <main className="flex gap-6">
-                <GrMail className="text-lg mt-5" />
-                <p className="mt-5">modernrubber1@hotmail.com</p>
-              </main>
-              <main className="flex gap-6">
-                <FaLine className="text-lg mt-5" />
-                <p className="mt-5">@modernrubber1</p>
-              </main>
-              <main className="ml-10 mt-6 text-xs w-28">
-                <img src="/src/assets/line.png " />
-              </main>
-            </div>
-          </div>
-        </div>
-      </div>
+      </main>
     </>
   );
 }

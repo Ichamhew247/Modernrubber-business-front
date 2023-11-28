@@ -1,63 +1,52 @@
 import { useState } from "react";
 import InvoicePage from "../pages/InvoicePage";
-import ProductTable from "../features/CRUD/Products/components/ProductTable";
-import FileUpload from "../features/CRUD/Products/components/ProductImageTable";
-
+import ProductImageTable from "../features/CRUD/Products/components/ProductImageTable";
+import ProtectedRoute from "../features/auth/components/ProtectedRoute";
+import CompanyList from "../features/CRUD/Products/components/CompanyList";
 export default function WorkSystems() {
-  const [productSearch, setProductSearch] = useState(false);
-  const [openInvoice, setOpenInvoice] = useState(false);
-  const [openImageTable, setOpenImageTable] = useState(true);
+  const [selectedTab, setSelectedTab] = useState("image"); // ให้มีค่าเริ่มต้นเป็น "image"
 
   return (
     <>
-      <main className=" mt-[150px]">
-        <div className="no-print flex justify-center text-xl mb-8 font-bold ">
-          เลือกการทำงานที่ต้องการ
-        </div>
-        <div className="no-print flex justify-center gap-5 ">
-          <button
-            onClick={() => {
-              setOpenInvoice(true);
-              setProductSearch(false);
-              setOpenImageTable(false);
-            }}
-            className={`bg-[#8A4819] hover:bg-[#3A3022] py-2 px-4 w-36 rounded-full text-white transition-all duration-300 ${
-              openInvoice ? "bg-[#3c3224]" : ""
-            }`}
-          >
-            Invoice
-          </button>
+      <ProtectedRoute>
+        <main className="mt-[150px]">
+          <div className="no-print flex justify-center text-xl mb-8 font-bold ">
+            เลือกการทำงานที่ต้องการ
+          </div>
+          <div className="no-print flex justify-center gap-5 ">
+            <button
+              onClick={() => setSelectedTab("invoice")}
+              className={`bg-[#8A4819] hover:bg-[#3A3022] py-2 px-4 w-36 rounded-full text-white transition-all duration-300 ${
+                selectedTab === "invoice" ? "bg-[#3c3224]" : ""
+              }`}
+            >
+              Invoice
+            </button>
 
-          <button
-            onClick={() => {
-              setProductSearch(true);
-              setOpenInvoice(false);
-              setOpenImageTable(false);
-            }}
-            className={`bg-[#8A4819] hover:bg-[#3A3022] py-2 px-4 w-36 rounded-full text-white transition-all duration-300 ${
-              productSearch ? "bg-[#3c3224]" : ""
-            }`}
-          >
-            Product Table
-          </button>
-          <button
-            onClick={() => {
-              setOpenImageTable(true);
-              setProductSearch(false);
-              setOpenInvoice(false);
-            }}
-            className={`bg-[#8A4819] hover:bg-[#3A3022] py-2 px-4 w-36 rounded-full text-white transition-all duration-300 ${
-              openImageTable ? "bg-[#3c3224]" : ""
-            }`}
-          >
-            Product Image
-          </button>
-        </div>
-        <hr className="m-5" />
-        {productSearch ? <ProductTable /> : null}
-        {openInvoice ? <InvoicePage /> : null}
-        {openImageTable ? <FileUpload /> : null}
-      </main>
+            <button
+              onClick={() => setSelectedTab("product")}
+              className={`bg-[#8A4819] hover:bg-[#3A3022] py-2 px-4 w-36 rounded-full text-white transition-all duration-300 ${
+                selectedTab === "product" ? "bg-[#3c3224]" : ""
+              }`}
+            >
+              Company list
+            </button>
+            <button
+              onClick={() => setSelectedTab("image")}
+              className={`bg-[#8A4819] hover:bg-[#3A3022] py-2 px-4 w-36 rounded-full text-white transition-all duration-300 ${
+                selectedTab === "image" ? "bg-[#3c3224]" : ""
+              }`}
+            >
+              Product table
+            </button>
+          </div>
+          <hr className="m-5" />
+
+          {selectedTab === "product" && <CompanyList />}
+          {selectedTab === "invoice" && <InvoicePage />}
+          {selectedTab === "image" && <ProductImageTable />}
+        </main>
+      </ProtectedRoute>
     </>
   );
 }

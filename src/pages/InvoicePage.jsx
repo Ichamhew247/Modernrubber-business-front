@@ -12,7 +12,7 @@ import DatesInput from "../features/CRUD/Invoice/components/Date/DatesInput";
 import DateTableInput from "../features/CRUD/Invoice/components/Date/DateTableInput";
 import "/src/components/DatePicker.css";
 
-export default function Invoice() {
+export default function InvoicePage() {
   const [todos, setTodos] = useState([]);
   const [showInvoice, setShowInvoice] = useState(false);
   const [client, setClient] = useState("");

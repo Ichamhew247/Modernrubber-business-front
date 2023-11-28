@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import InputErrormessage from "../../../features/auth/components/InputErrormessage";
 import ContactInput from "../../../features/contact/ContactInput";
 import validateContact from "../../../features/auth/validators/validate-contact";
@@ -9,6 +10,7 @@ const initialInput = {
   email: "",
 };
 export default function Contact() {
+  const { t } = useTranslation();
   const [input, setInput] = useState(initialInput);
   const [error, setError] = useState({});
 
@@ -34,18 +36,17 @@ export default function Contact() {
   return (
     <div>
       <div>
-        <div className="flex flex-col items-center bg-[#3a3022]    py-10 m">
-          <div className="font-bold text-lg text-white tracking-wider">
-            หากต้องการข้อมูลเพิ่มเติม สามารถกรอกอีเมลหรือเบอร์โทร
-            เพื่อให้เราติดต่อกลับท่านได้
+        <div className="flex flex-col items-center bg-black    py-10 m">
+          <div className="font-bold text-[16px]  text-white tracking-widest">
+            {t("ContactInbox")}
           </div>
           <form
             className="flex items-baseline gap-4 mt-4 "
             onSubmit={handleSubmitForm}
           >
-            <div>
+            <div className="text-[16px]">
               <ContactInput
-                placeholder="กรอกอีเมลหรือเบอร์โทรศัพท์"
+                placeholder={t("placeholderContact")}
                 name="email"
                 value={input.email}
                 onChange={handleChangeInput}
@@ -53,8 +54,8 @@ export default function Contact() {
               />
               {error.email && <InputErrormessage message={error.email} />}
             </div>
-            <button className="rounded text-base  border-white hover:bg-zinc-800 text-white hover:text-white border-2 hover:border-zinc-800 p-4  w-28 h-10 flex items-center justify-center transition-all duration-300">
-              SEND
+            <button className="rounded   hover:bg-zinc-800 text-white hover:text-white border-2 border-[#3E3E3E] hover:border-[#3E3E3E] p-4  w-28 h-10 flex items-center justify-center transition-all duration-300">
+              {t("Send")}
             </button>
           </form>
         </div>

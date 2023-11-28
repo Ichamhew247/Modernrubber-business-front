@@ -43,8 +43,8 @@ export default function Carousel({ imageCarousel }) {
             setAutoPlay(true);
           }}
         >
-          <div className="carousal_wrapper bg-stone-600">
-            <div className="bg-slate-500">
+          <div className="carousal_wrapper ">
+            <div className="">
               {imageCarousel.map((imageCarousels, index) => {
                 return (
                   <div
