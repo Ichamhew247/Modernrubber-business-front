@@ -8,20 +8,22 @@ export default function Map() {
   const { t } = useTranslation();
   return (
     <>
-      <main className="tracking-wider">
-        <div className="text-[#2D2D2D] mt-[100px] pt-12 bg-[#2D2D2D]">d</div>
+      <main>
+        <div className="text-[#2D2D2D] mt-[90px] pt-12 bg-[#2D2D2D]">d</div>
         <div className="bg-[#2D2D2D] flex flex-col gap-2 items-center">
-          <p className="text-white mt-[-20px] tracking-wider font-extrabold    text-[48px] ">
+          <p className=" text-white mt-[-20px] tracking-wider font-extrabold    text-[48px] ">
             {t("ContactUsTitle")}
           </p>
-          <hr className="w-[78%]  border border-white" />
-          <p className="text-white">{t("BusinessHr")}</p>
+          <hr className="w-[78%]  border border-white " />
+          <p className="text-white tracking-widest xl:pb-16 xl:pt-4">
+            {t("BusinessHr")}
+          </p>
         </div>
         <div className=" bg-[url('/src/assets/blackwave.svg')] bg-no-repeat h-[600px] bg-center mt-[-40px] "></div>
       </main>
 
       <main className="tracking-widest flex justify-center  mt-[-600px]">
-        <div className="flex   w-[1200px] h-[500px]  ">
+        <div className="flex justify-center w-full h-full bg-[#2D2D2D] xl:pt-[0px] xl:mt-[30px] xl:pb-[80px]">
           <MapContainer />
 
           <div className="flex flex-col   text-white  bg-black p-9 ">
