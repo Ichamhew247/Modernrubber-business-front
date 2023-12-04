@@ -12,12 +12,14 @@ export default function HomePage() {
         <Banner />
       </div>
       <div
-        className="bg-[#3E3E3E]   flex flex-col items-center pt-20 pb-20 xs:mt-[-100px] xl:mt-[10px]
+        className="bg-[#3E3E3E] 
+          flex flex-col items-center pt-20 
+          pb-20 xs:mt-[-100px] lg:mt-[-160px] xl:mt-[10px]
       "
       >
         <Carousel imageCarousel={carousels} />
         <Link to="/allproduct">
-          <button className="xs:mt-[-100px] md:mt-[20px] mdzzzzzzzzzz  xl:mt-[20px] lg:mt-[90px] hover:bg-black mt-8 text-white tracking-wide text-center rounded-md p-4 w-[200px] xl:text-[18px] xs:text-[12px] xs:w-[140px] xl:w-[200px] h-[60px] bg-[#2C2C2C] transition-all duration-300">
+          <button className="xs:mt-[-100px] md:mt-[20px] lg:mt-[10px]  xl:mt-[20px] x hover:bg-black mt-8 text-white tracking-wide text-center rounded-md p-4 w-[200px] xl:text-[18px] xs:text-[12px] xs:w-[140px] xl:w-[200px] h-[60px] bg-[#2C2C2C] transition-all duration-300">
             {t("View all products")}
           </button>
         </Link>

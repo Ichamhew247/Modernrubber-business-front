@@ -32,7 +32,7 @@ export default function Carousel({ imageCarousel }) {
 
   return (
     <>
-      <main className="xl:w-[800px] flex justify-center md:mt-16 xl:mt-0">
+      <main className="xl:w-[800px] flex justify-center lg:mt-9 md:mt-16 xl:mt-0">
         <div
           className="carousel "
           onMouseEnter={() => {
