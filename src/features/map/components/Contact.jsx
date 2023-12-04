@@ -36,12 +36,25 @@ export default function Contact() {
   return (
     <div>
       <div>
-        <div className="flex flex-col items-center bg-black    py-10 m">
-          <div className="font-bold text-[16px]  text-white tracking-widest">
+        <div
+          className="flex flex-col items-center bg-black 
+        xs:py-8 sm:py-10 md:py-10  lg:py-10  xl:py-10 "
+        >
+          <div
+            className="font-bold 
+          xs:w-[300px] sm:w-[500px] md:w-[570px] lg:w-[570px] xl:w-fit 
+          xs:text-[12px] sm:text-[14px] md:text-[14px]  lg:text-[16px] xl:text-[18px] 
+           text-white tracking-widest"
+          >
             {t("ContactInbox")}
           </div>
           <form
-            className="flex items-baseline gap-4 mt-4 "
+            className="flex 
+            xl:flex-row 
+            lg:flex-row 
+            md:flex-row 
+            sm:flex-row 
+            xs:flex-col items-baseline gap-4 mt-4 "
             onSubmit={handleSubmitForm}
           >
             <div className="text-[16px]">
@@ -54,7 +67,18 @@ export default function Contact() {
               />
               {error.email && <InputErrormessage message={error.email} />}
             </div>
-            <button className="rounded   hover:bg-zinc-800 text-white hover:text-white border-2 border-[#3E3E3E] hover:border-[#3E3E3E] p-4  w-28 h-10 flex items-center justify-center transition-all duration-300">
+            <button
+              className="rounded hover:bg-zinc-800
+             text-white hover:text-white border-2 
+             border-[#3E3E3E] hover:border-[#3E3E3E]
+              xl:py-2  xl:w-28 
+              lg:py-2  lg:w-28 
+              md:py-2  md:w-28 
+              sm:py-1  sm:w-28 
+              xs:py-1  xs:w-[300px]
+              xs:m-auto
+              transition-all duration-300"
+            >
               {t("Send")}
             </button>
           </form>

@@ -8,7 +8,7 @@ export default function ContactInput({
   isInvalid,
 }) {
   const defaultClassName =
-    "bg-[#F2F2F2] w-96 h-12  px-6 py-4 rounded-sm outline-none focus:ring-1 focus:ring-[#6ABD65] focus:border-[#498e45]";
+    "bg-[#F2F2F2] xs:w-[300px] sm:w-[360px] md:w-96 lg:w-96 xl:w-96 sm:h-8 md:h-10 lg:h-12 xl:h-12  px-6 py-4 rounded-sm outline-none focus:ring-1 focus:ring-[#6ABD65] focus:border-[#498e45]";
   const className = createClasses(
     defaultClassName,
     isInvalid

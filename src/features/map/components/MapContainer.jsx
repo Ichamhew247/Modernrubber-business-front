@@ -19,7 +19,7 @@ function Map() {
       <GoogleMap
         zoom={20}
         center={center}
-        mapContainerClassName="w-[700px] h-[500px]"
+        mapContainerClassName="xs:w-[320px] xs:h-[240px] sm:w-[340px] sm:h-[370px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[700px] xl:h-[500px]"
       >
         <MarkerF position={center} />
       </GoogleMap>
