@@ -81,7 +81,7 @@ export default function Footer() {
           </main>
         </div>
         <main className="xs:ml-4 md:gap-1 md:flex md:flex-col mt-5 sm:flex sm:flex-row sm:justify-center sm:items-center sm:gap-0 ">
-          <div className="bg-slate-200 xs:ml-7 text-xs w-14 xs:ml-8s xl:ml-4  md:ml-[-10px] lg:ml-[-40px] sm:ml-2 mb-2">
+          <div className="bg-slate-200 xs:ml-7   text-xs w-14 xs:ml-8s xl:ml-[-20px]  md:ml-[-10px] lg:ml-[-40px] sm:ml-2 mb-2">
             <img src="https://qr-official.line.me/gs/M_754kyrxu_BW.png?oat_content=qr" />
           </div>
           <div className="flex gap-1  hover:bg-[#3E3E3E] rounded-md">
