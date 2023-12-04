@@ -32,7 +32,7 @@ export default function Carousel({ imageCarousel }) {
 
   return (
     <>
-      <main className="xl:w-[800px] flex justify-center lg:mt-9 md:mt-16 xl:mt-0">
+      <main className="xl:w-[800px] flex justify-center sm:mt-16  sm:mb-8  lg:mt-9 md:mt-16 xl:mt-0">
         <div
           className="carousel "
           onMouseEnter={() => {
@@ -43,7 +43,7 @@ export default function Carousel({ imageCarousel }) {
             setAutoPlay(true);
           }}
         >
-          <div className="carousal_wrapper xs:flex xs:m-auto xs:w-60  xs:h-72 sm:w-[420px]  sm:h-  md:w-[520px]  md:h-72 lg:w-full lg:h-full xl:w-full xl:h-full">
+          <div className="carousal_wrapper xs:flex xs:m-auto xs:w-60  xs:h-48 sm:w-[420px]    md:w-[520px]  md:h-72 lg:w-full lg:h-full xl:w-full xl:h-full ">
             <div className="">
               {imageCarousel.map((imageCarousels, index) => {
                 return (

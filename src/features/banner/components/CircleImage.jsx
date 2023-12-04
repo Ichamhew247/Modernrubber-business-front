@@ -1,7 +1,7 @@
 export default function CircleImage({ title, src }) {
   return (
-    <div className=" md:mt-[-90px] xl:mt-[0px] lg:mt-[0px] sm:mt-[0px] xs:mt-[0px] ">
-      <div className="flex flex-col items-center gap-4 sm:gap-1  ">
+    <div className=" md:mt-[-90px] xl:mt-[0px] x lg:mt-[0px] sm:mt-[0px] xs:mt-[0px] ">
+      <div className="flex flex-col items-center gap-4 sm:gap-4  ">
         <img
           src={src}
           className=" lg:w-[160px] md:w-[160px] xs:w-[100px] sm:w-[120px] xl:w-[180px] xs:h-[100px] lg:h-[160px] md:h-[160px] sm:h-[120px] xl:h-[180px]  rounded-full  border border-[#2D2D2D] bg-white"

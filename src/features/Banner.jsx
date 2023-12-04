@@ -12,9 +12,9 @@ export default function Banner() {
             <Logo />
             <div
               className="xs:mt-[-220px] sm:mt-[-500px] 
-            sm:mb-[220px]  xl:mt-[-500px]  
+            sm:mb-[220px]  xs:mb-[-290px]  xl:mt-[-500px]  
             lg:mt-[-220px] md:mt-[-430px] lg:bg-transparent
-             sm:bg-[#2B2B2B] sm:flex sm:flex-col   xl:gap-4  "
+             sm:bg-[#2B2B2B]  sm:flex sm:flex-col   xl:gap-4  "
             >
               <Content />
             </div>
@@ -22,13 +22,13 @@ export default function Banner() {
 
           <main className="lg:pb-32 xl:pb-0  ">
             <div
-              className="lg:bg-[#2D2D2D]  xl:bg-transparent
-               xs:mt-[-230px] sm:mt-[-280px]  md:mt-[-240px] lg:mt-[-590px]
-               lg:pb-[140px]    
-            xl:mt-[-240px] xs:gap-2 xl:gap-14 z-10 xl:flex 
+              className="lg:bg-[#2D2D2D]    xl:bg-transparent
+               xs:mt-[-230px] sm:mt-[-140px]  md:mt-[-180px] lg:mt-[-590px]
+               lg:pb-[140px]  xs:flex-col xs:flex  xs:gap-8
+            xl:mt-[-240px] xl:gap-14 z-10 xl:flex 
             xl:justify-center lg:flex lg:justify-center md:flex-row 
             md:justify-center sm:flex sm:flex-wrap sm:justify-center 
-            sm:gap-8  xl:flex-row  lg:flex-row md:flex   "
+            sm:gap-10  xl:flex-row  lg:flex-row md:flex   "
             >
               <CircleImage
                 number="1"
