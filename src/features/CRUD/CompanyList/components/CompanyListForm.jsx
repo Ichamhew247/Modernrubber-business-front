@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import ProductInput from "../ProductInput";
-import { addCompanyListAsync } from "../../slice/product-slice";
-export default function AddProductForm({ onClose }) {
+import AddInput from "../../Components/AddInput";
+import { addCompanyListAsync } from "../slice/product-slice";
+export default function CompanyListForm({ onClose }) {
   const dispatch = useDispatch();
 
   // const [customerCode, setCustomerCode] = useState("");
@@ -28,7 +28,6 @@ export default function AddProductForm({ onClose }) {
       const response = dispatch(addCompanyListAsync(companyListData));
       console.log("Product added:", response);
       console.log("mew");
-      // setCustomerCode("");
       setCompanyName("");
       setAddress("");
       setEmail("");
@@ -43,33 +42,28 @@ export default function AddProductForm({ onClose }) {
   return (
     <>
       <form onSubmit={handleSubmitForm} className="flex flex-col gap-4 mb-5">
-        {/* <ProductInput
-          placeholder="ชื่อสินค้า"
-          value={customerCode}
-          onChange={(e) => setCustomerCode(e.target.value)}
-        /> */}
-        <ProductInput
-          placeholder="ชื่อสินค้าอื่น ๆ"
+        <AddInput
+          placeholder="Company Name"
           value={companyName}
           onChange={(e) => setCompanyName(e.target.value)}
         />
-        <ProductInput
-          placeholder="ราคาโดยประมาณ*"
+        <AddInput
+          placeholder="Address*"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
         />
-        <ProductInput
-          placeholder="รายละเอียดสินค้า"
+        <AddInput
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <ProductInput
-          placeholder="ชนิดของสินค้า"
+        <AddInput
+          placeholder="Contact Number"
           value={contactNumber}
           onChange={(e) => setContactNumber(e.target.value)}
         />
-        <ProductInput
-          placeholder="ชนิดของสินค้า"
+        <AddInput
+          placeholder="Note"
           value={note}
           onChange={(e) => setNote(e.target.value)}
         />

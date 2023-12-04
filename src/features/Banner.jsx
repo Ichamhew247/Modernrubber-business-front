@@ -6,17 +6,23 @@ export default function Banner() {
   const { t } = useTranslation();
   return (
     <>
-      <div className="mt-[100px] ">
-        <main className=" text-white mt-8">
-          <main className="bg-[url('/src/assets/wave.svg')] bg-no-repeat h-[600px] bg-center  ">
+      <div className="mt-[80px] ">
+        <main className=" text-white xl:mt-8">
+          <main className="  sm:text-center  md:bg-[#2B2B2B] xl:bg-transparent xl:h-[600px] bg-center  ">
             <Logo />
-            <div className=" mt-[-500px]  flex flex-col gap-4 text-center ">
+            <div className="xs:mt-[-220px] sm:mt-[-500px] sm:mb-[220px]  xl:mt-[-500px]  lg:mt-[-220px] md:mt-[-430px] sm:bg-[#2B2B2B] sm:flex sm:flex-col   xl:gap-4  ">
               <Content />
             </div>
           </main>
 
-          <main>
-            <div className="z-10 mt-[-240px] flex  justify-center gap-14">
+          <main className="lg:pb-32 xl:pb-0   ">
+            <div
+              className=" xs:mt-[-230px] sm:mt-[-280px]  md:mt-[-240px] lg:mt-[-360px]   
+            xl:mt-[-240px] xs:gap-2 xl:gap-14 z-10 xl:flex 
+            xl:justify-center lg:flex lg:justify-center md:flex-row 
+            md:justify-center sm:flex sm:flex-wrap sm:justify-center 
+            sm:gap-8  xl:flex-row  lg:flex-row md:flex   "
+            >
               <CircleImage
                 number="1"
                 title={t("Custom-made products")}

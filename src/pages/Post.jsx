@@ -26,9 +26,6 @@ export default function Post({ post }) {
                   alt="product"
                 />
               </div>
-              {/* <div className="flex mt-3 bg-orange-600  justify-center h-11"> */}
-              {/* <p className="ml-3 text-lg"> {post.title}</p> */}
-              {/* </div> */}
             </div>
           ))}
         </div>

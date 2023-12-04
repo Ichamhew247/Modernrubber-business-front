@@ -14,6 +14,7 @@ export default function Map() {
           <p className="text-white mt-[-20px] tracking-wider font-extrabold    text-[48px] ">
             {t("ContactUsTitle")}
           </p>
+          <hr className="w-[78%]  border border-white" />
           <p className="text-white">{t("BusinessHr")}</p>
         </div>
         <div className=" bg-[url('/src/assets/blackwave.svg')] bg-no-repeat h-[600px] bg-center mt-[-40px] "></div>

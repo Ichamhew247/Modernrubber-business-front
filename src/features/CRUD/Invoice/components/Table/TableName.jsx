@@ -1,8 +1,10 @@
+import { useTranslation } from "react-i18next";
 export default function TableName({ dateInside, todos }) {
   const total = todos.reduce(
     (accumulator, todo) => accumulator + +todo.priceValue,
     0
   );
+  const { t } = useTranslation();
   const totalAsString = total.toFixed(2);
   console.log(typeof totalAsString);
 
@@ -15,20 +17,18 @@ export default function TableName({ dateInside, todos }) {
       <table className="table-fixed w-[580px] h-[400px] mt-2 border-collapse border text-center">
         <thead>
           <tr>
-            <th className="font-medium w-9 h-12">ลำดับ</th>
-            <th className="font-medium w-28">เลขที่ใบกำกับภาษี / ใบแจ้งหนี้</th>
-            <th className="font-medium w-28">
-              วันที่ออกใบกำกับภาษี / ใบแจ้งหนี้
-            </th>
-            <th className="font-medium w-[70px]" colSpan="2">
-              จำนวนเงิน <br />
-              บาท / ส.ต
+            <th className="text-xs font-medium w-9 h-12">{t("Order")}</th>
+            <th className="text-xs  font-medium w-28">{t("Invoice date2")}</th>
+            <th className="text-xs  font-medium w-28">{t("Details")}</th>
+            <th className="text-xs  font-medium w-[70px]" colSpan="2">
+              {t("Amount")} <br />
+              {t("Baht / Satang")}
             </th>
           </tr>
         </thead>
         <tbody>
           {[...Array(8)].map((_, index) => {
-            const currentTodo = todos[index] || {}; // Get the current todo or an empty object
+            const currentTodo = todos[index] || {};
             const [integerPart, decimalPart] = (
               currentTodo.priceValue || "0.00"
             ).split(".");
@@ -59,8 +59,8 @@ export default function TableName({ dateInside, todos }) {
         <tfoot>
           <tr>
             <td className="h-8"></td>
-            <td className="">รวมบิล {todos.length} ฉบับ</td>
-            <td className="">รวมเงิน</td>
+            <td className="">{t("Total invoices: 0")}</td>
+            <td className="">{t("Total amount")}</td>
             <td className="">
               {+integerPart === 0
                 ? "-"

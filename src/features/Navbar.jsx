@@ -13,10 +13,12 @@ export default function Navbar() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   return (
     <>
-      <div className="flex justify-center no-print z-50 fixed top-0 left-0 right-0  bg-white shadow-2xl">
-        <img src={logoblack} className="w-80" />
+      <div className="flex xs:flex-col xs:items-center  sm:flex-col  xl:flex-row xl:justify-between md:flex-col md:items-center xl:px-24 md:px-0 no-print z-50 fixed top-0 left-0 right-0  bg-white shadow-2xl">
+        <div>
+          <img src={logoblack} className="w-80 xl:w-80 md:w-96 " />
+        </div>
         <div className="text-[#3a3022] flex justify-between items-center  ">
-          <div className="flex gap-[38px]  ml-[160px] text-[18px] ">
+          <div className="flex xl:gap-[38px] xs:gap-[2px] sm:flex sm:justify-center sm:ml-[-0px]  xl:ml-[160px] xl:text-[18px] xs:text-[14px] xs:ml-[0px] ">
             <Link to="/">
               <button className="hover:text-[#2B2B2B] hover:border-x-[#3E3E3E] border border-white  px-4 py-4 ">
                 {t("Home")}
@@ -32,10 +34,16 @@ export default function Navbar() {
                 {t("Contact Us")}
               </button>
             </Link>
-            {!isAuthenticated && <LoginContainer />}
+            {!isAuthenticated && (
+              <>
+                <div className="cursor-pointer   hover:text-[#2B2B2B] hover:border-x-[#3E3E3E] border border-white  px-4 py-4">
+                  <LoginContainer />
+                </div>
+              </>
+            )}
             <LanguageToggle />
             {isAuthenticated && (
-              <div className="flex items-center hover:text-[#6ABD65] hover:bg-gray-100 px-4 rounded-sm transition-all duration-300">
+              <div className="flex items-center  xl:justify-center xl:w-20 rounded-sm transition-all duration-300">
                 <DropDown />
               </div>
             )}

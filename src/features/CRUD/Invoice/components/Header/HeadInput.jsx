@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 export default function HeadNameInput({
   name,
   setName,
@@ -26,14 +27,14 @@ export default function HeadNameInput({
       setDescript(fieldValue);
     }
   };
-
+  const { t } = useTranslation();
   return (
     <>
       <input
         type="text"
         name="name"
         id="name"
-        placeholder="ห้างหุ้นส่วนจำกัด โมเดิร์นรับเบอร์ แอนด์ ซัพพลาย"
+        placeholder={t("titleLogo")}
         value={name}
         onChange={handleInputChange}
       />
@@ -41,7 +42,7 @@ export default function HeadNameInput({
         type="text"
         name="address"
         id="address"
-        placeholder="507 ซอยเอกชัย 46 แขวงคลองบางพราน เขตบางบอน กรุงเทพ 10150"
+        placeholder={t("Address2")}
         value={address}
         onChange={handleInputChange}
       />
@@ -65,7 +66,7 @@ export default function HeadNameInput({
         type="text"
         name="descript"
         id="descript"
-        placeholder="ได้รับบิลไว้ตรวจสอบและพร้อมจะชำระเงินให้ตามรายการข้างล่างนี้"
+        placeholder={t("Received the invoice")}
         value={descript}
         onChange={handleInputChange}
       />

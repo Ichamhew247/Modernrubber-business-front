@@ -8,8 +8,9 @@ import {
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import SearchContainer from "../../../../components/SearchContainer";
 import Modal from "../../../../components/Modal";
-import ProductInput from "./ProductInput";
-import AddCompanylist from "./Addproduct/AddCompanylist";
+import AddInput from "../../Components/AddInput";
+import ProductTableInput from "../../../CRUD/ProductTable/ProductTableInput";
+import CompanyListContainer from "./CompanylistContainer";
 export default function CompanyList() {
   const dispatch = useDispatch();
   const companyLists = useSelector((state) => state.companyLists.companyLists);
@@ -111,35 +112,35 @@ export default function CompanyList() {
             onSubmit={handleEditProductSubmit}
             className="flex flex-col gap-4 mb-5"
           >
-            <ProductInput
+            <AddInput
               type="text"
               name="companyName"
               placeholder="companyName"
               value={currentCompanyLists.companyName}
               onChange={handleEditCompanyListChange}
             />
-            <ProductInput
+            <AddInput
               type="text"
               name="address"
               placeholder="address"
               value={currentCompanyLists.address}
               onChange={handleEditCompanyListChange}
             />
-            <ProductInput
+            <AddInput
               type="text"
               name="email"
               placeholder="email"
               value={currentCompanyLists.email}
               onChange={handleEditCompanyListChange}
             />
-            <ProductInput
+            <AddInput
               type="text"
               name="contactNumber"
               placeholder="contactNumber"
               value={currentCompanyLists.contactNumber}
               onChange={handleEditCompanyListChange}
             />
-            <ProductInput
+            <AddInput
               type="text"
               name="note"
               placeholder="note"
@@ -155,97 +156,105 @@ export default function CompanyList() {
           </form>
         </Modal>
       ) : null}
+      <main className=" flex flex-col mb-96">
+        <main className="flex justify-between items-center m-auto w-[980px] ">
+          <div className="flex gap-2 ">
+            <SearchContainer
+              type="text"
+              value={searchTerm}
+              onChange={handleSearchChange}
+              placeholder=""
+            />
+          </div>
+          <div className=" py-2  cursor-pointer transition-all duration-300 rounded ">
+            <CompanyListContainer />
+          </div>
+        </main>
+        <main className=" flex flex-col m-auto w-[980px] ">
+          <table className="bg-white border-collapse  table-fixed w-[980px]  mt-2 border text-center">
+            <thead className="bg-[#2D2D2D] font-medium text-white  ">
+              <tr>
+                <th className="font-medium w-12 h-12 border border-[#2D2D2D] ">
+                  Order
+                </th>
+                <th className="font-medium border border-[#2D2D2D]">
+                  Company Name
+                </th>
+                <th className="font-medium border border-[#2D2D2D]">Address</th>
+                <th className="font-medium border border-[#2D2D2D]">Email</th>
+                <th className="font-medium border border-[#2D2D2D]">
+                  Contact Number
+                </th>
+                <th className="font-medium border border-[#2D2D2D]">Note</th>
+                <th className="font-medium border border-[#2D2D2D]">Edit</th>
+              </tr>
+            </thead>
 
-      <main className="flex justify-between items-center m-auto w-[980px] ">
-        <div className="flex gap-2 ">
-          <SearchContainer
-            type="text"
-            value={searchTerm}
-            onChange={handleSearchChange}
-            placeholder="ค้นหาข้อมูลลูกค้า"
-          />
-        </div>
-        <div className="a py-2  cursor-pointer transition-all duration-300 rounded ">
-          <AddCompanylist />
-        </div>
-      </main>
-      <main className="flex flex-col m-auto w-[980px] ">
-        <table className="bg-white table-fixed w-[980px]  mt-2 border-collapse border text-center">
-          <thead className="bg-[#3a3022] font-medium text-white  ">
-            <tr>
-              <th className="font-medium w-12 h-12 ">Order</th>
-              <th className="font-medium">Company Name</th>
-              <th className="font-medium">Address</th>
-              <th className="font-medium">Email</th>
-              <th className="font-medium">Contact Number</th>
-              <th className="font-medium">Note</th>
-              <th className="font-medium">Edit</th>
-            </tr>
-          </thead>
-
-          <tbody className="border-b dark:border-neutral-500">
-            {filteredCompanyLists.length > 0 &&
-              filteredCompanyLists.map((companyList, index) => (
-                <tr key={index}>
-                  <td className="h-4">{index + 1}</td>
-                  <td> {companyList.companyName}</td>
-                  <td> {companyList.address}</td>
-                  <td> {companyList.email}</td>
-                  <td> {companyList.contactNumber}</td>
-                  <td> {companyList.note}</td>
-
-                  <td>
-                    {isEditing ? (
-                      <form className="flex gap-6 justify-center">
-                        <div
-                          onClick={() => {
-                            handleEditClick(companyList);
-                            setOpen(true);
-                          }}
-                          className="flex justify-end gap-4 py-2 cursor-pointer transition-all duration-300 rounded"
-                        >
+            <tbody>
+              {filteredCompanyLists.length > 0 &&
+                filteredCompanyLists.map((companyList, index) => (
+                  <tr key={index}>
+                    <td className="p-4 border-b-2 border-white">{index + 1}</td>
+                    <ProductTableInput companyList={companyList.companyName} />
+                    <ProductTableInput companyList={companyList.address} />
+                    <ProductTableInput companyList={companyList.email} />
+                    <ProductTableInput
+                      companyList={companyList.contactNumber}
+                    />
+                    <ProductTableInput companyList={companyList.note} />
+                    <td className="border-b-2 border-white">
+                      {isEditing ? (
+                        <form className="flex gap-6 justify-center">
                           <div
-                            className="hover:bg-zinc-800 hover:text-white
-                          items-baseline rounded flex gap-4 p-2 transition-all
-                          duration-300 text-xl"
+                            onClick={() => {
+                              handleEditClick(companyList);
+                              setOpen(true);
+                            }}
+                            className="flex justify-end gap-4 py-2 cursor-pointer transition-all duration-300 rounded"
                           >
-                            <AiFillEdit className="editIcon" />
+                            <div
+                              className="hover:bg-zinc-800 hover:text-white
+                          items-baseline rounded flex gap-4 p-2 transition-all
+                          duration-300 text-xl "
+                            >
+                              <AiFillEdit className="editIcon" />
+                            </div>
                           </div>
-                        </div>
 
-                        <div
-                          onClick={() => handleDeleteClick(companyList.id)}
-                          className="cursor-pointer hover:bg-zinc-800 hover:text-white
+                          <div
+                            onClick={() => handleDeleteClick(companyList.id)}
+                            className="cursor-pointer hover:bg-zinc-800 hover:text-white
                           items-center rounded flex gap-4 p-2 transition-all
                           duration-300 text-xl"
-                        >
-                          <AiFillDelete className="deleteIcon" />
-                        </div>
-                      </form>
-                    ) : (
-                      <div
-                        onClick={() => {
-                          setIsEditing(true);
-                        }}
-                        className="hover:text-zinc-800 text-[#8A4819]
+                          >
+                            <AiFillDelete className="deleteIcon" />
+                          </div>
+                        </form>
+                      ) : (
+                        <div
+                          onClick={() => {
+                            setIsEditing(true);
+                          }}
+                          className="hover:text-black text-[#3e3e3e]
                       items-baseline rounded flex gap-4 p-2 transition-all
                       duration-300 cursor-pointer text-xl justify-center"
-                      >
-                        <AiFillEdit />
-                      </div>
-                    )}
+                        >
+                          <AiFillEdit />
+                        </div>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              {companyLists.length === 0 && (
+                <tr>
+                  <td colSpan="7" className="text-center text-sm h-44">
+                    No data information
                   </td>
                 </tr>
-              ))}
-            {companyLists.length === 0 && (
-              <tr>
-                <td colSpan="6" className="text-center text-sm h-44">
-                  No data information
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+              )}
+            </tbody>
+          </table>
+        </main>
       </main>
     </>
   );

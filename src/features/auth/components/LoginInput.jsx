@@ -1,6 +1,6 @@
 import createClasses from "../../../utils/create-classes";
 
-export default function RegisterInput({
+export default function LoginInput({
   type,
   placeholder,
   value,
@@ -9,12 +9,12 @@ export default function RegisterInput({
   isInvalid,
 }) {
   const defaultClassName =
-    "block w-full border  rounded-md px-4 py-3 outline-none focus:ring-1  ";
+    "block border rounded-none  w-[566px] outline-none focus:ring-1 ring-1 ring-[#2D2D2D] ";
   const className = createClasses(
     defaultClassName,
     isInvalid
       ? " "
-      : "border-gray-300 focus:ring-[#6ABD65] focus:border-[#498e45]"
+      : "border-gray-300 focus:ring-[#3E3E3E] focus:border-[#2D2D2D]"
   );
   return (
     <div>

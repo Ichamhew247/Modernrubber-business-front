@@ -76,6 +76,9 @@ dependencies:
     version: 9.0.1
 
 devDependencies:
+  '@locator/runtime':
+    specifier: ^0.4.3
+    version: 0.4.3
   '@types/react':
     specifier: ^18.2.15
     version: 18.2.15
@@ -646,6 +649,23 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
+  /@floating-ui/core@1.5.1:
+    resolution: {integrity: sha512-QgcKYwzcc8vvZ4n/5uklchy8KVdjJwcOeI+HnnTNclJjs2nYsy23DOCf+sSV1kBwD9yDAoVKCkv/gEPzgQU3Pw==}
+    dependencies:
+      '@floating-ui/utils': 0.1.6
+    dev: true
+
+  /@floating-ui/dom@1.5.3:
+    resolution: {integrity: sha512-ClAbQnEqJAKCJOEbbLo5IUlZHkNszqhuxS4fHAVxRPXPya6Ysf2G8KypnYcOTpx6I8xcgF9bbHb6g/2KpbV8qA==}
+    dependencies:
+      '@floating-ui/core': 1.5.1
+      '@floating-ui/utils': 0.1.6
+    dev: true
+
+  /@floating-ui/utils@0.1.6:
+    resolution: {integrity: sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==}
+    dev: true
+
   /@googlemaps/js-api-loader@1.16.2:
     resolution: {integrity: sha512-psGw5u0QM6humao48Hn4lrChOM2/rA43ZCm3tKK9qQsEj1/VzqkCqnvGfEOshDbBQflydfaRovbKwZMF4AyqbA==}
     dependencies:
@@ -720,6 +740,23 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  /@locator/runtime@0.4.3:
+    resolution: {integrity: sha512-4qzPUnQE3ePmqQpXdM3hk2nhYXLsyh8dN8Myf0GbxsbDULqs5XOJexkWzyT2h/boxz2pEBpepVm1wBWwCKEU4A==}
+    dependencies:
+      '@floating-ui/dom': 1.5.3
+      '@locator/shared': 0.4.3
+      solid-js: 1.8.7
+      tailwindcss: 3.3.3
+    transitivePeerDependencies:
+      - ts-node
+    dev: true
+
+  /@locator/shared@0.4.3:
+    resolution: {integrity: sha512-Sf++c0IpLgzt6J1Aqnvaoy3ALGrga99vYMUu+Xs/yFXmf2iNqjGKkm259ZgjB+4m47TQTqTEK2LKFz6BBkR+Jw==}
+    dependencies:
+      semver: 7.5.4
+    dev: true
 
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2384,6 +2421,13 @@ packages:
     dependencies:
       yallist: 3.1.1
 
+  /lru-cache@6.0.0:
+    resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
+    engines: {node: '>=10'}
+    dependencies:
+      yallist: 4.0.0
+    dev: true
+
   /make-event-props@1.6.1:
     resolution: {integrity: sha512-JhvWq/iz1BvlmnPvLJjXv+xnMPJZuychrDC68V+yCGQJn5chcA8rLGKo5EP1XwIKVrigSXKLmbeXAGkf36wdCQ==}
     dev: false
@@ -3050,10 +3094,23 @@ packages:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
 
+  /semver@7.5.4:
+    resolution: {integrity: sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dependencies:
+      lru-cache: 6.0.0
+    dev: true
+
   /serialize-javascript@6.0.1:
     resolution: {integrity: sha512-owoXEFjWRllis8/M1Q+Cw5k8ZH40e3zhp/ovX+Xr/vi1qj6QesbyXXViFbpNvWvPNAD62SutwEXavefrLJWj7w==}
     dependencies:
       randombytes: 2.1.0
+    dev: true
+
+  /seroval@0.15.1:
+    resolution: {integrity: sha512-OPVtf0qmeC7RW+ScVX+7aOS+xoIM7pWcZ0jOWg2aTZigCydgRB04adfteBRbecZnnrO1WuGQ+C3tLeBBzX2zSQ==}
+    engines: {node: '>=10'}
     dev: true
 
   /shallowequal@1.1.0:
@@ -3078,6 +3135,13 @@ packages:
       call-bind: 1.0.2
       get-intrinsic: 1.2.1
       object-inspect: 1.12.3
+    dev: true
+
+  /solid-js@1.8.7:
+    resolution: {integrity: sha512-9dzrSVieh2zj3SnJ02II6xZkonR6c+j/91b7XZUNcC6xSaldlqjjGh98F1fk5cRJ8ZTkzqF5fPIWDxEOs6QZXA==}
+    dependencies:
+      csstype: 3.1.2
+      seroval: 0.15.1
     dev: true
 
   /source-map-js@1.0.2:
@@ -3563,6 +3627,10 @@ packages:
 
   /yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
+
+  /yallist@4.0.0:
+    resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
+    dev: true
 
   /yaml@2.3.1:
     resolution: {integrity: sha512-2eHWfjaoXgTBC2jNM1LRef62VQa0umtvRiDSk6HSzW7RvS5YtkabJrwYLLEKWBc8a5U2PTSCs+dJjUTJdlHsWQ==}

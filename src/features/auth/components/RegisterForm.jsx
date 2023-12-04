@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import LoginContainer from "../../auth/components/LoginContainer";
-import RegisterInput from "./RegisterInput";
 import validateRegister from "../../auth/validators/validate-register";
 import InputErrormessage from "../../auth/components/InputErrormessage";
 import { toast } from "react-toastify";
 import { registerAsync } from "../../auth/slice/auth-slice";
+import LoginInput from "./LoginInput";
+import { useTranslation } from "react-i18next";
 const initialInput = {
   fullName: "",
   userName: "",
@@ -13,6 +14,7 @@ const initialInput = {
   confirmPassword: "",
 };
 export default function RegisterForm({ onSuccess }) {
+  const { t } = useTranslation();
   const [input, setInput] = useState(initialInput);
   const [error, setError] = useState({});
 
@@ -42,8 +44,8 @@ export default function RegisterForm({ onSuccess }) {
     <>
       <form className="flex flex-col gap-4 mb-5" onSubmit={handleSubmitForm}>
         <div>
-          <RegisterInput
-            placeholder="ชื่อ-นามสกุล"
+          <LoginInput
+            placeholder={t("Full Name")}
             name="fullName"
             value={input.fullName}
             onChange={handleChangeInput}
@@ -52,8 +54,8 @@ export default function RegisterForm({ onSuccess }) {
           {error.fullName && <InputErrormessage message={error.fullName} />}
         </div>
         <div>
-          <RegisterInput
-            placeholder="ชื่อผู้ใช้"
+          <LoginInput
+            placeholder={t("userName")}
             name="userName"
             value={input.userName}
             onChange={handleChangeInput}
@@ -62,9 +64,9 @@ export default function RegisterForm({ onSuccess }) {
           {error.userName && <InputErrormessage message={error.userName} />}
         </div>
         <div>
-          <RegisterInput
+          <LoginInput
             type="password"
-            placeholder="รหัสผ่าน"
+            placeholder={t("Password")}
             name="password"
             value={input.password}
             onChange={handleChangeInput}
@@ -73,9 +75,9 @@ export default function RegisterForm({ onSuccess }) {
           {error.password && <InputErrormessage message={error.password} />}
         </div>
         <div>
-          <RegisterInput
+          <LoginInput
             type="password"
-            placeholder="ยืนยันรหัสผ่าน"
+            placeholder={t("Confirm password")}
             name="confirmPassword"
             value={input.confirmPassword}
             onChange={handleChangeInput}
@@ -85,13 +87,13 @@ export default function RegisterForm({ onSuccess }) {
             <InputErrormessage message={error.confirmPassword} />
           )}
         </div>
-        <button className="text-center rounded-full p-2 bg-[#6ABD65] text-white transition-all duration-300">
-          Sign up
+        <button className="text-center rounded-sm bg-[#2D2D2D] hover:bg-black p-2 text-white transition-all duration-300">
+          {t("Sign up")}
         </button>
       </form>
       <div className="flex py-4  justify-center   no-underline text-[#7E7E7E] ">
         <div className="flex gap-4 items-center">
-          <div>มีผู้ใช้แล้ว ? </div>
+          <div> {t("alreadyhaveuser")}</div>
           <div>
             <LoginContainer />
           </div>

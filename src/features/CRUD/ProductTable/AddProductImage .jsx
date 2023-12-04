@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { HiCursorClick } from "react-icons/hi";
-import Modal from "../../../../../components/Modal";
+import Modal from "../../../components/Modal";
 // import AddProductImageForm from "./AddProductImageForm";
-import ProductInput from "../ProductInput";
+// import ProductInput from "../ProductInput";
 import axios from "axios";
+import LoginInput from "../Components/AddInput";
 export default function AddProductImage() {
   const [file, setFile] = useState();
   const [imageName, setImageName] = useState("");
@@ -37,9 +38,6 @@ export default function AddProductImage() {
   };
   const [open, setOpen] = useState(false);
 
-  //   const handleCloseModal = () => {
-  //     setOpen(false);
-  //   };
   return (
     <div>
       <div
@@ -49,10 +47,10 @@ export default function AddProductImage() {
         <div>
           <HiCursorClick />
         </div>
-        <div>เพิ่มภาพสินค้า</div>
+        <div>Add Product</div>
       </div>
       <Modal
-        title="Add Image Product"
+        title="Add New Product"
         width="38"
         open={open}
         onClose={() => setOpen(false)}
@@ -60,11 +58,27 @@ export default function AddProductImage() {
       >
         {/* <AddProductImageForm onClose={handleCloseModal} /> */}
         <form onSubmit={handleUpload} className="flex flex-col pb-8">
-          <ProductInput
-            placeholder="ชื่อภาพ"
+          <LoginInput
+            placeholder="Product's name"
             value={imageName}
             onChange={(e) => setImageName(e.target.value)}
           />
+          <LoginInput
+            placeholder="Price"
+            value=""
+            onChange={(e) => setImageName(e.target.value)}
+          />
+          <LoginInput
+            placeholder="Details"
+            value=""
+            onChange={(e) => setImageName(e.target.value)}
+          />
+          <LoginInput
+            placeholder="Type"
+            value=""
+            onChange={(e) => setImageName(e.target.value)}
+          />
+
           <input
             type="file"
             onChange={handleFile}

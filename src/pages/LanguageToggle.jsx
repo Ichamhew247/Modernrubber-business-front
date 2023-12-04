@@ -12,7 +12,7 @@ function LanguageToggle() {
 
   return (
     <button
-      className="hover:text-[#6ABD65] hover:bg-gray-100 px-4 py-4 rounded-sm transition-all duration-300"
+      className=" xl:w-20  px-4 py-4 rounded-sm transition-all duration-300"
       onClick={handleClick}
     >
       {isEng ? (

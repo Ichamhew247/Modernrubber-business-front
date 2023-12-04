@@ -4,9 +4,11 @@ import { AiFillDelete } from "react-icons/ai";
 import { IoIosAddCircle } from "react-icons/io";
 import { MdCancelPresentation } from "react-icons/md";
 import { BiSave } from "@react-icons/all-files/bi/BiSave";
+import { useTranslation } from "react-i18next";
 import { v4 as uuidv4 } from "uuid";
 
 export default function TodoForm({ setTodos, todos }) {
+  const { t } = useTranslation();
   const [isEditing, setIsEditing] = useState(false);
   const [currentItem, setCurrentItem] = useState({
     id: null,
@@ -72,7 +74,7 @@ export default function TodoForm({ setTodos, todos }) {
           onSubmit={handleEditFormSubmit}
           className="flex items-center gap-4 p-3"
         >
-          <div className="ml-6">แก้ไข :</div>
+          <div className="ml-6">{t("Edit")} :</div>
           <div className="flex">
             <input
               type="text"
@@ -80,7 +82,7 @@ export default function TodoForm({ setTodos, todos }) {
               placeholder="Edit tax"
               value={currentItem.tax}
               onChange={handleEditInputChange}
-              className="p-2 w-44"
+              className="text-xs"
             />
             <input
               id="price"
@@ -89,7 +91,7 @@ export default function TodoForm({ setTodos, todos }) {
               placeholder="Edit price"
               value={currentItem.price}
               onChange={handleEditInputChange}
-              className="p-2 w-44"
+              className="text-xs"
             />
           </div>
           <div className="flex gap-4">
@@ -111,11 +113,8 @@ export default function TodoForm({ setTodos, todos }) {
           </div>
         </form>
       ) : (
-        <form
-          onSubmit={handleSubmitForm}
-          className="flex gap-5 items-center ml-2"
-        >
-          <div>รายละเอียด:</div>
+        <form onSubmit={handleSubmitForm} className="flex gap-5 items-center">
+          <div>{t("Details")}:</div>
           <input
             id="tax"
             type="text"
@@ -123,6 +122,7 @@ export default function TodoForm({ setTodos, todos }) {
             value={currentItem.tax}
             placeholder="Add a tax"
             onChange={handleEditInputChange}
+            className="text-xs"
           />
           <input
             id="price"
@@ -131,6 +131,7 @@ export default function TodoForm({ setTodos, todos }) {
             value={currentItem.price}
             placeholder="Add a price"
             onChange={handleEditInputChange}
+            className="text-xs"
           />
           <button className="hover:bg-[#3a3022] rounded-3xl text-4xl transition-all duration-300">
             <IoIosAddCircle className="addIcon" />
@@ -138,12 +139,12 @@ export default function TodoForm({ setTodos, todos }) {
         </form>
       )}
 
-      <table className="table-fixed w-[600px] m-auto border-collapse text-center">
+      <table className="table-fixed w-[600px] m-auto mt-6 mb-6 border-collapse text-center ">
         <thead>
           <tr>
-            <th className="p-3 text-sm">เลขที่ใบกำกับภาษี</th>
-            <th>จำนวนเงิน</th>
-            <th>แก้ไข</th>
+            <th className="p-3 text-sm"> {t("Tax Invoice")}</th>
+            <th> {t("Amount")}</th>
+            <th> {t("Edit")}</th>
           </tr>
         </thead>
         <tbody>

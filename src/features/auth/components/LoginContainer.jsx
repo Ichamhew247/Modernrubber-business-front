@@ -7,15 +7,10 @@ export default function LoginContainer() {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div
-        className="pt-4 cursor-pointer hover:text-[#2B2B2B] hover:border-x-[#3E3E3E] border border-white  px-4 py-4 "
-        onClick={() => setOpen(true)}
-      >
-        {t("Login")}
-      </div>
+      <div onClick={() => setOpen(true)}>{t("Login")}</div>
       <Modal
-        title="เข้าสู่ระบบ"
-        width="27"
+        title={t("Login")}
+        width="34"
         open={open}
         onClose={() => setOpen(false)}
         color="#3A3022"
