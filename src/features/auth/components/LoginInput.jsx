@@ -9,7 +9,7 @@ export default function LoginInput({
   isInvalid,
 }) {
   const defaultClassName =
-    "block border rounded-none  w-[566px] outline-none focus:ring-1 ring-1 ring-[#2D2D2D] ";
+    "block border rounded-none xs:w-[300px] md:w-[566px] sm:w-[566px] lg:w-[566px] xl:w-[566px] outline-none focus:ring-1 ring-1 ring-[#2D2D2D] ";
   const className = createClasses(
     defaultClassName,
     isInvalid

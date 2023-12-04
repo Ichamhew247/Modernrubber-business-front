@@ -40,8 +40,15 @@ export default function LoginForm({ onSuccess }) {
   };
 
   return (
-    <div className="z-50 w-[574px]">
-      <form className="flex flex-col gap-4" onSubmit={handleSubmitForm}>
+    <div
+      className="z-50 
+    xl:w-[574px]
+    lg:w-[574px]
+    sm:w-[574px]
+    xs:w-[574px]
+    "
+    >
+      <form className="flex flex-col gap-4 " onSubmit={handleSubmitForm}>
         <div>
           <LoginInput
             type="text"
@@ -64,11 +71,27 @@ export default function LoginForm({ onSuccess }) {
           />
           {error.password && <InputErrormessage message={error.password} />}
         </div>
-        <button className="text-center rounded-md bg-[#2D2D2D] hover:bg-black px-10 py-2 text-white transition-all duration-300">
+        <button
+          className="text-center rounded-md bg-[#2D2D2D] hover:bg-black 
+        px-10 py-2  
+        xl:w-full
+        lg:w-full
+        md:w-full
+        sm:w-full
+        xs:w-[306px]
+        text-white transition-all duration-300"
+        >
           {t("Sign In")}
         </button>
       </form>
-      <div className="flex p-4 gap-4 no-underline text-[#3E3E3E] justify-center">
+      <div
+        className="
+      xl:w-full
+      lg:w-full
+      sm:w-full
+      xs:w-[300px]
+      flex p-4 gap-4 no-underline  text-[#3E3E3E] justify-center"
+      >
         <div>{t("No user account?")}</div>
         <div>
           <RegisterContainer />

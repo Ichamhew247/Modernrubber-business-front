@@ -87,12 +87,25 @@ export default function RegisterForm({ onSuccess }) {
             <InputErrormessage message={error.confirmPassword} />
           )}
         </div>
-        <button className="text-center rounded-sm bg-[#2D2D2D] hover:bg-black p-2 text-white transition-all duration-300">
+        <button
+          className="text-center  xl:w-full
+        lg:w-full
+        md:w-full
+        sm:w-full
+        xs:w-[306px] rounded-sm bg-[#2D2D2D] hover:bg-black p-2 text-white transition-all duration-300"
+        >
           {t("Sign up")}
         </button>
       </form>
-      <div className="flex py-4  justify-center   no-underline text-[#7E7E7E] ">
-        <div className="flex gap-4 items-center">
+      <div
+        className="flex py-4
+      xl:w-full
+      lg:w-full
+      sm:w-full
+      xs:w-[306px]
+      justify-center  no-underline text-[#7E7E7E] "
+      >
+        <div className="flex gap-4 ">
           <div> {t("alreadyhaveuser")}</div>
           <div>
             <LoginContainer />
