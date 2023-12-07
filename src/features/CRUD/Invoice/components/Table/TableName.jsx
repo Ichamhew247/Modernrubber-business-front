@@ -14,7 +14,15 @@ export default function TableName({ dateInside, todos }) {
   console.log(`สตางค์: ${decimalPart}`);
   return (
     <>
-      <table className="table-fixed w-[580px] h-[400px] mt-2 border-collapse border text-center">
+      <table
+        className="table-fixed
+       xl:w-[580px] xl:h-[400px] 
+       lg:w-[580px] lg:h-[400px] 
+       md:w-[580px] md:h-[400px] 
+       sm:w-[480px] sm:h-[400px] 
+      
+      mt-2 border-collapse border text-center"
+      >
         <thead>
           <tr>
             <th className="text-xs font-medium w-9 h-12">{t("Order")}</th>

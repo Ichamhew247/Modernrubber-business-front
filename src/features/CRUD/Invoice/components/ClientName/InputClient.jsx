@@ -13,7 +13,12 @@ export default function InputClient({ client, setClient }) {
       autoComplete="off"
       value={client}
       onChange={handleInputChange}
-      className="w-[490px]"
+      className="
+      xl:w-[510px]
+      lg:w-[510px]
+      sm:w-[334px]
+      xs:w-[294px]
+      "
     />
   );
 }

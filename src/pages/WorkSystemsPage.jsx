@@ -16,7 +16,15 @@ const WorkSystemsPage = () => {
           className="flex 
 flex-col gap-3  mt-[-52px] justify-center w-full items-center  "
         >
-          <main className="text-white mt-36 py-14  flex-col    w-full tracking-wider font-extrabold  flex justify-between gap-8  items-center text-[48px] ">
+          <main
+            className="text-white 
+          xl:mt-36 
+          lg:mt-56 
+          md:mt-56
+          sm:mt-60 
+          xs:mt-60 
+          py-14  flex-col    w-full tracking-wider font-extrabold  flex justify-between gap-8  items-center text-[48px] "
+          >
             <p> {t("Select job creation")}</p>
 
             <hr className="w-[78%]  border border-[#2D2D2D]" />
