@@ -8,6 +8,7 @@ import Header from "../layout/Header";
 import { Outlet } from "react-router-dom";
 
 import WorkSystemsPage from "../pages/WorkSystemsPage";
+import ProductImageTable from "../features/CRUD/ProductTable/ProductImageTable";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/map",
         element: <MapPage />,
+      },
+      {
+        path: "/productimagetable",
+        element: <ProductImageTable />,
       },
     ],
   },

@@ -17,8 +17,8 @@ export default function ProductImageTable() {
   const [isEditing, setIsEditing] = useState(false);
   const [currentImages, setCurrentImages] = useState({});
   const [currentImage, setCurrentImage] = useState({});
-  const [open, setOpen] = useState(false);
 
+  const [open, setOpen] = useState(false);
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -31,6 +31,9 @@ export default function ProductImageTable() {
 
     setCurrentImages({
       imageName: image.imageName,
+      imagePrice: image.imagePrice,
+      imageDetail: image.imageDetail,
+      imageCategory: image.imageCategory,
     });
 
     setOpen(true);
@@ -123,8 +126,29 @@ export default function ProductImageTable() {
             <AddInput
               type="text"
               name="imageName"
-              placeholder="ชื่อรูปภาพ"
+              placeholder="imageName"
               value={currentImages.imageName}
+              onChange={handleEditImageChange}
+            />
+            <AddInput
+              type="text"
+              name="imagePrice"
+              placeholder="imagePrice"
+              value={currentImages.imagePrice}
+              onChange={handleEditImageChange}
+            />
+            <AddInput
+              type="text"
+              name="imageDetail"
+              placeholder="imageDetail"
+              value={currentImages.imageDetail}
+              onChange={handleEditImageChange}
+            />
+            <AddInput
+              type="text"
+              name="imageCategory"
+              placeholder="imageCategory"
+              value={currentImages.imageCategory}
               onChange={handleEditImageChange}
             />
 
@@ -137,6 +161,7 @@ export default function ProductImageTable() {
           </form>
         </Modal>
       ) : null}
+
       <main className=" flex flex-col mb-96">
         <main className=" flex justify-between m-auto w-[980px] ">
           <div className="flex gap-2">
@@ -191,9 +216,15 @@ export default function ProductImageTable() {
                     <td className="border-b-2 border-white">
                       {image.imageName}
                     </td>
-                    <td className="border-b-2 border-white">ห</td>
-                    <td className="border-b-2 border-white">ก</td>
-                    <td className="border-b-2 border-white">อ</td>
+                    <td className="border-b-2 border-white">
+                      {image.imagePrice}
+                    </td>
+                    <td className="border-b-2 border-white">
+                      {image.imageDetail}
+                    </td>
+                    <td className="border-b-2 border-white">
+                      {image.imageCategory}
+                    </td>
                     <td className="border-b-2 border-white">
                       <img
                         className="w-24 text-center p-4"

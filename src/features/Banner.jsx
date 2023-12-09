@@ -33,17 +33,17 @@ export default function Banner() {
               <CircleImage
                 number="1"
                 title={t("Custom-made products")}
-                src="/src/assets/imageProduct/1.1.png"
+                src="/src/assets/1.1.png"
               />
               <CircleImage
                 number="2"
                 title={t("Manufactured by expert")}
-                src="/src/assets/imageProduct/3.1.png"
+                src="/src/assets/3.1.png"
               />
               <CircleImage
                 number="3"
                 title={t("Guaranteed quality")}
-                src="/src/assets/imageProduct/4.1.png"
+                src="/src/assets/4.1.png"
               />
             </div>
           </main>

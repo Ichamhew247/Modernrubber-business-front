@@ -7,6 +7,9 @@ import axios from "axios";
 import LoginInput from "../Components/AddInput";
 export default function AddProductImage() {
   const [file, setFile] = useState();
+  const [imagePrice, setImagePrice] = useState("");
+  const [imageDetail, setImageDetail] = useState("");
+  const [imageCategory, setImageCategory] = useState("");
   const [imageName, setImageName] = useState("");
 
   const handleFile = (e) => {
@@ -18,6 +21,9 @@ export default function AddProductImage() {
       const formdata = new FormData();
       formdata.append("image", file);
       formdata.append("imageName", imageName);
+      formdata.append("imagePrice", imagePrice);
+      formdata.append("imageDetail", imageDetail);
+      formdata.append("imageCategory", imageCategory);
 
       const response = await axios.post(
         "http://localhost:9999/upload",
@@ -65,18 +71,18 @@ export default function AddProductImage() {
           />
           <LoginInput
             placeholder="Price"
-            value=""
-            onChange={(e) => setImageName(e.target.value)}
+            value={imagePrice}
+            onChange={(e) => setImagePrice(e.target.value)}
           />
           <LoginInput
             placeholder="Details"
-            value=""
-            onChange={(e) => setImageName(e.target.value)}
+            value={imageDetail}
+            onChange={(e) => setImageDetail(e.target.value)}
           />
           <LoginInput
             placeholder="Type"
-            value=""
-            onChange={(e) => setImageName(e.target.value)}
+            value={imageCategory}
+            onChange={(e) => setImageCategory(e.target.value)}
           />
 
           <input
