@@ -3,7 +3,7 @@ import ProfileImage from "../assets/profileImage.png";
 
 export default function Avatar({
   src = ProfileImage,
-  className = "h-11 w-11 ",
+  className = "xs:w-9 xs:h-9 xl:h-11 xl:w-11 ",
 }) {
   const defaultClassName = "rounded-full ";
   const classes = createClasses(defaultClassName, className);

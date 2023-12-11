@@ -33,17 +33,20 @@ export default function Banner() {
               <CircleImage
                 number="1"
                 title={t("Custom-made products")}
-                src="/src/assets/1.1.png"
+                src="https://res.cloudinary.com/dxj8d8zrd/image/upload/v1702135586/product_image/ol2m3brzni7rmclf0eqa.png"
+                alt="1.1"
               />
               <CircleImage
                 number="2"
                 title={t("Manufactured by expert")}
-                src="/src/assets/3.1.png"
+                src="https://res.cloudinary.com/dxj8d8zrd/image/upload/v1702135864/product_image/igxregvuu95wdwuifsbq.png"
+                alt="3.1"
               />
               <CircleImage
-                number="3"
-                title={t("Guaranteed quality")}
-                src="/src/assets/4.1.png"
+                number="2"
+                title={t("Manufactured by expert")}
+                src="https://res.cloudinary.com/dxj8d8zrd/image/upload/v1702255749/product_image/gslgzhzuqccsawmouu3b.png"
+                alt="3.1"
               />
             </div>
           </main>

@@ -8,9 +8,9 @@ export default {
       },
     },
     screens: {
-      xs: "430px",
+      xs: "375px",
       //ยังไม่ได้แก้เลย
-      // => @media (min-width: 430px) { ... }
+      // => @media (min-width: 375px) { ... }
       sm: "640px",
       // => @media (min-width: 640px) { ... }
       //ยังไม่ได้แก้เลย

@@ -20,7 +20,7 @@ export default function Footer() {
        bg-[#2C2C2C] text-white  "
       >
         <div>
-          <img className=" xl:w-52 pt-4 hidden xl:block" src={logowhite} />
+          <img className=" xl:w-52 pt-4 hidden xl:block " src={logowhite} />
         </div>
 
         <div className="sm:flex sm:flex-row sm:justify-center sm:gap-10 ">
@@ -28,15 +28,15 @@ export default function Footer() {
             <div>
               <SiGooglemaps className="text-xl  mt-6" />
             </div>
-            <div className="flex flex-col gap-4 mt-5 xs:text-[16px] sm:text-[10px] md:text-xs lg:text-xs xl:text-xs">
+            <div className="flex flex-col gap-4 mt-5 xs:text-[12px] sm:text-[10px] md:text-xs lg:text-xs xl:text-xs">
               <div className="flex flex-col gap-1">
                 <p>{t("Address")}</p>
                 <p>{t("Address2")}</p>
                 <p>{t("Address3")}</p>
               </div>
-              <div className="flex gap-1 hover:bg-[#3E3E3E] rounded-sm w-24 xs:text-[16px] sm:text-[10px] md:text-xs lg:text-xs xl:text-xs">
+              <div className="flex gap-1 hover:bg-[#3E3E3E] rounded-sm w-24 xs:text-[12px]  sm:text-[10px] md:text-xs lg:text-xs xl:text-xs">
                 <a
-                  className=" text-xs tracking-wider  hover:no-underline underline xs:text-[14px] sm:text-[10px] md:text-xs lg:text-xs xl:text-xs "
+                  className=" text-xs tracking-wider  hover:no-underline underline xs:text-[12px] sm:text-[10px] md:text-xs lg:text-xs xl:text-xs "
                   role="button"
                   href="https://maps.app.goo.gl/inzhk4uhWzrDpqWd6?g_st=il"
                   target="_blank"
@@ -52,7 +52,7 @@ export default function Footer() {
           <main className="CALL xs:ml-4 gap-7 flex flex-col text-xs ">
             <div className="flex gap-4">
               <FaPhone className="text-base mt-6" />
-              <div className="flex flex-col gap-2 xs:text-[16px] sm:text-[10px] md:text-xs lg:text-xs xl:text-xs">
+              <div className="flex flex-col gap-2 xs:text-[12px] sm:text-[10px] md:text-xs lg:text-xs xl:text-xs">
                 <p className="mt-5">081-692-278-0 ,</p>
                 <p>02-898-225-0</p>
               </div>
@@ -62,13 +62,13 @@ export default function Footer() {
                 <div className="mt-[8px]">
                   <GrMail className="text-base mt-[-8px] " />
                 </div>
-                <p className="mt-[-4px] xs:text-[16px] sm:text-[10px] md:text-xs lg:text-xs xl:text-xs">
+                <p className="mt-[-4px] xs:text-[12px] sm:text-[10px] md:text-xs lg:text-xs xl:text-xs">
                   modernrubber1@hotmail.com
                 </p>
               </div>
               <div className="flex gap-1 ml-8 xs:w-28 rounded-sm w-20 hover:bg-[#3E3E3E]">
                 <a
-                  className="  text-xs tracking-wider underline xs:text-[14px] sm:text-[10px] md:text-xs lg:text-xs xl:text-xs "
+                  className="  text-xs tracking-wider underline xs:text-[12px] sm:text-[10px] md:text-xs lg:text-xs xl:text-xs "
                   target="_blank"
                   rel="noreferrer"
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=modernrubber1@hotmail.com"
@@ -86,7 +86,7 @@ export default function Footer() {
           </div>
           <div className="flex gap-1  hover:bg-[#3E3E3E] rounded-md">
             <a
-              className="text-xs tracking-wider underline xs:ml-[28px] md:ml-[2px]  xl:ml-[-12px] lg:ml-[-30px] sm:text-[10px] md:text-xs lg:text-xs xl:text-xs"
+              className="text-xs tracking-wider underline xs:ml-[28px] md:ml-[2px]  xl:ml-[-12px] lg:ml-[-30px] xs:text-[12px] sm:text-[10px] md:text-xs lg:text-xs xl:text-xs"
               href="https://lin.ee/c866PiB"
             >
               @modernrubber1

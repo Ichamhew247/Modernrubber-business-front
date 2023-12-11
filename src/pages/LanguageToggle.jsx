@@ -12,7 +12,7 @@ function LanguageToggle() {
 
   return (
     <button
-      className=" xl:w-20  px-4 py-4 rounded-sm transition-all duration-300"
+      className="xs:w-16 xl:w-20  px-4 py-4 rounded-sm transition-all duration-300"
       onClick={handleClick}
     >
       {isEng ? (

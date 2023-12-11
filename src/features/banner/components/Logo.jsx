@@ -7,10 +7,15 @@ export default function Logo() {
         d
       </div>
       <div
-        className=" mt-[-60px] xl:pb-3  
-      xl:mt-[-60px] text-[48px]  xs:text-[26px] 
-      sm:text-[38px]  xl:text-[48px] font-extrabold 
-      tracking-wider flex  justify-center 
+        className=" text-center
+        flex  justify-center 
+        mt-[-60px] xl:pb-3  
+      xl:mt-[-60px] 
+      xs:text-[26px]  
+      sm:text-[38px]  
+      xl:text-[48px] lg:text-[48px] md:text-[48px]
+      font-extrabold 
+      tracking-wider 
       md:flex pb-0  md:pb-16 bg-[#2D2D2D] "
       >
         {t("titleLogoHomepage")}
