@@ -17,7 +17,15 @@ export default function Modal({
             <div className=" flex justify-center  items-center min-h-full p-4">
               <div
                 style={{ maxWidth: `${width}rem`, color: color }}
-                className=" bg-white border w-full  rounded-lg max-w-md shadow-[0_0_15px_rgb(0_0_0_/0.2)] flex flex-col  max-h-[calc(100vh-2rem)] "
+                className="  bg-white 
+                xl:w-full
+                lg:w-full
+                md:w-full
+                sm:w-full
+                xs:w-80
+                
+                
+                border   rounded-sm max-w-md shadow-[0_0_15px_rgb(0_0_0_/0.2)] flex flex-col  max-h-[calc(100vh-2rem)] "
                 onMouseUp={(e) => e.stopPropagation()}
               >
                 <div className="flex justify-between p-8  text-xl">
@@ -25,7 +33,7 @@ export default function Modal({
                   <div className="text-4xl  font-bold">{title}</div>
 
                   <div
-                    className="flex -mt-4  text-gray-400 hover:text-gray-600 font-semibold "
+                    className="flex -mt-4  text-[#3E3E3E] hover:text-[#2D2D2D] font-semibold "
                     role="button"
                     onClick={onClose}
                   >

@@ -1,34 +1,33 @@
+// auth-slice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as authService from "../../../api/auth-api";
 import { setAccessToken } from "../../../utils/localstorage";
 
 const initialState = {
   isAuthenticated: false,
+  // role: null,
+  name: null,
+  status: "idle",
   error: null,
-  loading: false,
 };
+
 export const registerAsync = createAsyncThunk(
-  "auth/registerAync",
+  "auth/registerAsync",
   async (input, thunkApi) => {
     try {
       const res = await authService.register(input);
       setAccessToken(res.data.accessToken);
-      return;
     } catch (err) {
       return thunkApi.rejectWithValue(err.response.data.message);
     }
   }
 );
 
-export const login = createAsyncThunk("auth/login", async (input) => {
-  const res = await authService.login(input);
-  setAccessToken(res.data.accessToken);
-});
-
-export const fetchMe = createAsyncThunk("auth/fetchMe", async (_, thunkApi) => {
+export const login = createAsyncThunk("auth/login", async (input, thunkApi) => {
   try {
-    const res = await authService.fetchMe();
-    return res.data.user;
+    const res = await authService.login(input);
+    return res.data.role;
+    // return res.data.role;
   } catch (err) {
     return thunkApi.rejectWithValue(err.response.data.message);
   }
@@ -40,18 +39,17 @@ const authSlice = createSlice({
   reducers: {
     logout: (state) => {
       state.isAuthenticated = false;
+      state.role = null;
+      // state.username = null;
     },
-    updateProfileImage: (state, action) => {
-      state.user.profileImage = action.payload;
+    setInitialized: (state, action) => {
+      state.isInitialized = action.payload;
     },
   },
   extraReducers: (builder) =>
     builder
-      .addCase(registerAsync.pending, (state) => {
-        state.loading = true;
-      })
       .addCase(registerAsync.fulfilled, (state) => {
-        state.isAuthenticated = true;
+        state.isAuthenticated = false;
         state.loading = false;
       })
       .addCase(registerAsync.rejected, (state, action) => {
@@ -59,29 +57,23 @@ const authSlice = createSlice({
         state.loading = false;
       })
       .addCase(login.pending, (state) => {
-        state.loading = true;
+        state.status = "loading";
       })
-      .addCase(login.fulfilled, (state) => {
+      .addCase(login.fulfilled, (state, action) => {
         state.isAuthenticated = true;
-        state.loading = false;
+        state.status = "succeeded";
+        // state.name = action.payload;
+        state.role = action.payload;
+        // state.username = action.payload;
       })
-      .addCase(login.rejected, (state) => {
-        state.loading = false;
-      })
-      .addCase(fetchMe.pending, (state) => {
-        state.initialLoading = true;
-      })
-      .addCase(fetchMe.fulfilled, (state, action) => {
-        state.loading = false;
-        state.isAuthenticated = true;
-        state.user = action.payload;
-        state.initialLoading = false;
-      })
-      .addCase(fetchMe.rejected, (state, action) => {
-        state.error = action.payload;
-        state.initialLoading = false;
+      .addCase(login.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
       }),
 });
 
+export const { logout, setInitialized } = authSlice.actions;
+export const selectRole = (state) => state.auth.role; // Define the selector
+// export const selectRole = (state) => state.auth.role; // Define the selector
+// export const selectUsername = (state) => state.auth.username; // Define the selector
 export default authSlice.reducer;
-export const { updateProfileImage, logout } = authSlice.actions;

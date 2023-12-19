@@ -1,20 +1,16 @@
 import { useState } from "react";
 import Modal from "../../../components/Modal";
 import LoginForm from "./LoginForm";
-
+import { useTranslation } from "react-i18next";
 export default function LoginContainer() {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   return (
     <>
-      <button
-        className="hover:text-[#6ABD65] hover:bg-gray-100 px-4 py-4  rounded-sm transition-all duration-300"
-        onClick={() => setOpen(true)}
-      >
-        เข้าสู่ระบบ
-      </button>
+      <div onClick={() => setOpen(true)}>{t("Login")}</div>
       <Modal
-        title="เข้าสู่ระบบ"
-        width="27"
+        title={t("Login")}
+        width="34"
         open={open}
         onClose={() => setOpen(false)}
         color="#3A3022"

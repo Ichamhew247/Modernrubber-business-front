@@ -1,44 +1,61 @@
+// import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import LoginContainer from "./auth/components/LoginContainer";
+// import LoginContainer from "./auth/components/LoginContainer";
 import DropDown from "../layout/DropDown";
+import LoginContainer from "./auth/components/LoginContainer";
+import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
+import logoblack from "../assets/logoblack.png";
+import LanguageToggle from "../pages/LanguageToggle";
+
+console.log(logoblack);
 export default function Navbar() {
+  const { t } = useTranslation();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   return (
     <>
-      <div className="no-print z-50 fixed top-0 left-0 right-0 bg-opacity-70 pb-4 bg-[#ffffff] shadow-2xl">
-        <div className="text-[#3a3022] flex justify-between items-center mt-2  ">
-          <div className="flex gap-[38px]  ml-[160px] text-[18px] ">
+      <div className="flex xs:flex-col xs:items-center  sm:flex-col  xl:flex-row xl:justify-between md:flex-col md:items-center xl:px-24 md:px-0 no-print z-50 fixed top-0 left-0 right-0  bg-white shadow-2xl">
+        <div>
+          <img
+            src={logoblack}
+            alt="logoblack"
+            className="w-80 xl:w-80 md:w-96 "
+          />
+        </div>
+        <div className="text-[#3a3022] flex justify-between items-center  ">
+          <div
+            className="flex xl:gap-[38px] xs:gap-[2px] sm:flex sm:justify-center sm:ml-[-0px]  xl:ml-[160px]
+           xl:text-[18px] lg:text-[18px] md:text-[18px] sm:text-[18px] xs:text-[12px] xs:ml-[0px] "
+          >
             <Link to="/">
-              <button className="hover:text-[#6ABD65] hover:bg-gray-100 px-4 py-4  rounded-sm transition-all duration-300">
-                หน้าหลัก
+              <button className="hover:text-[#2B2B2B] hover:border-x-[#3E3E3E] border border-white  px-4 py-4 ">
+                {t("Home")}
               </button>
             </Link>
             <Link to="/allproduct">
-              <button className="hover:text-[#6ABD65] hover:bg-gray-100 px-4 py-4  rounded-sm transition-all duration-300">
-                สินค้าทั้งหมด
+              <button className="hover:text-[#2B2B2B] hover:border-x-[#3E3E3E] border border-white  px-4 py-4 ">
+                {t("Products")}
               </button>
             </Link>
-            <button className="hover:text-[#6ABD65] hover:bg-gray-100 px-4 py-4  rounded-sm transition-all duration-300">
-              คุณสมบัติยาง
-            </button>
-          </div>
-          <div className=" ml-[-86px] ">
-            <div className="  w-36 rounded-[100%] h-20 border border-[#6ABD65] bg-white"></div>
-            <div className="font-body text-center m-[-68px] ml-[-74px] text-6xl text-[#6ABD65]">
-              M
-            </div>
-          </div>
-          <div className="flex items-center gap-[38px]  mr-[160px] text-[18px]  ">
             <Link to="/map">
-              <button className="hover:text-[#6ABD65] hover:bg-gray-100 px-4 py-4  rounded-sm transition-all duration-300">
-                ติดต่อเรา
+              <button className="hover:text-[#2B2B2B] hover:border-x-[#3E3E3E] border border-white  px-4 py-4 ">
+                {t("Contact Us")}
               </button>
             </Link>
-            <LoginContainer />
-
-            <div className="profilePicture">
-              <DropDown />
-            </div>
+            {!isAuthenticated && (
+              <>
+                <div className="cursor-pointer   hover:text-[#2B2B2B] hover:border-x-[#3E3E3E] border border-white  px-4 py-4">
+                  <LoginContainer />
+                </div>
+              </>
+            )}
+            <LanguageToggle />
+            {isAuthenticated && (
+              <div className="flex items-center  xl:justify-center xl:w-20 rounded-sm transition-all duration-300">
+                <DropDown />
+              </div>
+            )}
           </div>
         </div>
       </div>

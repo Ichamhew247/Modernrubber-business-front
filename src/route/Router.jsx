@@ -1,12 +1,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "../pages/HomePage";
-import WorkSystemsPage from "../pages/WorkSystemsPage";
+// import WorkSystemsPage from "../pages/WorkSystemsPage";
 import AllProduct from "../pages/ProductPage";
 import MapPage from "../pages/MapPage";
-import Invoice from "../pages/InvoicePage";
-import FileUpload from "../features/CRUD/Products/components/ProductImageTable";
+
 import Header from "../layout/Header";
 import { Outlet } from "react-router-dom";
+
+import WorkSystemsPage from "../pages/WorkSystemsPage";
+import ProductImageTable from "../features/CRUD/ProductTable/ProductImageTable";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,12 +24,12 @@ const router = createBrowserRouter([
         path: "/",
         element: <HomePage />,
       },
+
       {
         path: "/work",
-        // <ProtectedRoute>
         element: <WorkSystemsPage />,
-        // </ProtectedRoute>
       },
+
       {
         path: "/allproduct",
         element: <AllProduct />,
@@ -35,14 +38,9 @@ const router = createBrowserRouter([
         path: "/map",
         element: <MapPage />,
       },
-
       {
-        path: "/invoice",
-        element: <Invoice />,
-      },
-      {
-        path: "/upload",
-        element: <FileUpload />,
+        path: "/productimagetable",
+        element: <ProductImageTable />,
       },
     ],
   },

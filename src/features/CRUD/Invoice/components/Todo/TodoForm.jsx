@@ -4,9 +4,11 @@ import { AiFillDelete } from "react-icons/ai";
 import { IoIosAddCircle } from "react-icons/io";
 import { MdCancelPresentation } from "react-icons/md";
 import { BiSave } from "@react-icons/all-files/bi/BiSave";
+import { useTranslation } from "react-i18next";
 import { v4 as uuidv4 } from "uuid";
 
 export default function TodoForm({ setTodos, todos }) {
+  const { t } = useTranslation();
   const [isEditing, setIsEditing] = useState(false);
   const [currentItem, setCurrentItem] = useState({
     id: null,
@@ -70,52 +72,83 @@ export default function TodoForm({ setTodos, todos }) {
       {isEditing ? (
         <form
           onSubmit={handleEditFormSubmit}
-          className="flex items-center gap-4 p-3"
+          className="flex items-center 
+          sm:ml-[-40px]
+          gap-4 p-3"
         >
-          <div className="ml-6">แก้ไข :</div>
-          <div className="flex">
-            <input
-              type="text"
-              name="tax"
-              placeholder="Edit tax"
-              value={currentItem.tax}
-              onChange={handleEditInputChange}
-              className="p-2 w-44"
-            />
-            <input
-              id="price"
-              type="text"
-              name="price"
-              placeholder="Edit price"
-              value={currentItem.price}
-              onChange={handleEditInputChange}
-              className="p-2 w-44"
-            />
+          <div
+            className="
+          xl:ml-6 
+          lg:ml-6 
+          md:ml-6 
+          sm:ml-6
+          xs:ml-[-10px] 
+          "
+          >
+            {t("Edit")} :
           </div>
-          <div className="flex gap-4">
-            <button
-              type="submit"
-              className="hover:bg-[#3a3022] p-1 rounded-lg text-3xl transition-all duration-300"
-            >
-              <BiSave className="addIcon" />
-            </button>
-            <button
-              onClick={() => {
-                setIsEditing(false);
-                setCurrentItem({ id: null, tax: "", price: "" }); // ล้างค่าหลังจากยกเลิกแก้ไข
-              }}
-              className="hover:bg-[#3a3022] p-1 rounded-lg text-3xl transition-all duration-300"
-            >
-              <MdCancelPresentation className="addIcon" />
-            </button>
-          </div>
+          <main
+            className="
+          xl:flex
+          lg:flex
+          md:flex
+          sm:flex-col
+          xs:flex-col
+          "
+          >
+            <div className="flex lg:flex-row md:flex-row sm:flex-row xs:flex-col ">
+              <input
+                type="text"
+                name="tax"
+                placeholder="Edit tax"
+                value={currentItem.tax}
+                onChange={handleEditInputChange}
+                className="text-xs"
+              />
+              <input
+                id="price"
+                type="text"
+                name="price"
+                placeholder="Edit price"
+                value={currentItem.price}
+                onChange={handleEditInputChange}
+                className="text-xs"
+              />
+            </div>
+
+            <div className="flex gap-4">
+              <button
+                type="submit"
+                className="hover:bg-[#3a3022] p-1 rounded-lg text-3xl transition-all duration-300"
+              >
+                <BiSave className="addIcon" />
+              </button>
+              <button
+                onClick={() => {
+                  setIsEditing(false);
+                  setCurrentItem({ id: null, tax: "", price: "" }); // ล้างค่าหลังจากยกเลิกแก้ไข
+                }}
+                className="hover:bg-[#3a3022] p-1 rounded-lg text-3xl transition-all duration-300"
+              >
+                <MdCancelPresentation className="addIcon" />
+              </button>
+            </div>
+          </main>
         </form>
       ) : (
         <form
           onSubmit={handleSubmitForm}
-          className="flex gap-5 items-center ml-2"
+          className="flex
+         xl:flex xl:flex-row xl:items-center xl:gap-5 xl:w-fit
+         lg:flex lg:flex-row lg:items-center lg:gap-5 lg:w-fit
+         md:flex md:flex-row md:items-center md:gap-5 md:w-fit
+         sm:flex sm:flex-col  sm:gap-1 
+         xs:flex xs:flex-col  xs:gap-1
+         
+         
+        "
         >
-          <div>รายละเอียด:</div>
+          <div>{t("Details")}:</div>
           <input
             id="tax"
             type="text"
@@ -123,6 +156,7 @@ export default function TodoForm({ setTodos, todos }) {
             value={currentItem.tax}
             placeholder="Add a tax"
             onChange={handleEditInputChange}
+            className="text-xs"
           />
           <input
             id="price"
@@ -131,19 +165,34 @@ export default function TodoForm({ setTodos, todos }) {
             value={currentItem.price}
             placeholder="Add a price"
             onChange={handleEditInputChange}
+            className="text-xs"
           />
-          <button className="hover:bg-[#3a3022] rounded-3xl text-4xl transition-all duration-300">
+          <button
+            className="hover:bg-[#3a3022] 
+            w-fit
+          
+          rounded-3xl 
+          text-4xl transition-all duration-300"
+          >
             <IoIosAddCircle className="addIcon" />
           </button>
         </form>
       )}
 
-      <table className="table-fixed w-[600px] m-auto border-collapse text-center">
+      <table
+        className="table-fixed 
+        xl:w-[652px]
+        lg:w-[652px]
+        md:w-[552px]
+        sm:w-[432px]
+        xs:w-[280px] 
+      mt-6 mb-6 border-collapse text-center "
+      >
         <thead>
           <tr>
-            <th className="p-3 text-sm">เลขที่ใบกำกับภาษี</th>
-            <th>จำนวนเงิน</th>
-            <th>แก้ไข</th>
+            <th className="p-3 text-sm "> {t("Tax Invoice")}</th>
+            <th> {t("Amount")}</th>
+            <th> {t("Edit")}</th>
           </tr>
         </thead>
         <tbody>

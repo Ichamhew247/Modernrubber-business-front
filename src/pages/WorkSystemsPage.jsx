@@ -1,63 +1,72 @@
-import { useState } from "react";
+// import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 import InvoicePage from "../pages/InvoicePage";
-import ProductTable from "../features/CRUD/Products/components/ProductTable";
-import FileUpload from "../features/CRUD/Products/components/ProductImageTable";
-
-export default function WorkSystems() {
-  const [productSearch, setProductSearch] = useState(false);
-  const [openInvoice, setOpenInvoice] = useState(false);
-  const [openImageTable, setOpenImageTable] = useState(true);
+import ProductImageTable from "../features/CRUD/ProductTable/ProductImageTable";
+import CompanyList from "../features/CRUD/CompanyList/components/CompanyList";
+import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import ProtectedWorkRoute from "../features/auth/components/ProtectedWorkRoute";
+const WorkSystemsPage = () => {
+  const [selectedTab, setSelectedTab] = useState("");
+  const { t } = useTranslation();
 
   return (
-    <>
-      <main className=" mt-[150px]">
-        <div className="no-print flex justify-center text-xl mb-8 font-bold ">
-          เลือกการทำงานที่ต้องการ
-        </div>
-        <div className="no-print flex justify-center gap-5 ">
-          <button
-            onClick={() => {
-              setOpenInvoice(true);
-              setProductSearch(false);
-              setOpenImageTable(false);
-            }}
-            className={`bg-[#8A4819] hover:bg-[#3A3022] py-2 px-4 w-36 rounded-full text-white transition-all duration-300 ${
-              openInvoice ? "bg-[#3c3224]" : ""
-            }`}
+    <ProtectedWorkRoute>
+      <div>
+        <main
+          className="flex 
+flex-col gap-3  mt-[-52px] justify-center w-full items-center  "
+        >
+          <main
+            className="text-white 
+          xl:mt-36 
+          lg:mt-56 
+          md:mt-56
+          sm:mt-60 
+          xs:mt-60 
+          py-14  flex-col    w-full tracking-wider font-extrabold  flex justify-between gap-8  items-center text-[48px] "
           >
-            Invoice
-          </button>
+            <p> {t("Select job creation")}</p>
 
-          <button
-            onClick={() => {
-              setProductSearch(true);
-              setOpenInvoice(false);
-              setOpenImageTable(false);
-            }}
-            className={`bg-[#8A4819] hover:bg-[#3A3022] py-2 px-4 w-36 rounded-full text-white transition-all duration-300 ${
-              productSearch ? "bg-[#3c3224]" : ""
-            }`}
-          >
-            Product Table
-          </button>
-          <button
-            onClick={() => {
-              setOpenImageTable(true);
-              setProductSearch(false);
-              setOpenInvoice(false);
-            }}
-            className={`bg-[#8A4819] hover:bg-[#3A3022] py-2 px-4 w-36 rounded-full text-white transition-all duration-300 ${
-              openImageTable ? "bg-[#3c3224]" : ""
-            }`}
-          >
-            Product Image
-          </button>
-        </div>
-        <hr className="m-5" />
-        {productSearch ? <ProductTable /> : null}
-        {openInvoice ? <InvoicePage /> : null}
-        {openImageTable ? <FileUpload /> : null}
-      </main>
-    </>
+            <hr className="w-[78%]  border border-[#2D2D2D]" />
+            <p className="text-base flex gap-6 items-baseline">
+              <button
+                onClick={() => setSelectedTab(t("InvoicePage"))}
+                className={`border-[#2D2D2D] text-white   rounded-md outline-none border-2  hover:text-white hover:bg-[#2D2D2D] py-2 px-4 w-36   transition-all duration-100 ${
+                  selectedTab === "InvoicePage"
+                    ? "bg-[#2B2B2B] text-[#2D2D2D]"
+                    : ""
+                }`}
+              >
+                {t("Invoice")}
+              </button>
+              <button
+                onClick={() => setSelectedTab(t("Product"))}
+                className={`border-[#2D2D2D] text-white   rounded-md outline-none border-2  hover:text-white hover:bg-[#2D2D2D] py-2 px-4 w-36   transition-all duration-100 ${
+                  selectedTab === "Product" ? "bg-[#2B2B2B] text-[#2D2D2D]" : ""
+                }`}
+              >
+                {t("Company List")}
+              </button>
+              <button
+                onClick={() => setSelectedTab(t("Image"))}
+                className={`border-[#2D2D2D] text-white   rounded-md outline-none border-2  hover:text-white hover:bg-[#2D2D2D] py-2 px-4 w-44   transition-all duration-100 ${
+                  selectedTab === "Image" ? "bg-[#2B2B2B] text-[#2D2D2D]" : ""
+                }`}
+              >
+                {t("Product Table")}
+              </button>
+            </p>
+          </main>
+
+          <main className="flex justify-center w-[1540px]   ">
+            {selectedTab === "InvoicePage" && <InvoicePage />}
+            {selectedTab === "Product" && <CompanyList />}
+            {selectedTab === "Image" && <ProductImageTable />}
+          </main>
+        </main>
+      </div>
+    </ProtectedWorkRoute>
   );
-}
+};
+
+export default WorkSystemsPage;

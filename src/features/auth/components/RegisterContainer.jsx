@@ -1,20 +1,21 @@
 import { useState } from "react";
 import Modal from "../../../components/Modal";
 import RegisterForm from "./RegisterForm";
-
+import { useTranslation } from "react-i18next";
 export default function RegisterContainer() {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   return (
     <>
       <button
-        className="hover:text-[#6ABD65] hover:underline transition-all duration-300"
+        className="hover:text-[black] hover:underline transition-all duration-300"
         onClick={() => setOpen(true)}
       >
-        ลงทะเบียน
+        {t("register")}
       </button>
       <Modal
-        title="ลงทะเบียน"
-        width="27"
+        title={t("register")}
+        width="34"
         open={open}
         onClose={() => setOpen(false)}
         color="#3A3022"
