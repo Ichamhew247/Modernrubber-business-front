@@ -44,7 +44,7 @@ export default function Banner() {
               />
               <CircleImage
                 number="2"
-                title={t("Manufactured by expert")}
+                title={t("Guaranteed quality")}
                 src="https://res.cloudinary.com/dxj8d8zrd/image/upload/v1702255749/product_image/gslgzhzuqccsawmouu3b.png"
                 alt="3.1"
               />
